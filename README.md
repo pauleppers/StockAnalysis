@@ -25,14 +25,14 @@ o Wallstreet Journal for correlation of news and stock performance. We can pull 
     Real Time Stock Data from API
     Button to load more recent historical Data into Mongo DB
   b. Menu
-      Historical Stock
-        John Deere
-        Wells Fargo
-        Duke Energy
-      Stock Trends for 3 Stock
-        Should we buy.
-      About
-      Source Code
+      * Historical Stock
+        * John Deere
+        * Wells Fargo
+        * Duke Energy
+      * Stock Trends for 3 Stock
+        * Should we buy.
+      * About
+      * Source Code
   c. Each of the pages for Stock will have a slider or some date range picker. When these are changed the number of news stories will change and the timerange for the stock history will change to reflect.
 ## Results/Analysis
 1. We expect to see that as positive news count goes up stock goes up.
