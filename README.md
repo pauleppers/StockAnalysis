@@ -50,4 +50,4 @@ o Wallstreet Journal for correlation of news and stock performance. We can pull 
 4. https://newsapi.org/
 
 ## Example Images
-![alt text](https://github.com/pauleppers/StockAnalysis/blob/StockAnalysis_Nadia/API_News_Data.png?raw=true)
+![alt text](https://github.com/pauleppers/StockAnalysis/blob/StockAnalysis_Nadia/Images/API_News_Data.png?raw=true)
