@@ -49,5 +49,10 @@ o Wallstreet Journal for correlation of news and stock performance. We can pull 
 3. https://polygon.io/
 4. https://newsapi.org/
 
-## Example Images
+# Example Images
+## API Data Example (JSON)
 ![alt text](https://github.com/pauleppers/StockAnalysis/blob/StockAnalysis_Nadia/Images/API_News_Data.png?raw=true)
+## Duke Energy Stock Price Graphic
+![alt text](https://github.com/pauleppers/StockAnalysis/blob/StockAnalysis_Nadia/Images/Duke_Energy_Stock_History.png?raw=true)
+## Wells Fargo Stock Price Graphic
+![alt text](https://github.com/pauleppers/StockAnalysis/blob/StockAnalysis_Nadia/Images/Wells_Fawrg_Stock_History.png?raw=true)
