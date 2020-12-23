@@ -21,10 +21,10 @@ o Wallstreet Journal for correlation of news and stock performance. We can pull 
 1. Get Stock Market History data from https://polygon.io/ or Yahoo.com leveraging Python.
 2. Load Stock Market data into Mongo DB.
 3. Create Webpage with
-  a. Home WebPage
+  1. Home WebPage
     Real Time Stock Data from API
     Button to load more recent historical Data into Mongo DB
-  b. Menu
+  2. Menu
       * Historical Stock
         * John Deere
         * Wells Fargo
@@ -33,7 +33,7 @@ o Wallstreet Journal for correlation of news and stock performance. We can pull 
         * Should we buy.
       * About
       * Source Code
-  c. Each of the pages for Stock will have a slider or some date range picker. When these are changed the number of news stories will change and the timerange for the stock history will change to reflect.
+  3. Each of the pages for Stock will have a slider or some date range picker. When these are changed the number of news stories will change and the timerange for the stock history will change to reflect.
 ## Results/Analysis
 1. We expect to see that as positive news count goes up stock goes up.
 2. See current stock prices
