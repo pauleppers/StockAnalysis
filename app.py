@@ -8,7 +8,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
 db = SQLAlchemy(app)
-class Task(db.Model):
+
+class Stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String)
 
@@ -21,10 +22,10 @@ def index():
 
 @app.route('/api/tasks')
 def getTasksPostgres():
-    tasks = db.session.query(Task)
+    stocks = db.session.query(Stock)
     data = []
 
-    for task in tasks:
+    for task in stocks:
         item = {
             'id': task.id,
             'description': task.description
