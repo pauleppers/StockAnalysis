@@ -1,5 +1,5 @@
 function loadTasks() {
-    d3.json('/api/tasks-postgres').then((data) => {
+    d3.json('/api/tasks').then((data) => {
         data.forEach(task => {
             var listGroup = d3.select("#tasks")
             var listItem = listGroup.append("li");
