@@ -7,6 +7,7 @@ function loadTasks() {
             listItem.attr("class", "list-group-item");
         });
     });
+    buildPlot()
 };
 
 loadTasks()
@@ -110,29 +111,28 @@ loadTasks()
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
         console.log(data)
-        const timestamp = data.timestamp;
-        const high = data.high;
-        const low = data.low
+        var volume = task.volume;
+        var high = task.high;
+
     
         var trace1 = {
-            type: "scatter",
-            mode: "lines",
-            name: 'GE high',
-            x: timestamp,
-            y: high,
-            line: {color: '#17BECF'}
+            type: "bar",
+            name: 'GE volume',
+            x: high,
+            y: volume,
+            marker: {color: '#17BECF'}
           }
           
-          var trace2 = {
-            type: "scatter",
-            mode: "lines",
-            name: 'GE low',
-            x: timestamp,
-            y: low,
-            line: {color: '#7F7F7F'}
-          }
+        //   var trace2 = {
+        //     type: "scatter",
+        //     mode: "lines",
+        //     name: 'GE low',
+        //     x: timestamp,
+        //     y: low,
+        //     line: {color: '#7F7F7F'}
+        //   }
           
-          var data = [trace1,trace2];
+          var data = [trace1];
           
           var layout = {
             title: 'Basic Time Series',
