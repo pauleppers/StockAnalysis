@@ -48,14 +48,14 @@ def getCandlestick():
     print(candlesticks)
     data = []
 
-    for task in candlesticks:
+    for data in candlesticks:
         item = {
-            'timestamp' : task.timestamp,
-            'open' : task.open,   
-            'low' : task.low,   
-            'high' : task.high,   
-            'close' : task.close,   
-            'volume' : task.volume
+            'timestamp' : data.timestamp,
+            'open' : data.open,   
+            'low' : data.low,   
+            'high' : data.high,   
+            'close' : data.close,   
+            'volume' : data.volume
         }
         data.append(item)
 

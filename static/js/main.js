@@ -110,12 +110,16 @@ loadTasks()
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
         console.log(data)
+        const timestamp = data.timestamp;
+        const high = data.high;
+        const low = data.low
+    
         var trace1 = {
             type: "scatter",
             mode: "lines",
             name: 'GE high',
-            x: unpack(rows, 'timestamp'),
-            y: unpack(rows, 'ge.high'),
+            x: timestamp,
+            y: high,
             line: {color: '#17BECF'}
           }
           
@@ -123,8 +127,8 @@ function buildPlot() {
             type: "scatter",
             mode: "lines",
             name: 'GE low',
-            x: unpack(rows, 'timestamp'),
-            y: unpack(rows, 'ge.low'),
+            x: timestamp,
+            y: low,
             line: {color: '#7F7F7F'}
           }
           
@@ -138,6 +142,41 @@ function buildPlot() {
     })
 }; 
 buildPlot()
+
+// function buildPlot() {
+//     d3.json('/api/candlestick').then((data) => {
+//         console.log(data)
+//         var trace1 = {
+//             type: "scatter",
+//             mode: "lines",
+//             name: 'GE high',
+//             x: unpack(rows, 'timestamp'),
+//             y: unpack(rows, 'ge.high'),
+//             line: {color: '#17BECF'}
+//           }
+          
+//           var trace2 = {
+//             type: "scatter",
+//             mode: "lines",
+//             name: 'GE low',
+//             x: unpack(rows, 'timestamp'),
+//             y: unpack(rows, 'ge.low'),
+//             line: {color: '#7F7F7F'}
+//           }
+          
+//           var data = [trace1,trace2];
+          
+//           var layout = {
+//             title: 'Basic Time Series',
+//           };
+         
+//         Plotly.newPlot('plot', data, layout);
+//     })
+// }; 
+// buildPlot()
+
+
+
   // Add event listener for submit button
 // d3.select("#submit").on("click", handleSubmit); 
 
