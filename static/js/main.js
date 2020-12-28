@@ -110,8 +110,8 @@ loadTasks()
 //     function buildPlot(stock) {}
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
-        console.log(data)
-        console.log(data[0])
+        //console.log(data)
+        console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
         // var volume = parseInt(task.volume);
         // var high = parseInt(task.high);
