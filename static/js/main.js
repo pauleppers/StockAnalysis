@@ -111,8 +111,8 @@ loadTasks()
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
         console.log(data)
-        var volume = parseInt(task.volume);
-        var high = parseInt(task.high);
+        // var volume = parseInt(task.volume);
+        // var high = parseInt(task.high);
 
     
         var trace1 = {
@@ -135,7 +135,7 @@ function buildPlot() {
           var data = [trace1];
           
           var layout = {
-            title: 'Basic Time Series',
+            title: 'Volume vs High',
           };
          
         Plotly.newPlot('plot', data, layout);

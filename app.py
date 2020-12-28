@@ -9,9 +9,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
 
 db = SQLAlchemy(app)
 
-class Stock(db.Model):
+class stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    stname = db.Column(db.String)
     description = db.Column(db.String)
+    country = db.Column(db.String)
 
 class ge(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
@@ -29,13 +31,15 @@ def index():
 
 @app.route('/api/tasks')
 def getTasksPostgres():
-    stocks = db.session.query(Stock)
+    stocks = db.session.query(stock)
     data = []
 
     for task in stocks:
         item = {
             'id': task.id,
-            'description': task.description
+            'stname': task.name,
+            'description': task.description,
+            'country': task.country
         }
         data.append(item)
 
