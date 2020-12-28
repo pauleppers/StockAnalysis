@@ -110,12 +110,32 @@ loadTasks()
 //     function buildPlot(stock) {}
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
-        //console.log(data)
+        // d3.json(`/metadata/${sample}`).then((data) 
+        console.log(data)
         console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        // var volume = parseInt(task.volume);
-        // var high = parseInt(task.high);
-
+        var volume = parseInt(data.volume);
+        var high = parseInt(data.high);
+        // var trace1 = {
+        //     x: [0, 1, 2, 3, 4, 5, 6],
+        //     y: [1, 9, 4, 7, 5, 2, 4],
+        //     mode: 'lines+markers',
+        //     type: 'scatter'
+        //   };
+          
+        //   var data = [trace1];
+          
+        //   var layout = {
+        //       title: 'Display the Edit Chart Link'
+        //   };
+          
+        //   var config = {
+        //     showLink: true,
+        //     plotlyServerURL: "https://chart-studio.plotly.com"
+        //   };
+          
+        //   Plotly.newPlot('myDiv', data, layout, config);
+           
     
         var trace1 = {
             type: "bar",
