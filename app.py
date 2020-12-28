@@ -13,6 +13,13 @@ class Stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String)
 
+class ge(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)   
 
 
 @app.route('/')
@@ -33,6 +40,34 @@ def getTasksPostgres():
         data.append(item)
 
     return jsonify(data)
+
+
+@app.route('/api/candlestick')
+def getCandlestick():
+    candlesticks = db.session.query(ge)
+    print(candlesticks)
+    data = []
+
+    for task in candlesticks:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume
+        }
+        data.append(item)
+
+    return jsonify(data)
+
+# so if we connect the info from the jupyter notebook or website 
+# directly to the db and give it a sqlite name. then pull in the 
+# results with a session.query() similiar to activity 10.3.10  passengers
+# the main.js can activate the app.route with a button click
+# function handle submit will activate d3.json(api/candlestick).then data
+# which will load the data into the candlestick format and plotly format?
+
 
 if __name__ == "__main__":
     app.run(debug=True)
