@@ -133,9 +133,9 @@ function buildPlot() {
           var layout = {
             title: 'Basic Time Series',
           };
-    })     
-    Plotly.newPlot('plot', data, layout);
-
+         
+        Plotly.newPlot('plot', data, layout);
+    })
 }; 
 buildPlot()
   // Add event listener for submit button
