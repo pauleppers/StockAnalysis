@@ -11,8 +11,8 @@ db = SQLAlchemy(app)
 
 class stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    stname = db.Column(db.String)
     description = db.Column(db.String)
+    stname = db.Column(db.String)
     country = db.Column(db.String)
 
 class ge(db.Model):
@@ -37,8 +37,8 @@ def getTasksPostgres():
     for task in stocks:
         item = {
             'id': task.id,
-            'stname': task.name,
             'description': task.description,
+            'stname': task.name,
             'country': task.country
         }
         data.append(item)
