@@ -111,8 +111,8 @@ loadTasks()
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
         console.log(data)
-        var volume = task.volume;
-        var high = task.high;
+        var volume = parseInt(task.volume);
+        var high = parseInt(task.high);
 
     
         var trace1 = {
