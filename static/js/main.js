@@ -1,9 +1,9 @@
 function loadTasks() {
     d3.json('/api/tasks').then((data) => {
-        data.forEach(stock => {
+        data.forEach(things => {
             var listGroup = d3.select("#tasks")
             var listItem = listGroup.append("li");
-            listItem.text(stock.description);
+            listItem.text(things.description);
             listItem.attr("class", "list-group-item");
         });
     });

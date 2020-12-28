@@ -2,12 +2,25 @@ from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
 
+from sqlalchemy.ext.automap import automap_base
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
 db = SQLAlchemy(app)
+
+# # Reflect Existing Database Into a New Model
+# Base = automap_base()
+# # Reflect the Tables
+# Base.prepare(db.engine, reflect=True)
+
+# # Save References to Each Table
+# Samples_Metadata = Base.classes.sample_metadata
+# Samples = Base.classes.samples
 
 class stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,14 +45,15 @@ def index():
 @app.route('/api/tasks')
 def getTasksPostgres():
     stocks = db.session.query(stock)
+    print(stocks)
     data = []
 
-    for task in stocks:
+    for things in stocks:
         item = {
-            'id': task.id,
-            'description': task.description,
-            'stname': task.name,
-            'country': task.country
+            'id': things.id,
+            'description': things.description,
+            'stname': things.name,
+            'country': things.country
         }
         data.append(item)
 
