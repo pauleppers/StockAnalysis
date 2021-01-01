@@ -115,8 +115,8 @@ function buildPlot() {
         console.log(data)
         console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        var volume = data.map(vol => parseInt(vol.volume))   
-        var high = data.map(high => (high.high))
+        var volume = data.map(vol => { return parseInt(vol.volume)})   
+        var high = data.map(high => {return high.high})
         console.log(volume)
         console.log(high)
         //var volume = parseInt(data.volume);
