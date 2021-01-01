@@ -8,7 +8,7 @@ function loadTasks() {
     //     });
     // });
     buildPlot()
-};
+
 
 loadTasks()
 
@@ -114,8 +114,10 @@ function buildPlot() {
         console.log(data)
         console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        var volume = parseInt(data.volume);
-        var high = parseInt(data.high);
+        var volume = data.map(vol => parseInt(vol.volume))   
+        var high = data.map(high => (high.high))
+        //var volume = parseInt(data.volume);
+        //var high = parseInt(data.high);
         // var trace1 = {
         //     x: [0, 1, 2, 3, 4, 5, 6],
         //     y: [1, 9, 4, 7, 5, 2, 4],
