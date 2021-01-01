@@ -7,10 +7,11 @@ function loadTasks() {
     //         listItem.attr("class", "list-group-item");
     //     });
     // });
+
     buildPlot()
+}
 
-
-loadTasks()
+// loadTasks()
 
 // function unpack(rows, index) {
 //     return rows.map(function(row) {
@@ -116,8 +117,8 @@ function buildPlot() {
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
         var volume = data.map(vol => parseInt(vol.volume))   
         var high = data.map(high => (high.high))
-        console.log(volume, high)
-        
+        console.log(volume)
+        console.log(high)
         //var volume = parseInt(data.volume);
         //var high = parseInt(data.high);
         // var trace1 = {
@@ -126,7 +127,6 @@ function buildPlot() {
         //     mode: 'lines+markers',
         //     type: 'scatter'
         //   };
-          
         //   var data = [trace1];
           
         //   var layout = {
@@ -139,8 +139,6 @@ function buildPlot() {
         //   };
           
         //   Plotly.newPlot('myDiv', data, layout, config);
-           
-    
         var trace1 = {
             type: "bar",
             name: 'GE volume',
@@ -157,7 +155,6 @@ function buildPlot() {
         //     y: low,
         //     line: {color: '#7F7F7F'}
         //   }
-          
           var data = [trace1];
           
           var layout = {
