@@ -116,7 +116,9 @@ function buildPlot() {
         console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
         var volume = data.map(vol => { return parseInt(vol.volume)})   
+        var timestamp = data.map(time => { return parseInt(time.timestamp)})   
         var high = data.map(high => {return high.high})
+        var low = data.map(low => {return low.low})
         console.log(volume)
         console.log(high)
         //var volume = parseInt(data.volume);
@@ -140,25 +142,26 @@ function buildPlot() {
           
         //   Plotly.newPlot('myDiv', data, layout, config);
         var trace1 = {
-            type: "bar",
-            name: 'GE volume',
-            x: high,
-            y: volume,
+            type: "scatter",
+            mode: "lines",
+            name: 'GE high',
+            x: timestamp,
+            y: high,
             marker: {color: '#17BECF'}
           }
           
-        //   var trace2 = {
-        //     type: "scatter",
-        //     mode: "lines",
-        //     name: 'GE low',
-        //     x: timestamp,
-        //     y: low,
-        //     line: {color: '#7F7F7F'}
-        //   }
-          var data = [trace1];
+          var trace2 = {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE low',
+            x: timestamp,
+            y: low,
+            line: {color: '#7F7F7F'}
+          }
+          var data = [trace1, trace2];
           
           var layout = {
-            title: 'Volume vs High',
+            title: 'High and Low',
           };
          
         Plotly.newPlot('plot', data, layout);
@@ -197,6 +200,15 @@ buildPlot()
 //     })
 // }; 
 // buildPlot()
+
+/*********graph works in build plot************************** */
+// var trace1 = {
+//     type: "bar",
+//     name: 'GE volume',
+//     x: high,
+//     y: volume,
+//     marker: {color: '#17BECF'}
+//   }
 
 
 
