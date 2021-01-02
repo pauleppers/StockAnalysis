@@ -39,6 +39,8 @@ class ge(db.Model):
     high = db.Column(db.Float)   
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.Date)   
 
 
 @app.route('/')
