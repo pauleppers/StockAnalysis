@@ -59,7 +59,7 @@ function loadTasks() {
 //         type: "scatter",
 //         mode: "lines",
 //         name: name,
-//         x: dates,
+//         x: timestamp,
 //         y: closingPrices,
 //         line: {
 //           color: "#17BECF"
@@ -69,7 +69,7 @@ function loadTasks() {
 //       // Candlestick Trace
 //       var trace2 = {
 //         type: "candlestick",
-//         x: dates,
+//         x: timestamp,
 //         high: high,
 //         low: low,
 //         open: openingPrices,
@@ -123,24 +123,7 @@ function buildPlot() {
         console.log(high)
         //var volume = parseInt(data.volume);
         //var high = parseInt(data.high);
-        // var trace1 = {
-        //     x: [0, 1, 2, 3, 4, 5, 6],
-        //     y: [1, 9, 4, 7, 5, 2, 4],
-        //     mode: 'lines+markers',
-        //     type: 'scatter'
-        //   };
-        //   var data = [trace1];
-          
-        //   var layout = {
-        //       title: 'Display the Edit Chart Link'
-        //   };
-          
-        //   var config = {
-        //     showLink: true,
-        //     plotlyServerURL: "https://chart-studio.plotly.com"
-        //   };
-          
-        //   Plotly.newPlot('myDiv', data, layout, config);
+
         var trace1 = {
             type: "scatter",
             mode: "lines",
@@ -165,6 +148,43 @@ function buildPlot() {
           };
          
         Plotly.newPlot('plot', data, layout);
+
+
+      var trace1 = {
+        type: "scatter",
+        mode: "lines",
+        name: GE,
+        x: timestamp,
+        y: closingPrices,
+        line: {
+          color: "#17BECF"
+        }
+      };
+  
+      // Candlestick Trace
+      var trace2 = {
+        type: "candlestick",
+        x: timestamp,
+        high: high,
+        low: low,
+        open: openingPrices,
+        close: closingPrices
+        // @TODO: YOUR CODE HERE
+      };
+  
+      var data = [trace1, trace2];
+  
+      var layout = {
+        title: "GE closing prices",
+        xaxis: timestamp,
+        yaxis: {
+          autorange: true,
+          type: "linear"
+        }
+      };
+  
+      Plotly.newPlot("plot2", data, layout); 
+
     })
 }; 
 buildPlot()
@@ -230,3 +250,23 @@ buildPlot()
 //     // Build the plot with the new stock
 //     buildPlot(stock);
 //   }
+
+
+        // var trace1 = {
+        //     x: [0, 1, 2, 3, 4, 5, 6],
+        //     y: [1, 9, 4, 7, 5, 2, 4],
+        //     mode: 'lines+markers',
+        //     type: 'scatter'
+        //   };
+        //   var data = [trace1];
+          
+        //   var layout = {
+        //       title: 'Display the Edit Chart Link'
+        //   };
+          
+        //   var config = {
+        //     showLink: true,
+        //     plotlyServerURL: "https://chart-studio.plotly.com"
+        //   };
+          
+        //   Plotly.newPlot('myDiv', data, layout, config);
