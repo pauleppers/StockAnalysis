@@ -161,7 +161,8 @@ function buildPlot() {
           var data = [trace1, trace2];
           
           var layout = {
-            title: 'High and Low',
+            title: 'GE Overview',
+            xaxis: 'Stock Price'
           };
          
         Plotly.newPlot('plot', data, layout);
