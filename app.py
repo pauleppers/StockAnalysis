@@ -89,3 +89,5 @@ def getCandlestick():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    
