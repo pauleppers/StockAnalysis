@@ -82,7 +82,7 @@ function loadTasks() {
 //       var layout = {
 //         title: `${stock} closing prices`,
 //         xaxis: {
-//           range: [startDate, endDate],
+//           range: [startDate, endDate 14:30'],
 //           type: "date"
 //         },
 //         yaxis: {
@@ -119,74 +119,146 @@ function buildPlot() {
         var timestamp = data.map(time => { return parseInt(time.timestamp)})   
         var high = data.map(high => {return high.high})
         var low = data.map(low => {return low.low})
-        //var open = data.map(open => {return open.open})
-        //var close = data.map(close => {return close.close})
-        console.log(volume)
-        console.log(high)
+        var openPrice = data.map(openp => {return openp.open})
+        var closingPrice = data.map(close => {return close.close})
+        var date = data.map(dates => {return dates.date})
+        console.log(date)
+        //console.log(high)
         //var volume = parseInt(data.volume);
         //var high = parseInt(data.high);
 
-        var trace1 = {
+        let TStrace1 = [
+            {
             type: "scatter",
             mode: "lines",
             name: 'GE high',
             x: timestamp,
             y: high,
             marker: {color: '#17BECF'}
-          }
-          
-          var trace2 = {
+            }
+        ]
+        let TStrace2 = [
+            {
             type: "scatter",
             mode: "lines",
             name: 'GE low',
             x: timestamp,
             y: low,
             line: {color: '#7F7F7F'}
-          }
-          var data = [trace1, trace2];
+            }
+        ]
+        let TSdata = [[TStrace1, TStrace2]];
           
-          var layout = {
+        let TSlayout = [
+            {
             title: 'GE Overview',
-            // xaxis: 'Stock Price'
-          };
+          }
+        ]
          
-        Plotly.newPlot('plot', data, layout);
+        Plotly.newPlot('plot', TSdata, TSlayout);
 
 
-        // var trace3 = {
-        //     type: "scatter",
-        //     mode: "lines",
-        //     name: GE,
-        //     x: timestamp,
-        //     y: close,
-        //     line: {
-        //     color: "#17BECF"
-        //     }
-        // };
+        let CND1 = [
+            {
+            //type: "scatter",
+            //mode: "lines",
+            name: GE,
+            x: date,
+            y: closingPrice,
+            decreasing: {line: {color: '#7F7F7F'}},
+            high: high,
+            increasing: {line: {color: "#17BECF"}},
+            line: {color: 'rgba(31,119,180,1)'},
+            low: low,
+            open: openPrice,
+            type: "candlestick",
+            xaxis: "x", 
+            yaxis: "y"             
+          }
+        ]
     
-        // // Candlestick Trace
-        // var trace4 = {
+        // Candlestick Trace
+        // let CND2 = [
+        //     {
         //     type: "candlestick",
-        //     x: timestamp,
+        //     x: date,
         //     high: high,
         //     low: low,
-        //     open: open,
-        //     close: close
-        //     // @TODO: YOUR CODE HERE
-        // };
+        //     open: openPrice,
+        //     close: closingPrice
+        //     }
+        // ]
     
-        // var data = [trace3, trace4];
+        let CNDdata = [[CND1]];
     
-        // var layout = {
+        // let CNDlayout = [
+        //     {
         //     title: "GE closing prices",
-        //     xaxis: timestamp,
+        //     xaxis: date,
         //     yaxis: {
         //     autorange: true,
         //     type: "linear"
         //     }
-        // };
+        //    }
+        // ]
+        let CNDlayout = [
+            {
+            dragmode: 'zoom', 
+            margin: {
+              r: 10, 
+              t: 25, 
+              b: 40, 
+              l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+              autorange: true, 
+              rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
+              title: 'Date', 
+              type: 'date'
+            }, 
+            yaxis: {
+              autorange: true, 
+              type: 'linear'
+            },
+            
+            annotations: [
+              {
+                x: '2017-01-31',
+                y: 0.9,
+                xref: 'x',
+                yref: 'paper',
+                text: 'largest movement',
+                font: {color: 'magenta'},
+                showarrow: true,
+                xanchor: 'right',
+                ax: -20,
+                ay: 0
+              }
+            ],
+            
+            shapes: [
+                {
+                    type: 'rect',
+                    xref: 'x',
+                    yref: 'paper',
+                    x0: '2020-01-02',
+                    y0: 0,
+                    x1: '2020-12-31',
+                    y1: 1,
+                    fillcolor: '#d3d3d3',
+                    opacity: 0.2,
+                    line: {
+                        width: 1
+                    }
+                }
+              ]
+          }
+        ]
+          
+        
     
-        // Plotly.newPlot("plot2", data, layout); 
+        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
 
     })
 }; 

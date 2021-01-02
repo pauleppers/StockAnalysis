@@ -10,6 +10,8 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
@@ -75,7 +77,9 @@ def getCandlestick():
             'low' : task.low,   
             'high' : task.high,   
             'close' : task.close,   
-            'volume' : task.volume
+            'volume' : task.volume,
+            'date_time' : task.date_time,
+            'date' : task.date
         }
         data.append(item)
 
