@@ -147,7 +147,7 @@ function buildPlot() {
           
           var layout = {
             title: 'GE Overview',
-            xaxis: 'Stock Price'
+            // xaxis: 'Stock Price'
           };
          
         Plotly.newPlot('plot', data, layout);
