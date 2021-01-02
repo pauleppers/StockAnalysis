@@ -119,6 +119,8 @@ function buildPlot() {
         var timestamp = data.map(time => { return parseInt(time.timestamp)})   
         var high = data.map(high => {return high.high})
         var low = data.map(low => {return low.low})
+        var open = data.map(open => {return open.open})
+        var close = data.map(close => {return close.close})
         console.log(volume)
         console.log(high)
         //var volume = parseInt(data.volume);
@@ -150,40 +152,40 @@ function buildPlot() {
         Plotly.newPlot('plot', data, layout);
 
 
-      var trace1 = {
-        type: "scatter",
-        mode: "lines",
-        name: GE,
-        x: timestamp,
-        y: closingPrices,
-        line: {
-          color: "#17BECF"
-        }
-      };
-  
-      // Candlestick Trace
-      var trace2 = {
-        type: "candlestick",
-        x: timestamp,
-        high: high,
-        low: low,
-        open: openingPrices,
-        close: closingPrices
-        // @TODO: YOUR CODE HERE
-      };
-  
-      var data = [trace1, trace2];
-  
-      var layout = {
-        title: "GE closing prices",
-        xaxis: timestamp,
-        yaxis: {
-          autorange: true,
-          type: "linear"
-        }
-      };
-  
-      Plotly.newPlot("plot2", data, layout); 
+        var trace3 = {
+            type: "scatter",
+            mode: "lines",
+            name: GE,
+            x: timestamp,
+            y: close,
+            line: {
+            color: "#17BECF"
+            }
+        };
+    
+        // Candlestick Trace
+        var trace4 = {
+            type: "candlestick",
+            x: timestamp,
+            high: high,
+            low: low,
+            open: open,
+            close: close
+            // @TODO: YOUR CODE HERE
+        };
+    
+        var data = [trace3, trace4];
+    
+        var layout = {
+            title: "GE closing prices",
+            xaxis: timestamp,
+            yaxis: {
+            autorange: true,
+            type: "linear"
+            }
+        };
+    
+        Plotly.newPlot("plot2", data, layout); 
 
     })
 }; 
