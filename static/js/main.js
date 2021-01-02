@@ -249,7 +249,7 @@ function buildPlot() {
                     fillcolor: '#d3d3d3',
                     opacity: 0.2,
                     line: {
-                        width: 1
+                        width: 0.5
                     }
                 }
               ]
