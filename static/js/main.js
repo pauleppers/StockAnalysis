@@ -115,15 +115,13 @@ function buildPlot() {
         // console.log(data)
         // console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        var volume = data.map(vol => { return parseInt(vol.volume)})   
-        var timestamp = data.map(time => { return parseInt(time.timestamp)})      
-        var high = data.map(high => {return high.high})
-        var low = data.map(low => {return low.low})
-        var openPrice = data.map(openp => {return openp.open})
-        var closingPrice = data.map(close => {return close.close})
-        var date = data.map(dates => {return dates.date})
-
-
+        const volume = data.map(vol => { return parseInt(vol.volume)})   
+        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+        const high = data.map(high => {return high.high})
+        const low = data.map(low => {return low.low})
+        const openPrice = data.map(openp => {return openp.open})
+        const closingPrice = data.map(close => {return close.close})
+        const date = data.map(dates => {return dates.date})
         console.log(date)
 
         //console.log(high)
@@ -161,104 +159,104 @@ function buildPlot() {
         Plotly.newPlot('plot', TSdata, TSlayout);
 
 
-        // let CND1 = [
+        let CND1 = [
+            {
+            x: date,
+            y: closingPrice,
+            decreasing: {line: {color: '#7F7F7F'}},
+            high: high,
+            increasing: {line: {color: "#17BECF"}},
+            line: {color: 'rgba(31,119,180,1)'},
+            low: low,
+            open: openPrice,
+            type: "candlestick",
+            xaxis: "x", 
+            yaxis: "y"             
+          }
+        ]
+    
+        // Candlestick Trace
+        // let CND2 = [
         //     {
+        //     type: "candlestick",
         //     x: date,
-        //     y: closingPrice,
-        //     decreasing: {line: {color: '#7F7F7F'}},
         //     high: high,
-        //     increasing: {line: {color: "#17BECF"}},
-        //     line: {color: 'rgba(31,119,180,1)'},
         //     low: low,
         //     open: openPrice,
-        //     type: "candlestick",
-        //     xaxis: "x", 
-        //     yaxis: "y"             
-        //   }
+        //     close: closingPrice
+        //     }
         // ]
     
-        // // Candlestick Trace
-        // // let CND2 = [
-        // //     {
-        // //     type: "candlestick",
-        // //     x: date,
-        // //     high: high,
-        // //     low: low,
-        // //     open: openPrice,
-        // //     close: closingPrice
-        // //     }
-        // // ]
+        let CNDdata = [[CND1]];
     
-        // let CNDdata = [[CND1]];
-    
-        // // let CNDlayout = [
-        // //     {
-        // //     title: "GE closing prices",
-        // //     xaxis: date,
-        // //     yaxis: {
-        // //     autorange: true,
-        // //     type: "linear"
-        // //     }
-        // //    }
-        // // ]
         // let CNDlayout = [
         //     {
-        //     dragmode: 'zoom', 
-        //     margin: {
-        //       r: 10, 
-        //       t: 25, 
-        //       b: 40, 
-        //       l: 60
-        //     }, 
-        //     showlegend: false, 
-        //     xaxis: {
-        //       autorange: true, 
-        //       rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
-        //       title: 'Date', 
-        //       type: 'date'
-        //     }, 
+        //     title: "GE closing prices",
+        //     xaxis: date,
         //     yaxis: {
-        //       autorange: true, 
-        //       type: 'linear'
-        //     },
-            
-        //     annotations: [
-        //       {
-        //         x: '2017-01-31',
-        //         y: 0.9,
-        //         xref: 'x',
-        //         yref: 'paper',
-        //         text: 'largest movement',
-        //         font: {color: 'magenta'},
-        //         showarrow: true,
-        //         xanchor: 'right',
-        //         ax: -20,
-        //         ay: 0
-        //       }
-        //     ],
-            
-        //     shapes: [
-        //         {
-        //             type: 'rect',
-        //             xref: 'x',
-        //             yref: 'paper',
-        //             x0: '2020-01-02',
-        //             y0: 0,
-        //             x1: '2020-12-31',
-        //             y1: 1,
-        //             fillcolor: '#d3d3d3',
-        //             opacity: 0.2,
-        //             line: {
-        //                 width: 0.5
-        //             }
-        //         }
-        //       ]
-        //   }
+        //     autorange: true,
+        //     type: "linear"
+        //     }
+        //    }
         // ]
+        let CNDlayout = [
+            {
+            dragmode: 'zoom', 
+            margin: {
+              r: 10, 
+              t: 25, 
+              b: 40, 
+              l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+              autorange: true, 
+              rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
+              title: 'Date', 
+              type: 'date'
+            }, 
+            yaxis: {
+              autorange: true, 
+              type: 'linear'
+            },
+            
+            annotations: [
+              {
+                x: '2017-01-31',
+                y: 0.9,
+                xref: 'x',
+                yref: 'paper',
+                text: 'largest movement',
+                font: {color: 'magenta'},
+                showarrow: true,
+                xanchor: 'right',
+                ax: -20,
+                ay: 0
+              }
+            ],
+            
+            shapes: [
+                {
+                    type: 'rect',
+                    xref: 'x',
+                    yref: 'paper',
+                    x0: '2020-01-02',
+                    y0: 0,
+                    x1: '2020-12-31',
+                    y1: 1,
+                    fillcolor: '#d3d3d3',
+                    opacity: 0.2,
+                    line: {
+                        width: 0.5
+                    }
+                }
+              ]
+          }
+        ]
           
         
     
-        // Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
 
     })
 }; 
