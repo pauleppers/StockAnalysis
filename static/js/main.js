@@ -123,52 +123,50 @@ function buildPlot() {
         var openPrice = data.map(openp => {return openp.open})
         var closingPrice = data.map(close => {return close.close})
         var date = data.map(dates => {return dates.date})
-        var date2 = data.map(dates => {return dates.date})
+
         // let date2 = new Date()
-        //parse JSON formatted date to javascript date object
-        var bdate = new Date(parseInt(date2));
-        var bdate2 = new Date(parseInt(date2));
-        var date3 = formatDate("yyyy-mm-dd", bdate2)
-        //format display date (e.g. 04/10/2012)
-        var displayDate = $.datepicker.formatDate("yyyy-mm-dd", bdate);
+        // //parse JSON formatted date to javascript date object
+        // var bdate = new Date(parseInt(date2));
+        // var bdate2 = new Date(parseInt(date2));
+        // var date3 = formatDate("yyyy-mm-dd", bdate2)
+        // //format display date (e.g. 04/10/2012)
+        // var displayDate = $.datepicker.formatDate("yyyy-mm-dd", bdate);
         console.log(date)
         console.log(dated)
-        console.log(displayDate)
-        console.log(date3)
 
         //console.log(high)
         //var volume = parseInt(data.volume);
         //var high = parseInt(data.high);
 
-        // let TStrace1 = [
-        //     {
-        //     type: "scatter",
-        //     mode: "lines",
-        //     name: 'GE high',
-        //     x: timestamp,
-        //     y: high,
-        //     marker: {color: '#17BECF'}
-        //     }
-        // ]
-        // let TStrace2 = [
-        //     {
-        //     type: "scatter",
-        //     mode: "lines",
-        //     name: 'GE low',
-        //     x: timestamp,
-        //     y: low,
-        //     line: {color: '#7F7F7F'}
-        //     }
-        // ]
-        // let TSdata = [[TStrace1, TStrace2]];
+        let TStrace1 = [
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE high',
+            x: timestamp,
+            y: high,
+            marker: {color: '#17BECF'}
+            }
+        ]
+        let TStrace2 = [
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE low',
+            x: timestamp,
+            y: low,
+            line: {color: '#7F7F7F'}
+            }
+        ]
+        let TSdata = [[TStrace1, TStrace2]];
           
-        // let TSlayout = [
-        //     {
-        //     title: 'GE Overview',
-        //   }
-        // ]
+        let TSlayout = [
+            {
+            title: 'GE Overview',
+          }
+        ]
          
-        // Plotly.newPlot('plot', TSdata, TSlayout);
+        Plotly.newPlot('plot', TSdata, TSlayout);
 
 
         // let CND1 = [
