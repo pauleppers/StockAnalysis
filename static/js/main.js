@@ -126,8 +126,8 @@ function buildPlot() {
         var date2 = data.map(dates => {return dates.date})
         // let date2 = new Date()
         //parse JSON formatted date to javascript date object
-        var bdate = new Date(parseInt(date2.substr(6)));
-        var bdate2 = new Date(parseInt(date2.substr(6)));
+        var bdate = new Date(parseInt(date2));
+        var bdate2 = new Date(parseInt(date2));
         var date3 = formatDate("yyyy-mm-dd", bdate2)
         //format display date (e.g. 04/10/2012)
         var displayDate = $.datepicker.formatDate("yyyy-mm-dd", bdate);
