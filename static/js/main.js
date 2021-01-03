@@ -116,23 +116,15 @@ function buildPlot() {
         // console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
         var volume = data.map(vol => { return parseInt(vol.volume)})   
-        var timestamp = data.map(time => { return parseInt(time.timestamp)})   
-        var dated = data.map(dated => { return parseInt(dated.date)})   
+        var timestamp = data.map(time => { return parseInt(time.timestamp)})      
         var high = data.map(high => {return high.high})
         var low = data.map(low => {return low.low})
         var openPrice = data.map(openp => {return openp.open})
         var closingPrice = data.map(close => {return close.close})
         var date = data.map(dates => {return dates.date})
 
-        // let date2 = new Date()
-        // //parse JSON formatted date to javascript date object
-        // var bdate = new Date(parseInt(date2));
-        // var bdate2 = new Date(parseInt(date2));
-        // var date3 = formatDate("yyyy-mm-dd", bdate2)
-        // //format display date (e.g. 04/10/2012)
-        // var displayDate = $.datepicker.formatDate("yyyy-mm-dd", bdate);
+
         console.log(date)
-        console.log(dated)
 
         //console.log(high)
         //var volume = parseInt(data.volume);
