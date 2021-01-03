@@ -123,6 +123,7 @@ function buildPlot() {
         var openPrice = data.map(openp => {return openp.open})
         var closingPrice = data.map(close => {return close.close})
         var date = data.map(dates => {return dates.date})
+        var date2 = data.map(dates => {return dates.date})
         // let date2 = new Date()
         //parse JSON formatted date to javascript date object
         var bdate = new Date(parseInt(date2.substr(6)));
