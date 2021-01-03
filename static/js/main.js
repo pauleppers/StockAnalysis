@@ -117,19 +117,32 @@ function buildPlot() {
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
         const volume = data.map(vol => { return parseInt(vol.volume)})   
         const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
         const high = data.map(high => {return high.high})
         const low = data.map(low => {return low.low})
         const openPrice = data.map(openp => {return openp.open})
         const closingPrice = data.map(close => {return close.close})
-        const dated = data.map(dates => {return dates.date})
-        const date = dt.date(dated)
-        console.log(date)
+        const date = data.map(dates => {return dates.date})
+        // const date = data.map(dates => {return new Date(parseInt(dates.date))})
+        // inputFormat = new SimpleDateFormat("yyyy-mm-dd");
+        // outputFormat = new SimpleDateFormat("mm-dd-yyyy");
+        // String inputDateStr="2018-05-15";
+        // Date date = inputFormat.parse(inputDateStr);
+        // String outputDateStr = outputFormat.format(date);
 
+
+        // var dateString = timestamp2;
+        // var currentTime = new Date(parseInt(dateString ));
+        // var month = currentTime.getMonth() + 1;
+        // var day = currentTime.getDate();
+        // var year = currentTime.getFullYear();
+        //var date = year + "/" + month + "/" + day;
+        console.log(date)        
         //console.log(high)
         //var volume = parseInt(data.volume);
-        //var high = parseInt(data.high);
+        // //var high = parseInt(data.high);
 
-        let TStrace1 = [
+        var TStrace1 = 
             {
             type: "scatter",
             mode: "lines",
@@ -137,9 +150,9 @@ function buildPlot() {
             x: timestamp,
             y: high,
             marker: {color: '#17BECF'}
-            }
-        ]
-        let TStrace2 = [
+        }
+    
+        var TStrace2 = 
             {
             type: "scatter",
             mode: "lines",
@@ -147,23 +160,20 @@ function buildPlot() {
             x: timestamp,
             y: low,
             line: {color: '#7F7F7F'}
-            }
-        ]
-        let TSdata = [[TStrace1, TStrace2]];
+        }
+    
+        var TSdata = [TStrace1, TStrace2];
           
-        let TSlayout = [
-            {
+        var TSlayout = {
             title: 'GE Overview',
-          }
-        ]
-         
+        }
+
         Plotly.newPlot('plot', TSdata, TSlayout);
 
 
-        let CND1 = [
-            {
+        let CND1 ={
             x: date,
-            y: closingPrice,
+            close: closingPrice,
             decreasing: {line: {color: '#7F7F7F'}},
             high: high,
             increasing: {line: {color: "#17BECF"}},
@@ -173,17 +183,14 @@ function buildPlot() {
             type: "candlestick",
             xaxis: "x", 
             yaxis: "y"             
-          }
-        ]
+        }
     
         // Candlestick Trace
 
     
-        let CNDdata = [[CND1]];
+        let CNDdata = [CND1];
     
-
-        let CNDlayout = [
-            {
+        let CNDlayout = {
             dragmode: 'zoom', 
             margin: {
               r: 10, 
@@ -194,48 +201,71 @@ function buildPlot() {
             showlegend: false, 
             xaxis: {
               autorange: true, 
-              rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
+              domain: [0, 1], 
+              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
               title: 'Date', 
               type: 'date'
             }, 
             yaxis: {
               autorange: true, 
+              domain: [0, 1], 
+              range: [0, 20], 
               type: 'linear'
-            },
+            }
+        };
+        // let CNDlayout = {
+        //     dragmode: 'zoom', 
+        //     margin: {
+        //       r: 10, 
+        //       t: 25, 
+        //       b: 40, 
+        //       l: 60
+        //     }, 
+        //     showlegend: false, 
+        //     xaxis: {
+        //       autorange: true, 
+        //       rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
+        //       title: 'Date', 
+        //       type: 'date'
+        //     }, 
+        //     yaxis: {
+        //       autorange: true, 
+        //       type: 'linear'
+        //     },
             
-            annotations: [
-              {
-                x: '2017-01-31',
-                y: 0.9,
-                xref: 'x',
-                yref: 'paper',
-                text: 'largest movement',
-                font: {color: 'magenta'},
-                showarrow: true,
-                xanchor: 'right',
-                ax: -20,
-                ay: 0
-              }
-            ],
+        //     annotations: [
+        //       {
+        //         x: '2017-01-31',
+        //         y: 0.9,
+        //         xref: 'x',
+        //         yref: 'paper',
+        //         text: 'largest movement',
+        //         font: {color: 'magenta'},
+        //         showarrow: true,
+        //         xanchor: 'right',
+        //         ax: -20,
+        //         ay: 0
+        //       }
+        //     ],
             
-            shapes: [
-                {
-                    type: 'rect',
-                    xref: 'x',
-                    yref: 'paper',
-                    x0: '2020-01-02',
-                    y0: 0,
-                    x1: '2020-12-31',
-                    y1: 1,
-                    fillcolor: '#d3d3d3',
-                    opacity: 0.2,
-                    line: {
-                        width: 0
-                    }
-                }
-              ]
-          }
-        ]
+        //     shapes: [
+        //         {
+        //             type: 'rect',
+        //             xref: 'x',
+        //             yref: 'paper',
+        //             x0: '2020-01-02',
+        //             y0: 0,
+        //             x1: '2020-12-31',
+        //             y1: 1,
+        //             fillcolor: '#d3d3d3',
+        //             opacity: 0.2,
+        //             line: {
+        //                 width: 0
+        //             }
+        //         }
+        //       ]
+        //   }
           
         
     

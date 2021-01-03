@@ -16,14 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
 
 db = SQLAlchemy(app)
 
-# # Reflect Existing Database Into a New Model
-# Base = automap_base()
-# # Reflect the Tables
-# Base.prepare(db.engine, reflect=True)
-
-# # Save References to Each Table
-# Samples_Metadata = Base.classes.sample_metadata
-# Samples = Base.classes.samples
 
 class stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -39,7 +31,7 @@ class ge(db.Model):
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.Date)   
+    date = db.Column(db.String)   
 
 
 @app.route('/')
@@ -80,7 +72,7 @@ def getCandlestick():
             'close' : task.close,   
             'volume' : task.volume,
             'date_time' : task.date_time,
-            'date' : task.date
+            'date' : task.date.strftime('%Y-%m-%d')
         }
         data.append(item)
 
