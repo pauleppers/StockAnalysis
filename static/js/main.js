@@ -121,7 +121,8 @@ function buildPlot() {
         const low = data.map(low => {return low.low})
         const openPrice = data.map(openp => {return openp.open})
         const closingPrice = data.map(close => {return close.close})
-        const date = data.map(dates => {return dates.date})
+        const dated = data.map(dates => {return dates.date})
+        const date = dt.date(dated)
         console.log(date)
 
         //console.log(high)
