@@ -162,7 +162,7 @@ function buildPlot() {
             {
             //type: "scatter",
             //mode: "lines",
-            name: "GE",
+            //name: "GE",
             x: date,
             y: closingPrice,
             decreasing: {line: {color: '#7F7F7F'}},

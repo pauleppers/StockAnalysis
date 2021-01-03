@@ -3,6 +3,7 @@ import sqlalchemy
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
+from datetime import datetime as dt
 
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -40,7 +41,7 @@ class ge(db.Model):
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.Date)   
+    date = db.Column(db.Integer)   
 
 
 @app.route('/')
