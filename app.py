@@ -11,8 +11,6 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
-
-
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
@@ -41,7 +39,7 @@ class ge(db.Model):
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.Integer)   
+    date = db.Column(db.Date)   
 
 
 @app.route('/')
