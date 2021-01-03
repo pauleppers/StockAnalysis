@@ -104,6 +104,104 @@ function buildPlot() {
               type: 'linear'
             }
         };
+      
+    
+        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+
+    })
+}; 
+buildPlot()
+
+function buildHON() {
+    d3.json('/api/hon').then((data) => {
+        // d3.json(`/metadata/${sample}`).then((data) 
+        // console.log(data)
+        // console.log((data[0]))
+        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
+        const volume = data.map(vol => { return parseInt(vol.volume)})   
+        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
+        const high = data.map(high => {return high.high})
+        const low = data.map(low => {return low.low})
+        const openPrice = data.map(openp => {return openp.open})
+        const closingPrice = data.map(close => {return close.close})
+        const date = data.map(dates => {return dates.date})
+
+        console.log(date)        
+        //console.log(high)
+
+        var TStrace1 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE high',
+            x: timestamp,
+            y: high,
+            marker: {color: '#17BECF'}
+        }
+    
+        var TStrace2 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE low',
+            x: timestamp,
+            y: low,
+            line: {color: '#7F7F7F'}
+        }
+    
+        var TSdata = [TStrace1, TStrace2];
+          
+        var TSlayout = {
+            title: 'HON Overview',
+        }
+
+        Plotly.newPlot('honplot', TSdata, TSlayout);
+
+
+        let CND1 ={
+            x: date,
+            close: closingPrice,
+            decreasing: {line: {color: '#7F7F7F'}},
+            high: high,
+            increasing: {line: {color: "#17BECF"}},
+            line: {color: 'rgba(31,119,180,1)'},
+            low: low,
+            open: openPrice,
+            type: "candlestick",
+            xaxis: "x", 
+            yaxis: "y"             
+        }
+    
+        // Candlestick Trace
+
+    
+        let CNDdata = [CND1];
+    
+        let CNDlayout = {
+            dragmode: 'zoom', 
+            margin: {
+              r: 10, 
+              t: 25, 
+              b: 40, 
+              l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+              title: 'Date', 
+              type: 'date'
+            }, 
+            yaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: [0, 20], 
+              type: 'linear'
+            }
+        };
         // let CNDlayout = {
         //     dragmode: 'zoom', 
         //     margin: {
@@ -159,13 +257,11 @@ function buildPlot() {
           
         
     
-        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+        Plotly.newPlot("honplot2", CNDdata, CNDlayout); 
 
     })
 }; 
-buildPlot()
-
-
+buildHON()
 
 // function unpack(rows, index) {
 //     return rows.map(function(row) {

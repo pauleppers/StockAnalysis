@@ -15,8 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
 db = SQLAlchemy(app)
-
-
 class stock(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String)
@@ -32,11 +30,50 @@ class ge(db.Model):
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
     date = db.Column(db.String)   
+# (db.DateTime, default=datetime.utcnow)
+
+class hon(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)   
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.String)  
+
+class lmt(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)   
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.String)  
+
+class ba(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)   
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.String)  
 
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/GE')
+def page1():
+    return render_template('ge.html')
+
+@app.route('/HON')
+def pageHON():
+    return render_template('hon.html')
 
 
 @app.route('/api/tasks')
@@ -64,6 +101,27 @@ def getCandlestick():
     data = []
 
     for task in candlesticks:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume,
+            'date_time' : task.date_time,
+            'date' : task.date.strftime('%Y-%m-%d')
+        }
+        data.append(item)
+
+    return jsonify(data)
+
+@app.route('/api/hon')
+def getHON():
+    hons = db.session.query(hon)
+    print(hons)
+    data = []
+
+    for task in hons:
         item = {
             'timestamp' : task.timestamp,
             'open' : task.open,   
