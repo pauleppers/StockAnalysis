@@ -1,15 +1,15 @@
-// function loadTasks() {
-//     // d3.json('/api/tasks').then((data) => {
-//     //     data.forEach(things => {
-//     //         var listGroup = d3.select("#tasks")
-//     //         var listItem = listGroup.append("li");
-//     //         listItem.text(things.description);
-//     //         listItem.attr("class", "list-group-item");
-//     //     });
-//     // });
+function loadTasks() {
+    // d3.json('/api/tasks').then((data) => {
+    //     data.forEach(things => {
+    //         var listGroup = d3.select("#tasks")
+    //         var listItem = listGroup.append("li");
+    //         listItem.text(things.description);
+    //         listItem.attr("class", "list-group-item");
+    //     });
+    // });
 
-//     buildPlot()
-// }
+    buildPlot()
+}
 
 // loadTasks()
 
@@ -176,29 +176,11 @@ function buildPlot() {
         ]
     
         // Candlestick Trace
-        // let CND2 = [
-        //     {
-        //     type: "candlestick",
-        //     x: date,
-        //     high: high,
-        //     low: low,
-        //     open: openPrice,
-        //     close: closingPrice
-        //     }
-        // ]
+
     
         let CNDdata = [[CND1]];
     
-        // let CNDlayout = [
-        //     {
-        //     title: "GE closing prices",
-        //     xaxis: date,
-        //     yaxis: {
-        //     autorange: true,
-        //     type: "linear"
-        //     }
-        //    }
-        // ]
+
         let CNDlayout = [
             {
             dragmode: 'zoom', 
@@ -247,7 +229,7 @@ function buildPlot() {
                     fillcolor: '#d3d3d3',
                     opacity: 0.2,
                     line: {
-                        width: 0.5
+                        width: 0
                     }
                 }
               ]
@@ -262,7 +244,27 @@ function buildPlot() {
 }; 
 buildPlot()
 
+        // let CNDlayout = [
+        //     {
+        //     title: "GE closing prices",
+        //     xaxis: date,
+        //     yaxis: {
+        //     autorange: true,
+        //     type: "linear"
+        //     }
+        //    }
+        // ]
 
+                // let CND2 = [
+        //     {
+        //     type: "candlestick",
+        //     x: date,
+        //     high: high,
+        //     low: low,
+        //     open: openPrice,
+        //     close: closingPrice
+        //     }
+        // ]
 
 /*********graph works in build plot************************** */
 // var trace1 = {
