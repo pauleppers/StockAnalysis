@@ -80,7 +80,7 @@ def getCandlestick():
             'close' : task.close,   
             'volume' : task.volume,
             'date_time' : task.date_time,
-            'date' : task.date
+            'date' : dt.date(task.date)
         }
         data.append(item)
 
