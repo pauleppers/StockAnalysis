@@ -13,102 +13,7 @@ function loadTasks() {
 
 // loadTasks()
 
-// function unpack(rows, index) {
-//     return rows.map(function(row) {
-//       return row[index];
-//     });
-//   }
   
-  // Submit Button handler
-//   function handleSubmit() {
-//     // Prevent the page from refreshing
-//     d3.event.preventDefault();
-  
-//     // Select the input value from the form
-//     var stock = d3.select("#stockInput").node().value;
-//     console.log(stock);
-  
-//     // clear the input value
-//     d3.select("#stockInput").node().value = "";
-  
-//     // Build the plot with the new stock
-//     buildPlot(stock);
-//   }
-  
-//   function buildPlot(stock) {
-//     var apiKey = "ksAyqtZLBLQ6Qz4svXsz";
-  
-//     var url = `https://www.quandl.com/api/v3/datasets/WIKI/${stock}.json?start_date=2016-10-01&end_date=2017-10-01&api_key=${apiKey}`;
-  
-//     d3.json(url).then(function(data) {
-  
-//       // Grab values from the response json object to build the plots
-//     //   var name = data.dataset.name;
-//     //   var stock = data.dataset.dataset_code;
-//     //   var startDate = data.dataset.start_date;
-//     //   var endDate = data.dataset.end_date;
-//     //   var dates = unpack(data.dataset.data, 0);
-//     //   var closingPrices = unpack(data.dataset.data, 4);
-//     //   var low = unpack(data.dataset.data, 3);
-//     //   var high = unpack(data.dataset.data, 2);
-//     //   var openingPrices = unpack(data.dataset.data, 1);
-//       // @TODO: Unpack the open, close, high, and low prices
-
-
-//       var trace1 = {
-//         type: "scatter",
-//         mode: "lines",
-//         name: name,
-//         x: timestamp,
-//         y: closingPrices,
-//         line: {
-//           color: "#17BECF"
-//         }
-//       };
-  
-//       // Candlestick Trace
-//       var trace2 = {
-//         type: "candlestick",
-//         x: timestamp,
-//         high: high,
-//         low: low,
-//         open: openingPrices,
-//         close: closingPrices
-//         // @TODO: YOUR CODE HERE
-//       };
-  
-//       var data = [trace1, trace2];
-  
-//       var layout = {
-//         title: `${stock} closing prices`,
-//         xaxis: {
-//           range: [startDate, endDate 14:30'],
-//           type: "date"
-//         },
-//         yaxis: {
-//           autorange: true,
-//           type: "linear"
-//         }
-//       };
-  
-//       Plotly.newPlot("plot", data, layout); 
-//     });
-//   }
-  
-//   // Add event listener for submit button
-//   d3.select("#submit").on("click", handleSubmit);
-
-  
-// function handleSubmit() {
-//     d3.event.preventDefault();
-//     // Select the input value from the form    
-//     var stock = d3.select("#stockInput").node().value;
-//     console.log(stock);  
-//     // clear the input value
-//     d3.select("#stockInput").node().value = "";   
-//     // Build the plot with the new stock
-//     buildPlot(stock);  
-//     function buildPlot(stock) {}
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
         // d3.json(`/metadata/${sample}`).then((data) 
@@ -123,24 +28,9 @@ function buildPlot() {
         const openPrice = data.map(openp => {return openp.open})
         const closingPrice = data.map(close => {return close.close})
         const date = data.map(dates => {return dates.date})
-        // const date = data.map(dates => {return new Date(parseInt(dates.date))})
-        // inputFormat = new SimpleDateFormat("yyyy-mm-dd");
-        // outputFormat = new SimpleDateFormat("mm-dd-yyyy");
-        // String inputDateStr="2018-05-15";
-        // Date date = inputFormat.parse(inputDateStr);
-        // String outputDateStr = outputFormat.format(date);
 
-
-        // var dateString = timestamp2;
-        // var currentTime = new Date(parseInt(dateString ));
-        // var month = currentTime.getMonth() + 1;
-        // var day = currentTime.getDate();
-        // var year = currentTime.getFullYear();
-        //var date = year + "/" + month + "/" + day;
         console.log(date)        
         //console.log(high)
-        //var volume = parseInt(data.volume);
-        // //var high = parseInt(data.high);
 
         var TStrace1 = 
             {
@@ -275,57 +165,92 @@ function buildPlot() {
 }; 
 buildPlot()
 
-        // let CNDlayout = [
-        //     {
-        //     title: "GE closing prices",
-        //     xaxis: date,
-        //     yaxis: {
-        //     autorange: true,
-        //     type: "linear"
-        //     }
-        //    }
-        // ]
 
-                // let CND2 = [
-        //     {
-        //     type: "candlestick",
-        //     x: date,
-        //     high: high,
-        //     low: low,
-        //     open: openPrice,
-        //     close: closingPrice
-        //     }
-        // ]
 
-/*********graph works in build plot************************** */
-// var trace1 = {
-//     type: "bar",
-//     name: 'GE volume',
-//     x: high,
-//     y: volume,
-//     marker: {color: '#17BECF'}
+// function unpack(rows, index) {
+//     return rows.map(function(row) {
+//       return row[index];
+//     });
 //   }
-
-
-
-  // Add event listener for submit button
-// d3.select("#submit").on("click", handleSubmit); 
-
-// function handleSubmit() {
-//     // @TODO: YOUR CODE HERE
+  
+  // Submit Button handler
+//   function handleSubmit() {
 //     // Prevent the page from refreshing
 //     d3.event.preventDefault();
   
 //     // Select the input value from the form
-//     var input = d3.select("#stockInput");
-//     var stock = input.property("value");
+//     var stock = d3.select("#stockInput").node().value;
+//     console.log(stock);
   
-//     console.log(stock)
 //     // clear the input value
-//     input.property("value", "");
+//     d3.select("#stockInput").node().value = "";
+  
 //     // Build the plot with the new stock
 //     buildPlot(stock);
 //   }
+  
+//   function buildPlot(stock) {
+//     var apiKey = "ksAyqtZLBLQ6Qz4svXsz";
+  
+//     var url = `https://www.quandl.com/api/v3/datasets/WIKI/${stock}.json?start_date=2016-10-01&end_date=2017-10-01&api_key=${apiKey}`;
+  
+//     d3.json(url).then(function(data) {
+  
+//       // Grab values from the response json object to build the plots
+//     //   var name = data.dataset.name;
+//     //   var stock = data.dataset.dataset_code;
+//     //   var startDate = data.dataset.start_date;
+//     //   var endDate = data.dataset.end_date;
+//     //   var dates = unpack(data.dataset.data, 0);
+//     //   var closingPrices = unpack(data.dataset.data, 4);
+//     //   var low = unpack(data.dataset.data, 3);
+//     //   var high = unpack(data.dataset.data, 2);
+//     //   var openingPrices = unpack(data.dataset.data, 1);
+//       // @TODO: Unpack the open, close, high, and low prices
+
+
+//       var trace1 = {
+//         type: "scatter",
+//         mode: "lines",
+//         name: name,
+//         x: date,
+//         y: closingPrices,
+//         line: {
+//           color: "#17BECF"
+//         }
+//       };
+  
+//       // Candlestick Trace
+//       var trace2 = {
+//         type: "candlestick",
+//         x: date,
+//         high: high,
+//         low: low,
+//         open: openingPrices,
+//         close: closingPrices
+//         // @TODO: YOUR CODE HERE
+//       };
+  
+//       var data = [trace1, trace2];
+  
+//       var layout = {
+//         title: `${stock} closing prices`,
+//         xaxis: {
+//           range: [startDate, endDate 14:30'],
+//           type: "date"
+//         },
+//         yaxis: {
+//           autorange: true,
+//           type: "linear"
+//         }
+//       };
+  
+//       Plotly.newPlot("plot", data, layout); 
+//     });
+//   }
+  
+//   // Add event listener for submit button
+//   d3.select("#submit").on("click", handleSubmit);
 
 
         // var trace1 = {
