@@ -20,9 +20,11 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   </head>
-
-  <body id="page-top">
-
+</style>
+<body id="page-top"></body>
+   <div class="container-fluid">
+      <div class="jumbotron text-center mt-5 mb-5" style="background-color:lightblue;">
+ 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
@@ -68,8 +70,8 @@
 
     <header class="bg-primary text-white">
       <div class="container text-center">
-        <h1>Stock Price Analysis</h1>
-        <p class="lead">An Introduction to Predicting the Stock Market with Machine Learning</p>
+        <h1>STOCK PRICE AND PERFORMANCE ANALYSIS</h1>
+        <p class="lead">An Introduction to Analyzing a Comparative Stock Portfolio using Data Visualizations and Machine Learning</p>
         <!-- <p class="lead">By Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges</p> -->
       </div>
     </header>
@@ -78,35 +80,32 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>What is this and what our the goal?</h2>
-            <p class="lead">This is our final project for our data analytics bootcamp. We will be analyzing stock price data (mostly large-cap U.S. equities) in an attempt to discover which machine learning techniques are best at predicting financial data. To be fair, predicting the stock market is a famously difficult problem, so at a high level this is mostly an exercise in using some of the tools that we've learned throghout the year.</p>
-            <p class="lead">The languages and tools used so far in this project include:</p>
-            <ul>
+            <h2>Goal of the Project(s):</h2>
+            <p class="lead"> This is our final group project for the UNC-Chapel Hill data analytics bootcamp.</p> <li> We gathered stock price data (of General Electric and those of its direct competitors; all of which are large-cap U.S. equities).  We gathered the appropriate historical data for a chosen (3 year) period ending 12/31/20 (Project 2a).</p> <li> We then used various data coding methodologies to measure the relative performance of the chosen portfolio; against each other and an apppropriate large-cap equity market index (Project 2b).</p> 
+              <li> We then plan to determine which machine learning techniques are best at predicting financial data (Project 2c).</p>         
+            
+           <h2>Resources for the Project(s):</h2>
+
+           <p class="lead">The languages and tools used so far in this project include:</p>
               <li>HTML</li>
               <li>CSS</li>
               <li>JavaScript
-                <ul>
                   <li>jQuery</li>
                   <li>Plotly.js</li>
-                </ul>
-              </li>
-              <li>Bootstrap</li>
-              <li>Flask</li>
+                  <li>Bootstrap</li>
               <li>Heroku</li>
               <li>Python
-                <ul>
-                  <li>BeautifulSoup</li>
-                  <li>requests</li>
-                  <li>MySQLdb</li>
-                  <li>quandl</li>
-                  <li>Matplotlib</li>
-                  <li>pandas</li>
+              <li>BeautifulSoup</li>
+              <li>requests</li>
+              <li>MySQLdb</li>
+              <li>quandl</li>
+              <li>Matplotlib</li>
+              <li>pandas</li>
                     </ul>
               </li>
               <li>MySQL</li>
             </ul>
-            <p>Ultimately, we decided to compare multivariate machine learning models like xxxxxxxx.</p>
-          </div>
+            </div>
         </div>
       </div>
     </section>
@@ -115,7 +114,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Gathering the Data</h2>
+            <h2>Project 2a: Gathering the Data</h2>
             <p class="lead">In this first step, we created a pipeline from our online data provider to our local MySQL database. We used BeautifulSoup and requests to scrape Yahoo for the ticker symbols of the Dow Jones Industrial Average/S&P500 stocks. We then queried our database for these symbols and used them with Quandl's API to download the historical pricing data for each symbol from 1/1/2000 to today. Finally, we queried our MySQL database for relevant stock data and converted it to a pandas DataFrame to use for further analysis.</p>
           </div>
         </div>
@@ -126,8 +125,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Presentation 1</h2>
-            <p class="lead">His/Her presentation can be found <a href="/Project 2a.html">here</a>.</p>
+            <h2>Project 2b: Comparative Performance Analysis</h2>
+            <p class="lead">Our presentation can be found <a href="/Project 2b.html">here</a>.</p>
           </div>
         </div>
       </div>
@@ -137,12 +136,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Recurrent Neural Networks</h2>
-            <p class="lead">I specifically used a xxxxxx. My code is <a href="/lstm.html">here</a>.</p>
+            <h2>Project 2c: Plotting Time Series Data with Plotly and Quandl's API</h4>
+            <p class="lead">We specifically used a xxxxxx. Our code is <a href="/Project 2c.html">here</a>.</p>
             <img src="images/Picture1.png">
             <img src="images/Picture2.png">
             <img src="images/Picture3.png">
-            <p class="lead">In the process I made the following visualization.</p>
+            <p class="lead">In the process, we made the following visualization.>here</a>.</p>
           </div>
         </div>
         <div class="row">
@@ -163,9 +162,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Natural Language Processing</h2>
-            <h4>Project 3: Plotting Time Series Data with Plotly and Quandl's API</h4>
-            <p class="lead">Click <a href="nlp.html">here</a> to see xxxxxx presentation!</p>
+            <h2>Machine Learning</h2>
+            <h4>Project 3: Machine Learning.</h4>
+            <p>Ultimately, we decided to compare multivariate machine learning models like xxxxxxxx.</p>
+            <p class="lead"MClick <a href="nlp.html"> Go see our xxxxxx presentation <a href="/Project 3.html">here</a>.</p>
           </div>
         </div>
       </div>
