@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Machine Learning with xxxxxxxx</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">Summary</a>
+      <a href="#menu" class="w3-bar-item w3-button">Analysis</a>
+      <a href="#contact" class="w3-bar-item w3-button">Results</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1400px;min-width:500px" id="home">
+  <img class="w3-image" src="static/images/stock_header3.jpg" alt="Hamburger Catering" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge">Evaluating S&P 500 Stock Performace Data</h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="static/images/Summary2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">Summary</h1><br>
+      <h5 class="w3-center">Predicting Stock Movement with Performance Data</h5>
+      <p class="w3-large"> 
+        Objectives:
+        •	Creating a model to predict next 3 day stock prices using historical data.
+        •	Comparing two or more companies based on their industry.
+        •	Search engine to make use of information retrieval techniques for searching.
+        •	Making a web application to produce comprehensive reports and compile the findings.   
+        </p>
+      <p class="w3-large w3-text-grey w3-hide-medium">Data Sources used are xxxxx.com and xxxxxxx.com. XXXXXXX’s API is used to retrieve Open, High, Low, Close, Volume data, and xxxxx API is used to retrieve performance data. The data is then cleaned. Analysis is performed to select appropriate features for Machine Learning model, and a Machine Learning Model is used to train and test data. Finally, the accuracy of the model is recorded.</p>
+    </div>
+  </div>
+
+  <hr>
+
+   <!-- K-Value Selection -->
+  <div class="w3-row w3-padding-64" id="about">
+    <h1 class="w3-center">Topic Name: To be inserted</h1><br>
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <h5 class="w3-center">XXXXXXXXX</h5>
+     <img src="static/images/k_plot.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>T
+
+    <div class="w3-col m6 w3-padding-large">
+      <h5 class="w3-center">Brief Description</h5>
+      <!--<h5 class="w3-center">Tradition since 1889</h5>-->
+      <p class="w3-large">We want to determine if there will be a positive( > 5%) or negative (< 5%) price movement in the subsequent quarter. If so, the person can decide to sell, and if not, the person decide to hold until there is such a change. For stock market predictions, it’s always been a difficult task to predict daily prices. A great amount of research have been conducted to predict stock market index movement directly. In making such predictions many factors are involved which have a direct influence on stock market indexes such as political events, trader expectations and general economic conditions. In this analysis, our main focus is to design and implement models which could help stock market investors in predicting the daily closing price of market shares.</p>
+    </div>
+    </div>
+
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <h1 class="w3-center">Down Selecting Features Using Correlation Matrix</h1><br>
+    <div class="w3-col l6 w3-padding-large">
+      <h5 class="w3-center">Selected Features</h5>
+      <h5>Sharpe Ratio</h5>
+      <p class="w3-text-grey">The xxxxxx</p>
+
+      <h5>Efficient Frontier</h5>
+      <p class="w3-text-grey">A measurement of x</p>
+    </div>
+
+    <div class="w3-col l6 w3-padding-large">
+      <!--<h1 class="w3-center">Correlation Matrix</h1><br>-->
+      <h5 class="w3-center">Correlation Matrix</h5>
+      <img src="static/images/corr1_matrix.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Results</h1>
+    <div class="w3-row w3-padding-64" id="about">
+            <div class="w3-col m6 w3-padding-large w3-hide-small">
+              <h5 class="w3-center">Comparison Matrix</h5>
+              <img src="static/images/results.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+            </div>
+
+            <div class="w3-col m6 w3-padding-large">
+              <h5 class="w3-center">Discussion</h5>
+              <p class="w3-large">As we can seexxxxxxxxxxxxxx. The greatest accuracy achieved is xx%.</p>
+              <p class="w3-large w3-text-grey w3-hide-medium">In regards to the XXXXX Matrix, we see that xxxx stocks were accrately predicted as good while xxxx were not, and xxx were accurately predicted as Bad and xxxx were not.</p>
+            </div>
+          </div>
+  </div>
+
+<!-- End page content -->
+</div>
+
+
+
+</body>
+</html>

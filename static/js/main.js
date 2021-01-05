@@ -13,6 +13,256 @@ function loadTasks() {
 
 // loadTasks()
 
+  
+function buildPlot() {
+    d3.json('/api/candlestick').then((data) => {
+        // d3.json(`/metadata/${sample}`).then((data) 
+        // console.log(data)
+        // console.log((data[0]))
+        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
+        const volume = data.map(vol => { return parseInt(vol.volume)})   
+        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
+        const high = data.map(high => {return high.high})
+        const low = data.map(low => {return low.low})
+        const openPrice = data.map(openp => {return openp.open})
+        const closingPrice = data.map(close => {return close.close})
+        const date = data.map(dates => {return dates.date})
+
+        console.log(date)        
+        //console.log(high)
+
+        var TStrace1 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE high',
+            x: timestamp,
+            y: high,
+            marker: {color: '#17BECF'}
+        }
+    
+        var TStrace2 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE low',
+            x: timestamp,
+            y: low,
+            line: {color: '#7F7F7F'}
+        }
+    
+        var TSdata = [TStrace1, TStrace2];
+          
+        var TSlayout = {
+            title: 'GE Overview',
+        }
+
+        Plotly.newPlot('plot', TSdata, TSlayout);
+
+
+        let CND1 ={
+            x: date,
+            close: closingPrice,
+            decreasing: {line: {color: '#7F7F7F'}},
+            high: high,
+            increasing: {line: {color: "#17BECF"}},
+            line: {color: 'rgba(31,119,180,1)'},
+            low: low,
+            open: openPrice,
+            type: "candlestick",
+            xaxis: "x", 
+            yaxis: "y"             
+        }
+    
+        // Candlestick Trace
+
+    
+        let CNDdata = [CND1];
+    
+        let CNDlayout = {
+            dragmode: 'zoom', 
+            margin: {
+              r: 10, 
+              t: 25, 
+              b: 40, 
+              l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+              title: 'Date', 
+              type: 'date'
+            }, 
+            yaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: [0, 20], 
+              type: 'linear'
+            }
+        };
+      
+    
+        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+
+    })
+}; 
+buildPlot()
+
+function buildHON() {
+    d3.json('/api/hon').then((data) => {
+        // d3.json(`/metadata/${sample}`).then((data) 
+        // console.log(data)
+        // console.log((data[0]))
+        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
+        const volume = data.map(vol => { return parseInt(vol.volume)})   
+        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
+        const high = data.map(high => {return high.high})
+        const low = data.map(low => {return low.low})
+        const openPrice = data.map(openp => {return openp.open})
+        const closingPrice = data.map(close => {return close.close})
+        const date = data.map(dates => {return dates.date})
+
+        console.log(date)        
+        //console.log(high)
+
+        var TStrace1 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE high',
+            x: timestamp,
+            y: high,
+            marker: {color: '#17BECF'}
+        }
+    
+        var TStrace2 = 
+            {
+            type: "scatter",
+            mode: "lines",
+            name: 'GE low',
+            x: timestamp,
+            y: low,
+            line: {color: '#7F7F7F'}
+        }
+    
+        var TSdata = [TStrace1, TStrace2];
+          
+        var TSlayout = {
+            title: 'HON Overview',
+        }
+
+        Plotly.newPlot('honplot', TSdata, TSlayout);
+
+
+        let CND1 ={
+            x: date,
+            close: closingPrice,
+            decreasing: {line: {color: '#7F7F7F'}},
+            high: high,
+            increasing: {line: {color: "#17BECF"}},
+            line: {color: 'rgba(31,119,180,1)'},
+            low: low,
+            open: openPrice,
+            type: "candlestick",
+            xaxis: "x", 
+            yaxis: "y"             
+        }
+    
+        // Candlestick Trace
+
+    
+        let CNDdata = [CND1];
+    
+        let CNDlayout = {
+            dragmode: 'zoom', 
+            margin: {
+              r: 10, 
+              t: 25, 
+              b: 40, 
+              l: 60
+            }, 
+            showlegend: false, 
+            xaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+              title: 'Date', 
+              type: 'date'
+            }, 
+            yaxis: {
+              autorange: true, 
+              domain: [0, 1], 
+              range: [0, 20], 
+              type: 'linear'
+            }
+        };
+        // let CNDlayout = {
+        //     dragmode: 'zoom', 
+        //     margin: {
+        //       r: 10, 
+        //       t: 25, 
+        //       b: 40, 
+        //       l: 60
+        //     }, 
+        //     showlegend: false, 
+        //     xaxis: {
+        //       autorange: true, 
+        //       rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
+        //       title: 'Date', 
+        //       type: 'date'
+        //     }, 
+        //     yaxis: {
+        //       autorange: true, 
+        //       type: 'linear'
+        //     },
+            
+        //     annotations: [
+        //       {
+        //         x: '2017-01-31',
+        //         y: 0.9,
+        //         xref: 'x',
+        //         yref: 'paper',
+        //         text: 'largest movement',
+        //         font: {color: 'magenta'},
+        //         showarrow: true,
+        //         xanchor: 'right',
+        //         ax: -20,
+        //         ay: 0
+        //       }
+        //     ],
+            
+        //     shapes: [
+        //         {
+        //             type: 'rect',
+        //             xref: 'x',
+        //             yref: 'paper',
+        //             x0: '2020-01-02',
+        //             y0: 0,
+        //             x1: '2020-12-31',
+        //             y1: 1,
+        //             fillcolor: '#d3d3d3',
+        //             opacity: 0.2,
+        //             line: {
+        //                 width: 0
+        //             }
+        //         }
+        //       ]
+        //   }
+          
+        
+    
+        Plotly.newPlot("honplot2", CNDdata, CNDlayout); 
+
+    })
+}; 
+buildHON()
+
 // function unpack(rows, index) {
 //     return rows.map(function(row) {
 //       return row[index];
@@ -59,7 +309,7 @@ function loadTasks() {
 //         type: "scatter",
 //         mode: "lines",
 //         name: name,
-//         x: timestamp,
+//         x: date,
 //         y: closingPrices,
 //         line: {
 //           color: "#17BECF"
@@ -69,7 +319,7 @@ function loadTasks() {
 //       // Candlestick Trace
 //       var trace2 = {
 //         type: "candlestick",
-//         x: timestamp,
+//         x: date,
 //         high: high,
 //         low: low,
 //         open: openingPrices,
@@ -97,205 +347,6 @@ function loadTasks() {
   
 //   // Add event listener for submit button
 //   d3.select("#submit").on("click", handleSubmit);
-
-  
-// function handleSubmit() {
-//     d3.event.preventDefault();
-//     // Select the input value from the form    
-//     var stock = d3.select("#stockInput").node().value;
-//     console.log(stock);  
-//     // clear the input value
-//     d3.select("#stockInput").node().value = "";   
-//     // Build the plot with the new stock
-//     buildPlot(stock);  
-//     function buildPlot(stock) {}
-function buildPlot() {
-    d3.json('/api/candlestick').then((data) => {
-        // d3.json(`/metadata/${sample}`).then((data) 
-        // console.log(data)
-        // console.log((data[0]))
-        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        const volume = data.map(vol => { return parseInt(vol.volume)})   
-        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
-        const high = data.map(high => {return high.high})
-        const low = data.map(low => {return low.low})
-        const openPrice = data.map(openp => {return openp.open})
-        const closingPrice = data.map(close => {return close.close})
-        const dated = data.map(dates => {return dates.date})
-        const date = dt.date(dated)
-        console.log(date)
-
-        //console.log(high)
-        //var volume = parseInt(data.volume);
-        //var high = parseInt(data.high);
-
-        let TStrace1 = [
-            {
-            type: "scatter",
-            mode: "lines",
-            name: 'GE high',
-            x: timestamp,
-            y: high,
-            marker: {color: '#17BECF'}
-            }
-        ]
-        let TStrace2 = [
-            {
-            type: "scatter",
-            mode: "lines",
-            name: 'GE low',
-            x: timestamp,
-            y: low,
-            line: {color: '#7F7F7F'}
-            }
-        ]
-        let TSdata = [[TStrace1, TStrace2]];
-          
-        let TSlayout = [
-            {
-            title: 'GE Overview',
-          }
-        ]
-         
-        Plotly.newPlot('plot', TSdata, TSlayout);
-
-
-        let CND1 = [
-            {
-            x: date,
-            y: closingPrice,
-            decreasing: {line: {color: '#7F7F7F'}},
-            high: high,
-            increasing: {line: {color: "#17BECF"}},
-            line: {color: 'rgba(31,119,180,1)'},
-            low: low,
-            open: openPrice,
-            type: "candlestick",
-            xaxis: "x", 
-            yaxis: "y"             
-          }
-        ]
-    
-        // Candlestick Trace
-
-    
-        let CNDdata = [[CND1]];
-    
-
-        let CNDlayout = [
-            {
-            dragmode: 'zoom', 
-            margin: {
-              r: 10, 
-              t: 25, 
-              b: 40, 
-              l: 60
-            }, 
-            showlegend: false, 
-            xaxis: {
-              autorange: true, 
-              rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
-              title: 'Date', 
-              type: 'date'
-            }, 
-            yaxis: {
-              autorange: true, 
-              type: 'linear'
-            },
-            
-            annotations: [
-              {
-                x: '2017-01-31',
-                y: 0.9,
-                xref: 'x',
-                yref: 'paper',
-                text: 'largest movement',
-                font: {color: 'magenta'},
-                showarrow: true,
-                xanchor: 'right',
-                ax: -20,
-                ay: 0
-              }
-            ],
-            
-            shapes: [
-                {
-                    type: 'rect',
-                    xref: 'x',
-                    yref: 'paper',
-                    x0: '2020-01-02',
-                    y0: 0,
-                    x1: '2020-12-31',
-                    y1: 1,
-                    fillcolor: '#d3d3d3',
-                    opacity: 0.2,
-                    line: {
-                        width: 0
-                    }
-                }
-              ]
-          }
-        ]
-          
-        
-    
-        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
-
-    })
-}; 
-buildPlot()
-
-        // let CNDlayout = [
-        //     {
-        //     title: "GE closing prices",
-        //     xaxis: date,
-        //     yaxis: {
-        //     autorange: true,
-        //     type: "linear"
-        //     }
-        //    }
-        // ]
-
-                // let CND2 = [
-        //     {
-        //     type: "candlestick",
-        //     x: date,
-        //     high: high,
-        //     low: low,
-        //     open: openPrice,
-        //     close: closingPrice
-        //     }
-        // ]
-
-/*********graph works in build plot************************** */
-// var trace1 = {
-//     type: "bar",
-//     name: 'GE volume',
-//     x: high,
-//     y: volume,
-//     marker: {color: '#17BECF'}
-//   }
-
-
-
-  // Add event listener for submit button
-// d3.select("#submit").on("click", handleSubmit); 
-
-// function handleSubmit() {
-//     // @TODO: YOUR CODE HERE
-//     // Prevent the page from refreshing
-//     d3.event.preventDefault();
-  
-//     // Select the input value from the form
-//     var input = d3.select("#stockInput");
-//     var stock = input.property("value");
-  
-//     console.log(stock)
-//     // clear the input value
-//     input.property("value", "");
-//     // Build the plot with the new stock
-//     buildPlot(stock);
-//   }
 
 
         // var trace1 = {
