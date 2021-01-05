@@ -12,6 +12,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 </style>
 <body>
+   <div class="container-fluid">
+      <div class="jumbotron text-center mt-5 mb-5" style="background-color:lightblue;">
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -25,7 +27,6 @@ h1,h2,h3,h4,h5,h6 {
     </div>
   </div>
 </div>
-
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1400px;min-width:500px" id="home">
   <img class="w3-image" src="static/images/stock_header3.jpg" alt="Hamburger Catering" width="1600" height="800">
@@ -45,20 +46,18 @@ h1,h2,h3,h4,h5,h6 {
 
     <div class="w3-col m6 w3-padding-large">
       <h1 class="w3-center">Summary</h1><br>
-      <h5 class="w3-center">Predicting Stock Movement with Performance Data</h5>
+      <h5 class="w3-center">Determining Relative Value of GE and its Competitors (using Historical Stock Data)</h5>
       <p class="w3-large"> 
-        Objectives:
-        •	Creating a model to predict next 3 day stock prices using historical data.
-        •	Comparing two or more companies based on their industry.
-        •	Search engine to make use of information retrieval techniques for searching.
-        •	Making a web application to produce comprehensive reports and compile the findings.   
+        Objectives:</h1><br>
+        •	Creating a model to measure value of chosen portfolio using 3 year historical stock price data.</h1><br>
+        •	Comparing GE and two or more competitive companies within its industry(s).</h1><br>
+        •	Utilize search engine to make use of information retrieval techniques for searching.</h1><br>
+        •	Making a web application to produce comprehensive reports and compile the findings.</h1><br>  
         </p>
-      <p class="w3-large w3-text-grey w3-hide-medium">Data Sources used are xxxxx.com and xxxxxxx.com. XXXXXXX’s API is used to retrieve Open, High, Low, Close, Volume data, and xxxxx API is used to retrieve performance data. The data is then cleaned. Analysis is performed to select appropriate features for Machine Learning model, and a Machine Learning Model is used to train and test data. Finally, the accuracy of the model is recorded.</p>
-    </div>
+      <p class="w3-large w3-text-black w3-hide-medium">Data Sources used are statsmodels.api and Googlefinance.com. API is used to retrieve Open, High, Low, Close, Volume data and performance data for the 3 year test period for the chosen portfolio.</h1><br> For Part 1 of the project, the data is then cleaned and analyzed using performance based ratios and measurements.</h1><br> For Part 2 of the Project, analysis is performed to select appropriate features for Machine Learning, and a Machine Learning model is developed to test data. Finally, the accuracy of the model is assessed.</h1><br>
+        </div>
   </div>
-
   <hr>
-
    <!-- K-Value Selection -->
   <div class="w3-row w3-padding-64" id="about">
     <h1 class="w3-center">Topic Name: To be inserted</h1><br>
@@ -70,51 +69,61 @@ h1,h2,h3,h4,h5,h6 {
     <div class="w3-col m6 w3-padding-large">
       <h5 class="w3-center">Brief Description</h5>
       <!--<h5 class="w3-center">Tradition since 1889</h5>-->
-      <p class="w3-large">We want to determine if there will be a positive( > 5%) or negative (< 5%) price movement in the subsequent quarter. If so, the person can decide to sell, and if not, the person decide to hold until there is such a change. For stock market predictions, it’s always been a difficult task to predict daily prices. A great amount of research have been conducted to predict stock market index movement directly. In making such predictions many factors are involved which have a direct influence on stock market indexes such as political events, trader expectations and general economic conditions. In this analysis, our main focus is to design and implement models which could help stock market investors in predicting the daily closing price of market shares.</p>
+      <p class="w3-large">Determining Relative of GE stock and its competitors.</h5>
+        Topic Description and Rationale - The purpose of this project to compare a number of stocks from the same market (DJIA). We will compare them based on their market performance in the latest 3 year perid (through 12/31/20).</h1><br>        
+        Link to Data Sets - We found the following data sets from stock market web/news sites and market related APIs.</h1><br>
+        Sites provide over historical market information of and filtering for individual stock headlines and performance. (DJIA Model (intmath.com)
+        
+        API and Website Data Sources:
+               
+        https://import statsmodels.api</h1><br> 
+        https://google-finance-api</h1><br>
+        MarketWatch: Stock Market News - Financial News - MarketWatch</h1><br>
+
+        Potential Data Visualizations                    
+     </p>
     </div>
     </div>
 
   <!-- Menu Section -->
   <div class="w3-row w3-padding-64" id="menu">
-    <h1 class="w3-center">Down Selecting Features Using Correlation Matrix</h1><br>
+    <h1 class="w3-center">Down Selecting Features Using Comparative Performance Matrix</h1><br>
     <div class="w3-col l6 w3-padding-large">
       <h5 class="w3-center">Selected Features</h5>
       <h5>Sharpe Ratio</h5>
-      <p class="w3-text-grey">The xxxxxx</p>
+      <p class="w3-text-grey">Examples of Visualizations:The xxxxxx</p>
 
       <h5>Efficient Frontier</h5>
-      <p class="w3-text-grey">A measurement of x</p>
+      <p class="w3-text-grey">Visualization of Final Layout:A measurement of x</p>
     </div>
 
     <div class="w3-col l6 w3-padding-large">
       <!--<h1 class="w3-center">Correlation Matrix</h1><br>-->
-      <h5 class="w3-center">Correlation Matrix</h5>
+      <h5 class="w3-center">Comparative Performance Matrix</h5>
       <img src="static/images/corr1_matrix.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
     </div>
   </div>
 
   <hr>
-
   <!-- Contact Section -->
   <div class="w3-container w3-padding-64" id="contact">
     <h1>Results</h1>
     <div class="w3-row w3-padding-64" id="about">
             <div class="w3-col m6 w3-padding-large w3-hide-small">
-              <h5 class="w3-center">Comparison Matrix</h5>
+              <h5 class="w3-center">Comparitive Performance Matrix</h5>
               <img src="static/images/results.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
             </div>
 
             <div class="w3-col m6 w3-padding-large">
               <h5 class="w3-center">Discussion</h5>
-              <p class="w3-large">As we can seexxxxxxxxxxxxxx. The greatest accuracy achieved is xx%.</p>
-              <p class="w3-large w3-text-grey w3-hide-medium">In regards to the XXXXX Matrix, we see that xxxx stocks were accrately predicted as good while xxxx were not, and xxx were accurately predicted as Bad and xxxx were not.</p>
+              <p class="w3-large">As we can seexxxxxxxxxxxxxx.</p>
+              <p class="w3-large w3-text-black w3-hide-medium"></p>
             </div>
           </div>
   </div>
 
 <!-- End page content -->
 </div>
-
 
 
 </body>
