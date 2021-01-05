@@ -1,10 +1,11 @@
 # StockAnalysis
-WebPage that allows user to pick a stock and determine if they should buy, sell, or hold that stock
+WebPage that analyzes General Electric Company(GE) and determine if based on multiple data points, if it is currently a good investment. 
 
-# Determining Buy and Sell Periods of Stock Using Several Inputs into a Random Forest 
+# Determining Buy and Sell Periods of Stock Using Several Inputs
 Version 1.0.0
 ## Description
-Buying and selling stocks is very easy now days but the crutch is having the time to do the analysis of many variables that determines if the stock price goes up and down. The goal is to create a program the uses key variables that are both general and specific to a stock, John Deere in this case, to determine a strategy.
+Buying and selling stocks is very easy and free, all  you need is some cash, but the crutch is having the time to do the analysis of many variables of that stock to determine your entry, exit or stay the course. The goal is to create a program the uses several variables that are both general and specific to a stock to determine a strategy. General Electric was picked here but this model could be duplicated for other companies as well. 
+
 ## Data
 Data is grouped into two categories. General data that can be used on any stock and more specific variables related to that stock.
 General- common to all stocks
@@ -27,7 +28,7 @@ Specific – individual or category of stocks
 ## References
 1. Fibonacci Trading-How to Master the Time and Price Advantage, Carolyn Boroden ISBN 978-0-07-149815-9
 2. https://www.intmath.com/exponential-logarithmic-functions/dow-jones-industrial-ave-graph.php
-3. 
+3. https://www.learndatasci.com/tutorials/sentiment-analysis-reddit-headlines-pythons-nltk/
 
 
 
