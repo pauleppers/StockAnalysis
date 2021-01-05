@@ -4,6 +4,7 @@ from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from os import environ
 from datetime import datetime as dt
+# import plotly.express as px
 
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -98,6 +99,7 @@ def getTasksPostgres():
 def getCandlestick():
     candlesticks = db.session.query(ge)
     print(candlesticks)
+
     data = []
 
     for task in candlesticks:
@@ -119,6 +121,7 @@ def getCandlestick():
 def getHON():
     hons = db.session.query(hon)
     print(hons)
+
     data = []
 
     for task in hons:
@@ -135,6 +138,13 @@ def getHON():
         data.append(item)
 
     return jsonify(data)
+
+# @route("/notebook")
+# def notebook():
+
+
+
+
 
 # so if we connect the info from the jupyter notebook or website 
 # directly to the db and give it a sqlite name. then pull in the 

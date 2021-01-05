@@ -1,15 +1,15 @@
-function loadTasks() {
-    // d3.json('/api/tasks').then((data) => {
-    //     data.forEach(things => {
-    //         var listGroup = d3.select("#tasks")
-    //         var listItem = listGroup.append("li");
-    //         listItem.text(things.description);
-    //         listItem.attr("class", "list-group-item");
-    //     });
-    // });
+// function loadTasks() {
+//     // d3.json('/api/tasks').then((data) => {
+//     //     data.forEach(things => {
+//     //         var listGroup = d3.select("#tasks")
+//     //         var listItem = listGroup.append("li");
+//     //         listItem.text(things.description);
+//     //         listItem.attr("class", "list-group-item");
+//     //     });
+//     // });
 
-    buildPlot()
-}
+//     buildPlot()
+// }
 
 // loadTasks()
 
@@ -29,7 +29,7 @@ function buildPlot() {
         const closingPrice = data.map(close => {return close.close})
         const date = data.map(dates => {return dates.date})
 
-        console.log(date)        
+        // console.log(date)        
         //console.log(high)
 
         var TStrace1 = 
@@ -108,9 +108,55 @@ function buildPlot() {
     
         Plotly.newPlot("plot2", CNDdata, CNDlayout); 
 
+
+
     })
 }; 
 buildPlot()
+
+// function buildrv() {
+
+// Plotly.d3.csv("GE.csv", function(err, rows){
+
+//  {
+//   rows.map(function(row) { return row[key]; });
+// }
+
+// var trace1 = {
+//   type: "scatter",
+//   mode: "lines",
+//   x: unpack(rows, 'Date'),
+//   y: unpack(rows, 'GE.High'),
+//   line: {color: '#17BECF'}
+// }
+
+// var trace2 = {
+//   type: "scatter",
+//   mode: "lines",
+//   x: unpack(rows, 'Date'),
+//   y: unpack(rows, 'GE.Low'),
+//   line: {color: '#7F7F7F'}
+// }
+
+// var data = [trace1,trace2];
+
+// var layout = {
+//   title: 'Custom Range',
+//   xaxis: {
+//     range: ['2020-01-02', '2020-12-31'],
+//     type: 'date'
+//   },
+//   yaxis: {
+//     autorange: true,
+//     range: [86.8700008333, 138.870004167],
+//     type: 'linear'
+//   }
+// };
+
+// Plotly.newPlot('myDiv', data, layout);
+// });   
+// }
+// buildrv()
 
 function buildHON() {
     d3.json('/api/hon').then((data) => {
@@ -127,14 +173,14 @@ function buildHON() {
         const closingPrice = data.map(close => {return close.close})
         const date = data.map(dates => {return dates.date})
 
-        console.log(date)        
+        // console.log(date)        
         //console.log(high)
 
         var TStrace1 = 
             {
             type: "scatter",
             mode: "lines",
-            name: 'GE high',
+            name: 'HON high',
             x: timestamp,
             y: high,
             marker: {color: '#17BECF'}
@@ -144,7 +190,7 @@ function buildHON() {
             {
             type: "scatter",
             mode: "lines",
-            name: 'GE low',
+            name: 'HON low',
             x: timestamp,
             y: low,
             line: {color: '#7F7F7F'}
@@ -261,7 +307,7 @@ function buildHON() {
 
     })
 }; 
-buildHON()
+buildHON ()
 
 // function unpack(rows, index) {
 //     return rows.map(function(row) {
