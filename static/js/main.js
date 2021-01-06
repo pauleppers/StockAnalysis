@@ -11,26 +11,129 @@
 //     buildPlot()
 // }
 
+
 // loadTasks()
 
+
+function Plotbar(value) {
+  // var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];
+  // var sample_values = filteredData.sample_values.slice(0,10).reverse();
+  // var otu_ids = filteredData.otu_ids.slice(0,10).reverse();
+  // var otu_labels = filteredData.otu_labels.slice(0, 10).reverse();
+  // otu_ids = otu_ids.map(id => `OTU ${id}`);
+  // console.log(sample_values, otu_ids, otu_labels)
+  var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];
+  const closingPrice = filteredData.map(close => {return close.close})
+  const date = filteredData.map(dates => {return dates.date})
+
+  var trace1 = {
+    x: date,
+    y: closingPrice,
+    text: closingPrice,
+    type: "bar"
+  };
   
+  var layout = {
+    title: "",
+    margin: {
+      l:100,
+      r:100,
+      t:100,
+      b:100,
+    }
+  }
+  
+  var chartData = [trace1];
+  Plotly.newPlot("bar", chartData, layout);
+
+}
+
+// var id = [];
+
 function buildPlot() {
     d3.json('/api/candlestick').then((data) => {
+      //   id = data.symbol;
+      //   var selection = d3.select("#selDataset");
+      //   id.forEach(id=> {
+        //   var option = selection.append("option");
+        //   option.property("value", id);
+        //   option.text(id);
+        // })
+      // optionChanged(selection.property("value"));
+
         // d3.json(`/metadata/${sample}`).then((data) 
         // console.log(data)
         // console.log((data[0]))
         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
+        //var filteredData = data.filter(event => parseInt(event.id) === parseInt(value))[0];   
         const volume = data.map(vol => { return parseInt(vol.volume)})   
         const timestamp = data.map(time => { return parseInt(time.timestamp)})      
         const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
         const high = data.map(high => {return high.high})
         const low = data.map(low => {return low.low})
+        const cal = data.map(lp => {return lp.cal})
         const openPrice = data.map(openp => {return openp.open})
         const closingPrice = data.map(close => {return close.close})
         const date = data.map(dates => {return dates.date})
+        const gtime = [2020, 01, 06]
+        const sDate = '2020-01-06 14:30';
+        const eDate = '2021-01-06 14:30';
+        // const initialval = high[0]
+        // const reltval = []
+        // for (var i = 0; i < high.length; i++) {
+        //   reltval.push(((high[i]-initialval)/initialval)*10+1)
+        // }
+        // // return reltval
+        console.log(cal)
 
-        // console.log(date)        
-        //console.log(high)
+        console.log(closingPrice)        
+        // console.log(high)
+
+        Plotly.plot('graph', [{
+          x: date,
+          y: cal,
+          type: 'line'
+      }], 
+      {
+        title: 'Some stocks'
+      }, 
+      {
+          modeBarButtons: [[{
+              name: 'June',
+              click: function() {
+                Plotly.relayout('graph',
+                  'xaxis.range', 
+                  [
+                    new Date(2020, 01, 06).getTime(),
+                    new Date(2021, 01, 06).getTime()
+                  ]
+                );
+              }
+            }, {
+              name: 'July',
+              click: function() {
+                Plotly.relayout('graph',
+                  'xaxis.range', 
+                  [
+                    new Date(2020, 01, 06).getTime(),
+                    new Date(2021, 01, 06).getTime()
+                  ]
+                );
+              }
+            }
+          ]]
+      }
+      );
+
+        // var data = {
+        //   type: 'scatter',
+        //   mode: 'lines', 
+        //   name: 'Rel. Val',         
+        //   x: date,
+        //   y: cal
+        // }
+
+        // Plotly.newPlot('relplot', data)
 
         var TStrace1 = 
             {
@@ -92,8 +195,8 @@ function buildPlot() {
             xaxis: {
               autorange: true, 
               domain: [0, 1], 
-              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
-              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+              range: [sDate, eDate], 
+              rangeslider: {range: [sDate, eDate]}, 
               title: 'Date', 
               type: 'date'
             }, 
@@ -110,16 +213,104 @@ function buildPlot() {
 
 
 
+
+
+        // var layout = {
+        //   showlegend: false, 
+        //   xaxis: {
+        //     autorange: true, 
+        //     domain: [0, 1], 
+        //     range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+        //     rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+        //     title: 'Date', 
+        //     type: 'date'
+        //   }, 
+          // yaxis: {
+          //   autorange: true, 
+          //   domain: [0, 1], 
+          //   range: [0, 20], 
+          //   type: 'linear'
+          // }
+        // }
+
     })
+    
 }; 
 buildPlot()
 
+// type: 'filter',
+// target: 'y',
+// operation: '>',
+// value: 4
+
 // function buildrv() {
 
-// Plotly.d3.csv("GE.csv", function(err, rows){
+//   Plotly.plot('graph', [{
+//     x: x,
+//     y: y,
+//     type: 'bar'
+// }], 
+// {
+//   title: 'Some stocks'
+// }, 
+// {
+//     modeBarButtons: [[{
+//         name: 'June',
+//         click: function() {
+//           Plotly.relayout('graph',
+//             'xaxis.range', 
+//             [
+//               new Date(2015, 05, 1).getTime(),
+//               new Date(2015, 05, 31).getTime()
+//             ]
+//           );
+//         }
+//       }, {
+//         name: 'July',
+//         click: function() {
+//           Plotly.relayout('graph',
+//             'xaxis.range', 
+//             [
+//               new Date(2015, 06, 1).getTime(),
+//               new Date(2015, 06, 31).getTime()
+//             ]
+//           );
+//         }
+//       }
+//     ]]
+// }
+// );
 
+
+// # df = px.data.stocks()
+
+// # app = dash.Dash(__name__)
+
+// # app.layout = html.Div([
+// #     dcc.Dropdown(
+// #         id="ticker",
+// #         options=[{"label": x, "value": x} 
+// #                  for x in df.columns[1:]],
+// #         value=df.columns[1],
+// #         clearable=False,
+// #     ),
+// #     dcc.Graph(id="time-series-chart"),
+// # ])
+
+// # @app.callback(
+// #     Output("time-series-chart", "figure"), 
+// #     [Input("ticker", "value")])
+// # def display_time_series(ticker):
+// #     fig = px.line(df, x='date', y=ticker)
+// #     return fig
+
+
+// Plotly.d3.csv("GE.csv", function(err, rows){
+//   console.log(rows)  
+//   // const date = data.map(dates => {return dates.date})
 //  {
 //   rows.map(function(row) { return row[key]; });
+// console.log(rows)  
 // }
 
 // var trace1 = {
@@ -157,157 +348,7 @@ buildPlot()
 // });   
 // }
 // buildrv()
-
-function buildHON() {
-    d3.json('/api/hon').then((data) => {
-        // d3.json(`/metadata/${sample}`).then((data) 
-        // console.log(data)
-        // console.log((data[0]))
-        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        const volume = data.map(vol => { return parseInt(vol.volume)})   
-        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
-        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
-        const high = data.map(high => {return high.high})
-        const low = data.map(low => {return low.low})
-        const openPrice = data.map(openp => {return openp.open})
-        const closingPrice = data.map(close => {return close.close})
-        const date = data.map(dates => {return dates.date})
-
-        // console.log(date)        
-        //console.log(high)
-
-        var TStrace1 = 
-            {
-            type: "scatter",
-            mode: "lines",
-            name: 'HON high',
-            x: timestamp,
-            y: high,
-            marker: {color: '#17BECF'}
-        }
-    
-        var TStrace2 = 
-            {
-            type: "scatter",
-            mode: "lines",
-            name: 'HON low',
-            x: timestamp,
-            y: low,
-            line: {color: '#7F7F7F'}
-        }
-    
-        var TSdata = [TStrace1, TStrace2];
-          
-        var TSlayout = {
-            title: 'HON Overview',
-        }
-
-        Plotly.newPlot('honplot', TSdata, TSlayout);
-
-
-        let CND1 ={
-            x: date,
-            close: closingPrice,
-            decreasing: {line: {color: '#7F7F7F'}},
-            high: high,
-            increasing: {line: {color: "#17BECF"}},
-            line: {color: 'rgba(31,119,180,1)'},
-            low: low,
-            open: openPrice,
-            type: "candlestick",
-            xaxis: "x", 
-            yaxis: "y"             
-        }
-    
-        // Candlestick Trace
-
-    
-        let CNDdata = [CND1];
-    
-        let CNDlayout = {
-            dragmode: 'zoom', 
-            margin: {
-              r: 10, 
-              t: 25, 
-              b: 40, 
-              l: 60
-            }, 
-            showlegend: false, 
-            xaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
-              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
-              title: 'Date', 
-              type: 'date'
-            }, 
-            yaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: [0, 20], 
-              type: 'linear'
-            }
-        };
-        // let CNDlayout = {
-        //     dragmode: 'zoom', 
-        //     margin: {
-        //       r: 10, 
-        //       t: 25, 
-        //       b: 40, 
-        //       l: 60
-        //     }, 
-        //     showlegend: false, 
-        //     xaxis: {
-        //       autorange: true, 
-        //       rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
-        //       title: 'Date', 
-        //       type: 'date'
-        //     }, 
-        //     yaxis: {
-        //       autorange: true, 
-        //       type: 'linear'
-        //     },
-            
-        //     annotations: [
-        //       {
-        //         x: '2017-01-31',
-        //         y: 0.9,
-        //         xref: 'x',
-        //         yref: 'paper',
-        //         text: 'largest movement',
-        //         font: {color: 'magenta'},
-        //         showarrow: true,
-        //         xanchor: 'right',
-        //         ax: -20,
-        //         ay: 0
-        //       }
-        //     ],
-            
-        //     shapes: [
-        //         {
-        //             type: 'rect',
-        //             xref: 'x',
-        //             yref: 'paper',
-        //             x0: '2020-01-02',
-        //             y0: 0,
-        //             x1: '2020-12-31',
-        //             y1: 1,
-        //             fillcolor: '#d3d3d3',
-        //             opacity: 0.2,
-        //             line: {
-        //                 width: 0
-        //             }
-        //         }
-        //       ]
-        //   }
-          
-        
-    
-        Plotly.newPlot("honplot2", CNDdata, CNDlayout); 
-
-    })
-}; 
-buildHON ()
+     
 
 // function unpack(rows, index) {
 //     return rows.map(function(row) {

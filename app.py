@@ -9,6 +9,7 @@ from datetime import datetime as dt
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+import stock as st
 
 app = Flask(__name__)
 
@@ -29,8 +30,11 @@ class ge(db.Model):
     high = db.Column(db.Float)   
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)   
     date_time = db.Column(db.DateTime)   
     date = db.Column(db.String)   
+    symbol = db.Column(db.String)   
 # (db.DateTime, default=datetime.utcnow)
 
 class hon(db.Model):
@@ -39,9 +43,12 @@ class hon(db.Model):
     low = db.Column(db.Float)   
     high = db.Column(db.Float)   
     close = db.Column(db.Float)   
-    volume = db.Column(db.Float)   
+    volume = db.Column(db.Float)
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)    
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.String)  
+    date = db.Column(db.String)
+    symbol = db.Column(db.String)        
 
 class lmt(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
@@ -51,7 +58,23 @@ class lmt(db.Model):
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.String)  
+    date = db.Column(db.String)
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)
+    symbol = db.Column(db.String) 
+
+class rtx(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)   
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.String)
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)
+    symbol = db.Column(db.String) 
 
 class ba(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
@@ -61,7 +84,10 @@ class ba(db.Model):
     close = db.Column(db.Float)   
     volume = db.Column(db.Float)   
     date_time = db.Column(db.DateTime)   
-    date = db.Column(db.String)  
+    date = db.Column(db.String)
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)
+    symbol = db.Column(db.String)       
 
 
 @app.route('/')
@@ -76,6 +102,10 @@ def page1():
 def pageHON():
     return render_template('hon.html')
 
+@app.route('/getstock/<stock>')
+def getStock(stock):
+    st.getData(stock)
+    return "success"
 
 @app.route('/api/tasks')
 def getTasksPostgres():
@@ -110,6 +140,9 @@ def getCandlestick():
             'high' : task.high,   
             'close' : task.close,   
             'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'symbol' : task.symbol,
             'date_time' : task.date_time,
             'date' : task.date.strftime('%Y-%m-%d')
         }
@@ -132,6 +165,83 @@ def getHON():
             'high' : task.high,   
             'close' : task.close,   
             'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'date_time' : task.date_time,
+            'date' : task.date.strftime('%Y-%m-%d')
+        }
+        data.append(item)
+
+    return jsonify(data)
+
+@app.route('/api/ba')
+def getBA():
+    bas = db.session.query(ba)
+    print(bas)
+
+    data = []
+
+    for task in bas:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'symbol' : task.symbol,
+            'date_time' : task.date_time,
+            'date' : task.date.strftime('%Y-%m-%d')
+        }
+        data.append(item)
+
+    return jsonify(data)   
+
+@app.route('/api/rtx')
+def getRTX():
+    rtxs = db.session.query(rtx)
+    print(rtxs)
+
+    data = []
+
+    for task in rtxs:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'symbol' : task.symbol,
+            'date_time' : task.date_time,
+            'date' : task.date.strftime('%Y-%m-%d')
+        }
+        data.append(item)
+
+    return jsonify(data) 
+
+@app.route('/api/lmt')
+def getLMT():
+    lmts = db.session.query(lmt)
+    print(lmts)
+
+    data = []
+
+    for task in lmts:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'symbol' : task.symbol,
             'date_time' : task.date_time,
             'date' : task.date.strftime('%Y-%m-%d')
         }
@@ -141,9 +251,6 @@ def getHON():
 
 # @route("/notebook")
 # def notebook():
-
-
-
 
 
 # so if we connect the info from the jupyter notebook or website 
