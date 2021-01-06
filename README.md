@@ -11,22 +11,23 @@ Several Graphs are used to compare the companies:
        
 2. Relative value graph compares value of the stock in the market per period of time as a percent. All stocks start out at 0% return on day one.
 
-3. and 
-
-(Optional) allow user to add trend lines by hover and click, see black lines below.  
+3. (Optional) allow user to add trend lines by hover and click, see black lines below.  
 
 
 
 
 
-Phase 2, February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points
+Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points
 a. RSI, Bollinger, Moving Averages
-b. Yearly returns,
+
+b. Yearly returns
+
 c. Positive headlines over the last 3 months
+
 d. Overall market trend per predictive Dow Jones and NASDAQ
 
 ## Data
-Yahoo Finance API is used to get the data for the graphs. 
+Yahoo Finance is used for the data source, either using and API or the yfinance library. 
 	https://rapidapi.com/apidojo/api/yahoo-finance1
 A Jupyter Notebook is used to retrieve data, perform calculations, and populate the server with the data, each stock will be a data table. Load Stock Market data into PgAdmin and load into Heroku. 
 
@@ -35,6 +36,7 @@ Phase 2, Machine Learning (Possibly Random Forest)
 
 ## Methods     
 Backend: Python is used to retrieve and make calculations, PgAdmin is used as the server.
+
 Frontend: HTML and JavaScript are used to display data.
 
 ## Limitations
@@ -51,12 +53,13 @@ TBD
 
 ## References
 https://rapidapi.com/apidojo/api/yahoo-finance1
+
 John’s references
 
 ## Machine learning
-## Determining Buy and Sell Periods of Stock Using Several Inputs into a Random Forest
+Determining Buy and Sell Periods of Stock Using Several Inputs into a Random Forest
 
-* Key market indicators (RSI, Bollinger Bands, VIX)
+* Key market indicators (RSI, Bollinger Bands, moving averages, VIX)
 
 * Market sentiment based on news articles to determine near term market trend
 
