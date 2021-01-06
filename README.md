@@ -29,7 +29,7 @@ d. Overall market trend per predictive Dow Jones and NASDAQ
 ## Data
 Yahoo Finance is used for the data source, either using and API or the yfinance library. 
 	https://rapidapi.com/apidojo/api/yahoo-finance1
-A Jupyter Notebook is used to retrieve data, perform calculations, and populate the server with the data, each stock will be a data table. Load Stock Market data into PgAdmin and load into Heroku. 
+A Jupyter Notebook is used to retrieve data, perform calculations, and populate the server with the data, each stock will be a data table. Load Stock Market data into PostgreSQL and load into Heroku. 
 
 Phase 2, Machine Learning (Possibly Random Forest)
 * Wallstreet Journal for correlation of news and stock performance. We can pull data from https://newsapi.org/ and do basic etl categorizing the news articles as positive or negative. We can store these results into a mongo DB.  
