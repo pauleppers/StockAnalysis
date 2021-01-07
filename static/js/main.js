@@ -60,10 +60,10 @@ function Plotbar(value) {
   var layout = {
     title: "",
     margin: {
-      l:100,
-      r:100,
-      t:100,
-      b:100,
+      l:50,
+      r:50,
+      t:50,
+      b:50,
     }
   }
   
