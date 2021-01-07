@@ -11,6 +11,52 @@
 //     buildPlot()
 // }
 
+// colors = []
+// var colors = d3.select("#stockList")
+function init() {
+
+  var tbody = d3.select("#Stocks");
+  var test = [{
+    "stock" : "1"
+  },
+  {
+    "stock" : "2"
+  },
+  {
+    "stock": "3"
+  }];
+  test.forEach((s) => {
+    console.log(s.stock);
+    var rows = tbody.append("tr")
+    var cells = rows.append("td")
+    cells.text(s.stock)
+  });
+  
+  // var colors = d3.select("#selDataset").node().value;
+  // console.log(colors)
+  // colors= ["Maroon", "Purple", "#5f0000", "red", "Fuchsia", "Olive", "Teal", "Green"]
+  // div.innerHTML= ""
+  //   for (var i = 0; i < colors.length; i++) {
+  //       labels.push(
+  //           '<li' + (colors[i] ? colors[i] : '+') + '"></li> ' +
+  //       (colors[i] ? colors[i] : '+'));
+
+  //   }
+
+  // return div;
+
+    // Select the input value from the formstyle="background:'
+    // var stock = d3.select("#stockList").node().value;
+    // console.log(stock);
+    // for (var i=o; i< stockList; i ++)
+    // var listGroup = 
+    // var listitem = listgroup.append("li")
+    // push
+    // html += "<li>" + i + "</li>";
+
+}
+
+init()
 
 // loadTasks()
 
@@ -89,41 +135,41 @@ function buildPlot() {
         console.log(closingPrice)        
         // console.log(high)
 
-        Plotly.plot('graph', [{
-          x: date,
-          y: cal,
-          type: 'line'
-      }], 
-      {
-        title: 'Some stocks'
-      }, 
-      {
-          modeBarButtons: [[{
-              name: 'June',
-              click: function() {
-                Plotly.relayout('graph',
-                  'xaxis.range', 
-                  [
-                    new Date(2020, 01, 06).getTime(),
-                    new Date(2021, 01, 06).getTime()
-                  ]
-                );
-              }
-            }, {
-              name: 'July',
-              click: function() {
-                Plotly.relayout('graph',
-                  'xaxis.range', 
-                  [
-                    new Date(2020, 01, 06).getTime(),
-                    new Date(2021, 01, 06).getTime()
-                  ]
-                );
-              }
-            }
-          ]]
-      }
-      );
+      //   Plotly.plot('graph', [{
+      //     x: date,
+      //     y: cal,
+      //     type: 'line'
+      // }], 
+      // {
+      //   title: 'Some stocks'
+      // }, 
+      // {
+      //     modeBarButtons: [[{
+      //         name: 'June',
+      //         click: function() {
+      //           Plotly.relayout('graph',
+      //             'xaxis.range', 
+      //             [
+      //               new Date(2020, 01, 06).getTime(),
+      //               new Date(2021, 01, 06).getTime()
+      //             ]
+      //           );
+      //         }
+      //       }, {
+      //         name: 'July',
+      //         click: function() {
+      //           Plotly.relayout('graph',
+      //             'xaxis.range', 
+      //             [
+      //               new Date(2020, 01, 06).getTime(),
+      //               new Date(2021, 01, 06).getTime()
+      //             ]
+      //           );
+      //         }
+      //       }
+      //     ]]
+      // }
+      // );
 
         // var data = {
         //   type: 'scatter',
@@ -164,52 +210,52 @@ function buildPlot() {
         Plotly.newPlot('plot', TSdata, TSlayout);
 
 
-        let CND1 ={
-            x: date,
-            close: closingPrice,
-            decreasing: {line: {color: '#7F7F7F'}},
-            high: high,
-            increasing: {line: {color: "#17BECF"}},
-            line: {color: 'rgba(31,119,180,1)'},
-            low: low,
-            open: openPrice,
-            type: "candlestick",
-            xaxis: "x", 
-            yaxis: "y"             
-        }
+        // let CND1 ={
+        //     x: date,
+        //     close: closingPrice,
+        //     decreasing: {line: {color: '#7F7F7F'}},
+        //     high: high,
+        //     increasing: {line: {color: "#17BECF"}},
+        //     line: {color: 'rgba(31,119,180,1)'},
+        //     low: low,
+        //     open: openPrice,
+        //     type: "candlestick",
+        //     xaxis: "x", 
+        //     yaxis: "y"             
+        // }
     
-        // Candlestick Trace
+        // // Candlestick Trace
 
     
-        let CNDdata = [CND1];
+        // let CNDdata = [CND1];
     
-        let CNDlayout = {
-            dragmode: 'zoom', 
-            margin: {
-              r: 10, 
-              t: 25, 
-              b: 40, 
-              l: 60
-            }, 
-            showlegend: false, 
-            xaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: [sDate, eDate], 
-              rangeslider: {range: [sDate, eDate]}, 
-              title: 'Date', 
-              type: 'date'
-            }, 
-            yaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: [0, 20], 
-              type: 'linear'
-            }
-        };
+        // let CNDlayout = {
+        //     dragmode: 'zoom', 
+        //     margin: {
+        //       r: 10, 
+        //       t: 25, 
+        //       b: 40, 
+        //       l: 60
+        //     }, 
+        //     showlegend: false, 
+        //     xaxis: {
+        //       autorange: true, 
+        //       domain: [0, 1], 
+        //       range: [sDate, eDate], 
+        //       rangeslider: {range: [sDate, eDate]}, 
+        //       title: 'Date', 
+        //       type: 'date'
+        //     }, 
+        //     yaxis: {
+        //       autorange: true, 
+        //       domain: [0, 1], 
+        //       range: [0, 20], 
+        //       type: 'linear'
+        //     }
+        // };
       
     
-        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+        // Plotly.newPlot("plot2", CNDdata, CNDlayout); 
 
 
 
