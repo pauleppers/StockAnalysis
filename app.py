@@ -136,6 +136,10 @@ def getTasksPostgres():
 
     return jsonify(data)
 
+# @app.route('/img')
+# def img():
+#     return render_template('index.html')
+
 
 @app.route('/api/candlestick')
 def getCandlestick():
