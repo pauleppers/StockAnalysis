@@ -23,7 +23,7 @@ class stock(db.Model):
     stname = db.Column(db.String)
     country = db.Column(db.String)
 
-class ge(db.Model):
+class gd(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
     open = db.Column(db.Float)   
     low = db.Column(db.Float)   
@@ -89,6 +89,18 @@ class ba(db.Model):
     cal = db.Column(db.Integer)
     symbol = db.Column(db.String)       
 
+class noc(db.Model):
+    timestamp = db.Column(db.Integer, primary_key=True)
+    open = db.Column(db.Float)   
+    low = db.Column(db.Float)   
+    high = db.Column(db.Float)   
+    close = db.Column(db.Float)   
+    volume = db.Column(db.Float)
+    rel = db.Column(db.Float)   
+    cal = db.Column(db.Integer)    
+    date_time = db.Column(db.DateTime)   
+    date = db.Column(db.String)
+    symbol = db.Column(db.String)  
 
 @app.route('/')
 def index():
@@ -124,10 +136,14 @@ def getTasksPostgres():
 
     return jsonify(data)
 
+# @app.route('/img')
+# def img():
+#     return render_template('index.html')
+
 
 @app.route('/api/candlestick')
 def getCandlestick():
-    candlesticks = db.session.query(ge)
+    candlesticks = db.session.query(gd)
     print(candlesticks)
 
     data = []
@@ -249,16 +265,34 @@ def getLMT():
 
     return jsonify(data)
 
+
+@app.route('/api/noc')
+def getNOC():
+    nocs = db.session.query(noc)
+    print(nocs)
+
+    data = []
+
+    for task in nocs:
+        item = {
+            'timestamp' : task.timestamp,
+            'open' : task.open,   
+            'low' : task.low,   
+            'high' : task.high,   
+            'close' : task.close,   
+            'volume' : task.volume,
+            'rel' : task.rel,
+            'cal' : task.cal,
+            'symbol' : task.symbol,
+            'date_time' : task.date_time,
+            'date' : task.date.strftime('%Y-%m-%d')
+        }
+        data.append(item)
+
+    return jsonify(data)
+
 # @route("/notebook")
 # def notebook():
-
-
-# so if we connect the info from the jupyter notebook or website 
-# directly to the db and give it a sqlite name. then pull in the 
-# results with a session.query() similiar to activity 10.3.10  passengers
-# the main.js can activate the app.route with a button click
-# function handle submit will activate d3.json(api/candlestick).then data
-# which will load the data into the candlestick format and plotly format?
 
 
 if __name__ == "__main__":

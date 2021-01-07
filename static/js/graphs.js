@@ -52,6 +52,8 @@ function buildHON(stock) {
         const closingPrice = data.map(close => {return close.close})
         const date = data.map(dates => {return dates.date})
         const cal = data.map(lp => {return lp.cal})
+        const symbol = data.map(id => {return id.symbol})[0]
+        const id = symbol.toUpperCase()
         // console.log(date)        
         console.log(cal)
         console.log(closingPrice)
@@ -71,8 +73,8 @@ function buildHON(stock) {
             {
             type: "scatter",
             mode: "lines",
-            name: 'HON high',
-            x: timestamp,
+            name: `${id} high`,
+            x: date,
             y: high,
             marker: {color: '#17BECF'}
         }
@@ -81,8 +83,8 @@ function buildHON(stock) {
             {
             type: "scatter",
             mode: "lines",
-            name: 'HON low',
-            x: timestamp,
+            name: `${id} low`,
+            x: date,
             y: low,
             line: {color: '#7F7F7F'}
         }
@@ -90,7 +92,7 @@ function buildHON(stock) {
         var TSdata = [TStrace1, TStrace2];
           
         var TSlayout = {
-            title: 'HON Overview',
+            title: `${id} Overview`,
         }
 
         Plotly.newPlot('plot', TSdata, TSlayout);
@@ -204,27 +206,27 @@ function buildHON(stock) {
           type: 'line'
       }], 
       {
-        title: 'Some stocks'
+        title: 'Relative Value Analysis'
       }, 
       {
           modeBarButtons: [[{
-              name: 'June',
+              name: 'January',
               click: function() {
                 Plotly.relayout('graph',
                   'xaxis.range', 
                   [
                     new Date(2020, 01, 06).getTime(),
-                    new Date(2021, 01, 06).getTime()
+                    new Date(2020, 02, 06).getTime()
                   ]
                 );
               }
             }, {
-              name: 'July',
+              name: 'December',
               click: function() {
                 Plotly.relayout('graph',
                   'xaxis.range', 
                   [
-                    new Date(2020, 01, 06).getTime(),
+                    new Date(2020, 12, 01).getTime(),
                     new Date(2021, 01, 06).getTime()
                   ]
                 );
@@ -240,3 +242,90 @@ function buildHON(stock) {
     
 }; 
 
+// function buildRel(stock) {
+//   d3.json(stock).then((data) =>{ 
+//     const symbol = data.map(id => {return id.symbol})[0]
+//     const id = symbol.toUpperCase()
+//     `${id}'s Relative Value Analysis Graph`
+//     selection.datum(function() { return this.dataset; })
+//     Plotly.newPlot('graph', [{
+//       x: date,
+//       y: cal,
+//       type: 'line'
+//     }], 
+//   {
+//   title: 'Relative Value Analysis'
+//   }, 
+//   {
+//     modeBarButtons: [[{
+//         name: 'January',
+//         click: function() {
+//           Plotly.relayout('graph',
+//             'xaxis.range', 
+//             [
+//               new Date(2020, 01, 06).getTime(),
+//               new Date(2020, 02, 06).getTime()
+//             ]
+//           );
+//         }
+//       }, {
+//         name: 'Return?',
+//         click: function() {
+//           Plotly.relayout('graph',
+//             'xaxis.range', 
+//             [
+//               new Date(2020, 01, 06).getTime(),
+//               new Date(2021, 01, 06).getTime()
+//             ]
+//           );
+//         }
+//       }
+//     ]]
+// }
+// );
+// });
+// }
+
+
+
+
+// chart = {
+//   const svg = d3.create("svg")
+//       .attr("viewBox", [0, 0, width, height]);
+
+//   const zx = x.copy(); // x, but with a new domain.
+
+//   const line = d3.line()
+//       .x(d => zx(d.date))
+//       .y(d => y(d.close));
+
+//   const path = svg.append("path")
+//       .attr("fill", "none")
+//       .attr("stroke", "steelblue")
+//       .attr("stroke-width", 1.5)
+//       .attr("stroke-miterlimit", 1)
+//       .attr("d", line(data));
+
+//   const gx = svg.append("g")
+//       .call(xAxis, zx);
+
+//   const gy = svg.append("g")
+//       .call(yAxis, y);
+
+//   return Object.assign(svg.node(), {
+//     update(domain) {
+//       const t = svg.transition().duration(750);
+//       zx.domain(domain);
+//       gx.transition(t).call(xAxis, zx);
+//       path.transition(t).attr("d", line(data));
+//     }
+//   });
+// }
+// update = undefined
+// update = chart.update(timeframe)
+// function init(stock){
+//   buildHON(stock[0])
+
+
+// }
+// init()
