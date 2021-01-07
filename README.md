@@ -1,23 +1,27 @@
-# Determining Buy and Sell Periods of Stocks
+# Display Historical Performance of Five Similar Stocks
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
 ## Description
-The purpose of this project to compare a number of stocks and determine which one has is the best value. In our project, we will be comparing General Electric (GE) and 5 similar aerospace manufacturers companies, Boeing(BA), Honeywell(HON), Ratheon(RTN), Lockheed Martin(LMT). Phase 1 offers users several visuals allowing our user to compare stocks.
+Investing money into the 2021 stock market is easier than ever, no longer requiring a broker or large sums of money, and even better, trade transactions have no fees thanks to Robin Hood. 
+
+Analysis of the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return and long term investments only have a 15% Federal Tax rate. With all these positives it should be no surprise that the wealth gap keeps increasing because wealthy people have their money invested in stocks. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment. Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ‘Homework’.
+
+A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. 
+
+The purpose of this project is to compare several similar stocks in one category and determine which one is the best value. In our project, we will be comparing Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
 Several Graphs are used to compare the companies:
-1. One graph that allows user to select one of the companies graph, need to add ability for user to filter to one of the companies
+1. Graph of historical values that allows user to select one of the company’s graph, with different ability for user to filter to one of the companies and values
 
-       
-2. Relative value graph compares value of the stock in the market per period of time as a percent. All stocks start out at 0% return on day one.
+2. Relative value analysis graph compares value of the stock in the market per period of time as a percent. All stocks start out at 0% return on day one.
 
-3. (Optional) allow user to add trend lines by hover and click, see black lines below.  
-
+a. Need how the plot page is created how the dashboard was created
 
 
+3. Need to add another JavaScrip library, examples, allow user to add trend lines by hover and click, allow different filtering options.  
 
-
-Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points
+Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points. This may be some type of dial indicator on what our algorithm predicts. 
 a. RSI, Bollinger, Moving Averages
 
 b. Yearly returns
@@ -51,8 +55,6 @@ TBD
 2. Run jupyter notebook stock.ipynb and creates PgAdmin database.
 3. Copy files and update .html files as needed
 
-## References
-https://rapidapi.com/apidojo/api/yahoo-finance1
 
 John’s references
 
@@ -63,6 +65,11 @@ Determining Buy and Sell Periods of Stock Using Several Inputs into a Random For
 
 * Market sentiment based on news articles to determine near term market trend
 
+
+## References
+https://www.intmath.com/exponential-logarithmic-functions/dow-jones-industrial-ave-graph.php
+
+https://rapidapi.com/apidojo/api/yahoo-finance1
 
 
 
