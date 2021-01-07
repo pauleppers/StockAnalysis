@@ -164,7 +164,7 @@ function buildPlot() {
             type: "scatter",
             mode: "lines",
             name: 'GE high',
-            x: timestamp,
+            x: date,
             y: high,
             marker: {color: '#17BECF'}
         }
@@ -174,7 +174,7 @@ function buildPlot() {
             type: "scatter",
             mode: "lines",
             name: 'GE low',
-            x: timestamp,
+            x: date,
             y: low,
             line: {color: '#7F7F7F'}
         }
