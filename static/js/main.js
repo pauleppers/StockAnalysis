@@ -32,28 +32,6 @@ function init() {
     cells.text(s.stock)
   });
   
-  // var colors = d3.select("#selDataset").node().value;
-  // console.log(colors)
-  // colors= ["Maroon", "Purple", "#5f0000", "red", "Fuchsia", "Olive", "Teal", "Green"]
-  // div.innerHTML= ""
-  //   for (var i = 0; i < colors.length; i++) {
-  //       labels.push(
-  //           '<li' + (colors[i] ? colors[i] : '+') + '"></li> ' +
-  //       (colors[i] ? colors[i] : '+'));
-
-  //   }
-
-  // return div;
-
-    // Select the input value from the formstyle="background:'
-    // var stock = d3.select("#stockList").node().value;
-    // console.log(stock);
-    // for (var i=o; i< stockList; i ++)
-    // var listGroup = 
-    // var listitem = listgroup.append("li")
-    // push
-    // html += "<li>" + i + "</li>";
-
 }
 
 init()

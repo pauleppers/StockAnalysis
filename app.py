@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 import stock as st
 
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(

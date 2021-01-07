@@ -7,10 +7,11 @@ select.on("change", function () {
   console.log(stock);
 
   // clear the input value
-  d3.select("#selDataset").node().value = "";
+  // d3.select("#selDataset").node().value = "";
 
   // Build the plot with the new stock
   buildHON(stock);
+  // buildtable(stock)
 })
   
 //   d3.select('#opts')
@@ -57,7 +58,15 @@ function buildHON(stock) {
         // console.log(date)        
         console.log(cal)
         console.log(closingPrice)
-
+  //       var filterData = data.filter(event => (event.symbol) === ("gd"));   
+  // console.log(filterData)
+  // var GD = []
+  // const high2 = filterData.map(high => {return high.high})
+  // GD.push(high2)
+  // console.log(GD)
+  // const symbol2 = filterData.map(id => {return id.symbol})[0]
+  // console.log(symbol2)
+  // const id = symbol.toUpperCase()
 
         // var data = {
         //   type: 'scatter',
@@ -242,6 +251,239 @@ function buildHON(stock) {
     
 }; 
 
+// function handleclick(){
+//   var GD = d3.select("#stock1").property("value");
+//   var HON = d3.select("#Sdropdown").property("value");
+//   var RTX= d3.select("#stateid").property("value").toLowerCase().trim();
+//   var city = d3.select("#ufocity").property("value").toLowerCase().trim();
+//   var country = d3.select("#countryid").property("value").toLowerCase().trim();
+
+//   let filterData = tableData;
+//   if (GD) {
+//     filterData = filterData.filter(event => (event.symbol) === ("gd"));
+//   }
+//   if (city) {
+//     filterData = filterData.filter(row => row.city === city);
+//   }
+//   if (state) {
+//     filterData = filterData.filter(row => row.state === state);
+//   }
+//   if (country) {
+//     filterData = filterData.filter(row => row.country === country);
+//   }
+//   if (shape != "option") {
+//     filterData = filterData.filter(row => row.shape === shape);
+//   };
+
+//   // pop_table(filterData)
+//   buildtable(filterData)
+// }
+// d3.selectAll("#filter-btn").on("click", handleclick);
+
+// function buildtable(stock){
+//   d3.json(stock).then((data) => {
+
+//   var filterData = data.filter(event => (event.symbol) === ("gd"));   
+//   console.log(filterData)
+//   var GD = []
+//   const high2 = filterData.map(high => {return high.high})
+//   GD.push(high2)
+//   console.log(high2)
+//   console.log(GD)
+//   const symbol2 = filterData.map(id => {return id.symbol})[0]
+//   console.log(symbol2)
+//   // const id2 = symbol2.toUpperCase()
+  
+//   var filterData3 = data.filter(event => (event.symbol) === ("hon"));   
+//   console.log(filterData3)
+//   var HON = []
+//   const high3 = filterData3.map(high => {return high.high})
+//   HON.push(high3)
+//   console.log(high3)
+//   console.log(HON)
+//   const symbol3 = filterData3.map(id => {return id.symbol})[0]
+//   // console.log(symbol3)
+//   // const id3 = symbol3.toUpperCase()
+
+//   var filterData4 = data.filter(event => (event.symbol) === ("rtx"));   
+//   console.log(filterData4)
+//   var RTX = []
+//   const high4 = filterData4.map(high => {return high.high})
+//   RTX.push(high4)
+//   console.log(high4)
+//   console.log(RTX)
+//   const symbol4 = filterData4.map(id => {return id.symbol})[0]
+//   // console.log(symbol4)
+//   // const id4 = symbol4.toUpperCase() 
+
+//   })
+// }
+// am4core.ready(function() {
+
+// // Themes begin
+// am4core.useTheme(am4themes_material);
+// am4core.useTheme(am4themes_animated);
+// // Themes end
+
+// var chart = am4core.create("chartdiv", am4charts.XYChart);
+// chart.padding(0, 15, 0, 15);
+// chart.colors.step = 3;
+
+// var data = [];
+// var price1 = high[0];
+// var price2 = high[1];
+// var price3 = high[2];
+// var quantity = 1000;
+// for (var i = 15; i < 3000; i++) {
+//   price1 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 100);
+//   price2 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 100);
+//   price3 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 100);
+
+//   if (price1 < 100) {
+//     price1 = 100;
+//   }
+
+//   if (price2 < 100) {
+//     price2 = 100;
+//   }
+
+//   if (price3 < 100) {
+//     price3 = 100;
+//   }    
+
+//   quantity += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 500);
+
+//   if (quantity < 0) {
+//     quantity *= -1;
+//   }
+//   // data.push({ date: new Date(2000, 0, i), price1: price1, price2:price2, price3:price3, quantity: quantity });
+//   data.push({ date: new Date(2000, 0, i), price1: price1, price2:price2, price3:price3, quantity: quantity });
+// }
+
+
+// chart.data = data;
+// // the following line makes value axes to be arranged vertically.
+// chart.leftAxesContainer.layout = "vertical";
+
+// // uncomment this line if you want to change order of axes
+// //chart.bottomAxesContainer.reverseOrder = true;
+
+// var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+// dateAxis.renderer.grid.template.location = 0;
+// dateAxis.renderer.ticks.template.length = 8;
+// dateAxis.renderer.ticks.template.strokeOpacity = 0.1;
+// dateAxis.renderer.grid.template.disabled = true;
+// dateAxis.renderer.ticks.template.disabled = false;
+// dateAxis.renderer.ticks.template.strokeOpacity = 0.2;
+// dateAxis.renderer.minLabelPosition = 0.01;
+// dateAxis.renderer.maxLabelPosition = 0.99;
+// dateAxis.keepSelection = true;
+
+// dateAxis.groupData = true;
+// dateAxis.minZoomCount = 5;
+
+// // these two lines makes the axis to be initially zoomed-in
+// // dateAxis.start = 0.7;
+// // dateAxis.keepSelection = true;
+
+// var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+// valueAxis.tooltip.disabled = true;
+// valueAxis.zIndex = 1;
+// valueAxis.renderer.baseGrid.disabled = true;
+// // height of axis
+// valueAxis.height = am4core.percent(65);
+
+// valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
+// valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
+// valueAxis.renderer.inside = true;
+// valueAxis.renderer.labels.template.verticalCenter = "bottom";
+// valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
+
+// //valueAxis.renderer.maxLabelPosition = 0.95;
+// valueAxis.renderer.fontSize = "0.8em"
+
+// var series1 = chart.series.push(new am4charts.LineSeries());
+// series1.dataFields.dateX = "date";
+// series1.dataFields.valueY = "price1";
+// series1.dataFields.valueYShow = "changePercent";
+// series1.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+// series1.name = "Stock A";
+// series1.tooltip.getFillFromObject = false;
+// series1.tooltip.getStrokeFromObject = true;
+// series1.tooltip.background.fill = am4core.color("#fff");
+// series1.tooltip.background.strokeWidth = 2;
+// series1.tooltip.label.fill = series1.stroke;
+
+// var series2 = chart.series.push(new am4charts.LineSeries());
+// series2.dataFields.dateX = "date";
+// series2.dataFields.valueY = "price2";
+// series2.dataFields.valueYShow = "changePercent";
+// series2.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+// series2.name = "Stock B";
+// series2.tooltip.getFillFromObject = false;
+// series2.tooltip.getStrokeFromObject = true;
+// series2.tooltip.background.fill = am4core.color("#fff");
+// series2.tooltip.background.strokeWidth = 2;
+// series2.tooltip.label.fill = series2.stroke;
+
+// var series3 = chart.series.push(new am4charts.LineSeries());
+// series3.dataFields.dateX = "date";
+// series3.dataFields.valueY = "price3";
+// series3.dataFields.valueYShow = "changePercent";
+// series3.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+// series3.name = "Stock C";
+// series3.tooltip.getFillFromObject = false;
+// series3.tooltip.getStrokeFromObject = true;
+// series3.tooltip.background.fill = am4core.color("#fff");
+// series3.tooltip.background.strokeWidth = 2;
+// series3.tooltip.label.fill = series3.stroke;
+
+// var valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
+// valueAxis2.tooltip.disabled = true;
+// // height of axis
+// valueAxis2.height = am4core.percent(35);
+// valueAxis2.zIndex = 3
+// // this makes gap between panels
+// valueAxis2.marginTop = 30;
+// valueAxis2.renderer.baseGrid.disabled = true;
+// valueAxis2.renderer.inside = true;
+// valueAxis2.renderer.labels.template.verticalCenter = "bottom";
+// valueAxis2.renderer.labels.template.padding(2, 2, 2, 2);
+// //valueAxis.renderer.maxLabelPosition = 0.95;
+// valueAxis2.renderer.fontSize = "0.8em";
+
+// valueAxis2.renderer.gridContainer.background.fill = am4core.color("#000000");
+// valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
+
+// var volumeSeries = chart.series.push(new am4charts.StepLineSeries());
+// volumeSeries.fillOpacity = 1;
+// volumeSeries.fill = series1.stroke;
+// volumeSeries.stroke = series1.stroke;
+// volumeSeries.dataFields.dateX = "date";
+// volumeSeries.dataFields.valueY = "quantity";
+// volumeSeries.yAxis = valueAxis2;
+// volumeSeries.tooltipText = "Volume: {valueY.value}";
+// volumeSeries.name = "Series 2";
+// // volume should be summed
+// volumeSeries.groupFields.valueY = "sum";
+// volumeSeries.tooltip.label.fill = volumeSeries.stroke;
+// chart.cursor = new am4charts.XYCursor();
+
+// var scrollbarX = new am4charts.XYChartScrollbar();
+// scrollbarX.series.push(series1);
+// scrollbarX.marginBottom = 20;
+// var sbSeries = scrollbarX.scrollbarChart.series.getIndex(0);
+// sbSeries.dataFields.valueYShow = undefined;
+// chart.scrollbarX = scrollbarX;
+
+// // Add range selector
+// var selector = new am4plugins_rangeSelector.DateAxisRangeSelector();
+// selector.container = document.getElementById("controls");
+// selector.axis = dateAxis;
+
+// }); // end am4core.ready()
+
+
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
 //     const symbol = data.map(id => {return id.symbol})[0]
@@ -256,6 +498,85 @@ function buildHON(stock) {
 //   {
 //   title: 'Relative Value Analysis'
 //   }, 
+
+// Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv', function(err, rows){
+
+//     function unpack(rows, key) {
+//         return rows.map(function(row) { return row[key]; });
+//     }
+
+//     var allCountryNames = unpack(rows, 'country'),
+//         allYear = unpack(rows, 'year'),
+//         allGdp = unpack(rows, 'gdpPercap'),
+//         listofCountries = [],
+//         currentCountry,
+//         currentGdp = [],
+//         currentYear = [];
+
+//     for (var i = 0; i < allCountryNames.length; i++ ){
+//         if (listofCountries.indexOf(allCountryNames[i]) === -1 ){
+//             listofCountries.push(allCountryNames[i]);
+//         }
+//     }
+
+//     function getCountryData(chosenCountry) {
+//         currentGdp = [];
+//         currentYear = [];
+//         for (var i = 0 ; i < allCountryNames.length ; i++){
+//             if ( allCountryNames[i] === chosenCountry ) {
+//                 currentGdp.push(allGdp[i]);
+//                 currentYear.push(allYear[i]);
+//             }
+//         }
+//     };
+
+//     // Default Country Data
+//     setBubblePlot('Afghanistan');
+
+//     function setBubblePlot(chosenCountry) {
+//         getCountryData(chosenCountry);
+
+//         var trace1 = {
+//             x: currentYear,
+//             y: currentGdp,
+//             mode: 'lines+markers',
+//             marker: {
+//                 size: 12,
+//                 opacity: 0.5
+//             }
+//         };
+
+//         var data = [trace1];
+
+//         var layout = {
+//             title:'Line and Scatter Plot',
+//             height: 400,
+//             width: 480
+//         };
+
+//         Plotly.newPlot('myDiv', data, layout);
+//     };
+
+//     var innerContainer = document.querySelector('[data-num="0"'),
+//         plotEl = innerContainer.querySelector('.plot'),
+//         countrySelector = innerContainer.querySelector('.countrydata');
+
+//     function assignOptions(textArray, selector) {
+//         for (var i = 0; i < textArray.length;  i++) {
+//             var currentOption = document.createElement('option');
+//             currentOption.text = textArray[i];
+//             selector.appendChild(currentOption);
+//         }
+//     }
+
+//     assignOptions(listofCountries, countrySelector);
+
+//     function updateCountry(){
+//         setBubblePlot(countrySelector.value);
+//     }
+
+//     countrySelector.addEventListener('change', updateCountry, false);
+// });
 //   {
 //     modeBarButtons: [[{
 //         name: 'January',
