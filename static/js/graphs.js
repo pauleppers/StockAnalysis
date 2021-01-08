@@ -19,16 +19,30 @@
 // Selection.on(click[,listener[,options]])
 
 
+var chart
 
-var select = d3.select("#selDataset");
-select.on("change", function (d) {
+// var select = d3.select("#selDataset");
+// select.on("event", function (d) {
+//   var stock = [];
+//   selected = d3.select(this)
+  // .selectAll("option:checked")
+  // .each(function() { stock.push(this.value)  })
+  // console.log(stock)
+
+
+var submit = d3.select("#combo")
+
+submit.on("click", function(d) {
   var stock = [];
-  selected = d3.select(this)
-  .selectAll("option:checked")
-  .each(function() { stock.push(this.value)  })
-  console.log(stock)
-  // d3.event.preventDefault();
+  console.log("utton clicked")
+  var select = d3.select("#selDataset");
+  d3.event.preventDefault();
+  select.selectAll("option:checked").each(function() {
+    
+    stock.push(this.value)
+    console.log(stock)  })
 
+ 
   // Select the input value from the form
   // var stock = d3.select("#selDataset").node().value;
   // console.log(stock);
@@ -37,9 +51,9 @@ select.on("change", function (d) {
   // d3.select("#selDataset").node().value = "";
 
   // Build the plot with the new stock
-  buildHON(stock);
-  candlestick(stock);
-  // buildtable(stock)
+  // buildHON(stock);
+  // candlestick(stock);
+  buildtable(stock)
 })
   
 // var select2 = d3.selectall("#selDataset");
@@ -82,6 +96,49 @@ select.on("change", function (d) {
 //   buildHON(stock);
 // }
 // select()
+
+
+// function candlestick(stock){
+//   var stockinput=stock.toString()
+//   console.log(stockinput)
+//   var url = "/api/stocks/" + stockinput
+//   d3.json(url).then((data) => {
+//     console.log(data)
+//     var graphData=[]
+//     for (var i=0; i< data[stock[0]].length-1; i++){
+//       var result = {}
+//       var date=data[stock[0]][i]['date']
+//       console.log(date)
+//       result["date"]=date
+//       var volume=0
+//       for (var x=0; x< stock.length; x++){
+//         result[stock[x]]=data[stock[x]][i]['high']
+//         volume +=data[stock[x]][i]['volume']
+//       }
+//       result['quantity']=volume
+//       graphData.push(result)
+//       console.log(graphData)
+//     }
+
+//     stock.forEach(element => {
+  
+//       result.push(data[element])
+    
+//     // for (var i=0; i< result.length; i++){
+//     //   if (i == "gd") {GD.push(result[i])}
+//     //   if (i == "hon") {HON.push(result[i])}
+
+//     //   console.log(date)
+//   // }
+  
+//     });
+
+
+
+
+
+
+
 function candlestick(stock) {
 am4core.ready(function() {
 
@@ -511,12 +568,12 @@ function buildtable(stock){
   console.log(stockinput)
   var url = "/api/stocks/" + stockinput
   d3.json(url).then((data) => {
-    console.log(data)
+    // console.log(data)
     var graphData=[]
     for (var i=0; i< data[stock[0]].length-1; i++){
       var result = {}
       var date=data[stock[0]][i]['date']
-      console.log(date)
+      // console.log(date)
       result["date"]=date
       var volume=0
       for (var x=0; x< stock.length; x++){
@@ -525,7 +582,7 @@ function buildtable(stock){
       }
       result['quantity']=volume
       graphData.push(result)
-      console.log(graphData)
+      // console.log(graphData)
     }
 
     // stock.forEach(element => {
@@ -553,16 +610,27 @@ function buildtable(stock){
   // const symbol2 = filterData.map(id => {return id.symbol})[0]
   // console.log(symbol2)
   // // const id2 = symbol2.toUpperCase()
-  
+ 
 
 am4core.ready(function() {
-
+  
 // Themes begin
 am4core.useTheme(am4themes_material);
 am4core.useTheme(am4themes_animated);
 // Themes end
+  
+// Check if the chart instance exists
+// maybeDisposeChart("chartdiv2");
 
-var chart = am4core.create("chartdiv", am4charts.XYChart);
+if (chart) {
+  chart.dispose()
+  delete chart
+  delete id-22
+console.log("chartcleared")}
+// chart.xAxes.events.on("hit", function(ev) {
+//   console.log("clicked on", ev.target);
+// }, this);
+var chart = am4core.create("chartdiv2", am4charts.XYChart);
 chart.padding(0, 15, 0, 15);
 chart.colors.step = 3;
 
@@ -715,13 +783,21 @@ chart.scrollbarX = scrollbarX;
 
 // Add range selector
 var selector = new am4plugins_rangeSelector.DateAxisRangeSelector();
-selector.container = document.getElementById("controls");
+selector.container = document.getElementById("controls2");
 selector.axis = dateAxis;
 
 }) // end am4core.ready()
 })
 
 }
+
+function maybeDisposeChart(chartdiv) {
+  if (chartReg[chartdiv]) {
+    chartReg[chartdiv].dispose();
+    delete chartReg[chartdiv];
+  }
+}
+
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
 //     const symbol = data.map(id => {return id.symbol})[0]
