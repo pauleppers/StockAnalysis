@@ -1,19 +1,63 @@
+ 
+//  = d3.onevent("#selDataset")
+//  d3.selectAll("option")                // select the element
+//  .datum(function() { return this.getAttribute("data-list").split(",")}) // set selection's data based on its data attribute
+//  .selectAll("li")                      // create new selection
+//      .data((d) => d)                   // set the data from the parent element
+//      .enter().append("li")             // create missing elements
+//          .text((content) => content);
+
+//  selection.datum(function(GD) { return this.dataset; })
+
+
+// selection.property({'/api/hon':'HON', '/api/candlestick':'GD'})
+// console.log(HON)
+// console.log(GD)
+
+// selection.property({'foo': 'bar', 'baz': 'qux'})
+// Selection.on(typenames[,listener[,options]])
+// Selection.on(click[,listener[,options]])
+
+
+
 var select = d3.select("#selDataset");
-select.on("change", function () {
-  d3.event.preventDefault();
+select.on("change", function (d) {
+  var stock = [];
+  selected = d3.select(this)
+  .selectAll("option:checked")
+  .each(function() { stock.push(this.value)  })
+  console.log(stock)
+  // d3.event.preventDefault();
 
   // Select the input value from the form
-  var stock = d3.select("#selDataset").node().value;
-  console.log(stock);
+  // var stock = d3.select("#selDataset").node().value;
+  // console.log(stock);
 
   // clear the input value
   // d3.select("#selDataset").node().value = "";
 
   // Build the plot with the new stock
-  buildHON(stock);
-  // buildtable(stock)
+  // buildHON(stock);
+  buildtable(stock)
 })
   
+// var select2 = d3.selectall("#selDataset");
+// select2.on("change", function () {
+//   d3.event.preventDefault();
+
+//   // Select the input value from the form
+//   var stock2 = d3.selectall("#selDataset").node().value;
+//   console.log(stock2);
+
+//   // clear the input value
+//   // d3.select("#selDataset").node().value = "";
+
+//   // Build the plot with the new stock
+//   // buildHON(stock);
+//   buildtable(stock2)
+// })
+  
+
 //   d3.select('#opts')
 //   .on('change', function() {
 //     var newData = eval(d3.select(this).property('value'));
@@ -150,58 +194,6 @@ function buildHON(stock) {
               type: 'linear'
             }
         };
-        // let CNDlayout = {
-        //     dragmode: 'zoom', 
-        //     margin: {
-        //       r: 10, 
-        //       t: 25, 
-        //       b: 40, 
-        //       l: 60
-        //     }, 
-        //     showlegend: false, 
-        //     xaxis: {
-        //       autorange: true, 
-        //       rangeslider: {range: ['2020-01-02', '2020-12-31']}, 
-        //       title: 'Date', 
-        //       type: 'date'
-        //     }, 
-        //     yaxis: {
-        //       autorange: true, 
-        //       type: 'linear'
-        //     },
-            
-        //     annotations: [
-        //       {
-        //         x: '2017-01-31',
-        //         y: 0.9,
-        //         xref: 'x',
-        //         yref: 'paper',
-        //         text: 'largest movement',
-        //         font: {color: 'magenta'},
-        //         showarrow: true,
-        //         xanchor: 'right',
-        //         ax: -20,
-        //         ay: 0
-        //       }
-        //     ],
-            
-        //     shapes: [
-        //         {
-        //             type: 'rect',
-        //             xref: 'x',
-        //             yref: 'paper',
-        //             x0: '2020-01-02',
-        //             y0: 0,
-        //             x1: '2020-12-31',
-        //             y1: 1,
-        //             fillcolor: '#d3d3d3',
-        //             opacity: 0.2,
-        //             line: {
-        //                 width: 0
-        //             }
-        //         }
-        //       ]
-        //   }
           
         
     
@@ -280,54 +272,65 @@ function buildHON(stock) {
 // }
 // d3.selectAll("#filter-btn").on("click", handleclick);
 
-// function buildtable(stock){
-//   d3.json(stock).then((data) => {
+function buildtable(stock){
+  var stockinput=stock.toString()
+  console.log(stockinput)
+  var url = "/api/stocks/" + stockinput
+  d3.json(url).then((data) => {
+    console.log(data)
+    var graphData=[]
+    for (var i=0; i< data[stock[0]].length-1; i++){
+      var result = {}
+      var date=data[stock[0]][i]['date']
+      console.log(date)
+      result["date"]=date
+      var volume=0
+      for (var x=0; x< stock.length; x++){
+        result[stock[x]]=data[stock[x]][i]['high']
+        volume +=data[stock[x]][i]['volume']
+      }
+      result['quantity']=volume
+      graphData.push(result)
+      console.log(graphData)
+    }
 
-//   var filterData = data.filter(event => (event.symbol) === ("gd"));   
-//   console.log(filterData)
-//   var GD = []
-//   const high2 = filterData.map(high => {return high.high})
-//   GD.push(high2)
-//   console.log(high2)
-//   console.log(GD)
-//   const symbol2 = filterData.map(id => {return id.symbol})[0]
-//   console.log(symbol2)
-//   // const id2 = symbol2.toUpperCase()
+    // stock.forEach(element => {
   
-//   var filterData3 = data.filter(event => (event.symbol) === ("hon"));   
-//   console.log(filterData3)
-//   var HON = []
-//   const high3 = filterData3.map(high => {return high.high})
-//   HON.push(high3)
-//   console.log(high3)
-//   console.log(HON)
-//   const symbol3 = filterData3.map(id => {return id.symbol})[0]
-//   // console.log(symbol3)
-//   // const id3 = symbol3.toUpperCase()
+    //   result.push(data[element])
+    
+    // for (var i=0; i< result.length; i++){
+    //   if (i == "gd") {GD.push(result[i])}
+    //   if (i == "hon") {HON.push(result[i])}
 
-//   var filterData4 = data.filter(event => (event.symbol) === ("rtx"));   
-//   console.log(filterData4)
-//   var RTX = []
-//   const high4 = filterData4.map(high => {return high.high})
-//   RTX.push(high4)
-//   console.log(high4)
-//   console.log(RTX)
-//   const symbol4 = filterData4.map(id => {return id.symbol})[0]
-//   // console.log(symbol4)
-//   // const id4 = symbol4.toUpperCase() 
+    //   console.log(date)
+  // }
+  
+    // });
+    // console.log(result)
 
-//   })
-// }
-// am4core.ready(function() {
+    // if ge
+  // var filterData = data.filter(event => (event.symbol) === ("gd"));   
+  // console.log(filterData)
+  // var GD = []
+  // const high2 = filterData.map(high => {return high.high})
+  // GD.push(high2)
+  // console.log(high2)
+  // console.log(GD)
+  // const symbol2 = filterData.map(id => {return id.symbol})[0]
+  // console.log(symbol2)
+  // // const id2 = symbol2.toUpperCase()
+  
 
-// // Themes begin
-// am4core.useTheme(am4themes_material);
-// am4core.useTheme(am4themes_animated);
-// // Themes end
+am4core.ready(function() {
 
-// var chart = am4core.create("chartdiv", am4charts.XYChart);
-// chart.padding(0, 15, 0, 15);
-// chart.colors.step = 3;
+// Themes begin
+am4core.useTheme(am4themes_material);
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+chart.padding(0, 15, 0, 15);
+chart.colors.step = 3;
 
 // var data = [];
 // var price1 = high[0];
@@ -361,129 +364,130 @@ function buildHON(stock) {
 // }
 
 
-// chart.data = data;
-// // the following line makes value axes to be arranged vertically.
-// chart.leftAxesContainer.layout = "vertical";
+chart.data = graphData;
+// the following line makes value axes to be arranged vertically.
+chart.leftAxesContainer.layout = "vertical";
 
-// // uncomment this line if you want to change order of axes
-// //chart.bottomAxesContainer.reverseOrder = true;
+// uncomment this line if you want to change order of axes
+//chart.bottomAxesContainer.reverseOrder = true;
 
-// var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-// dateAxis.renderer.grid.template.location = 0;
-// dateAxis.renderer.ticks.template.length = 8;
-// dateAxis.renderer.ticks.template.strokeOpacity = 0.1;
-// dateAxis.renderer.grid.template.disabled = true;
-// dateAxis.renderer.ticks.template.disabled = false;
-// dateAxis.renderer.ticks.template.strokeOpacity = 0.2;
-// dateAxis.renderer.minLabelPosition = 0.01;
-// dateAxis.renderer.maxLabelPosition = 0.99;
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.ticks.template.length = 8;
+dateAxis.renderer.ticks.template.strokeOpacity = 0.1;
+dateAxis.renderer.grid.template.disabled = true;
+dateAxis.renderer.ticks.template.disabled = false;
+dateAxis.renderer.ticks.template.strokeOpacity = 0.2;
+dateAxis.renderer.minLabelPosition = 0.01;
+dateAxis.renderer.maxLabelPosition = 0.99;
+dateAxis.keepSelection = true;
+
+dateAxis.groupData = true;
+dateAxis.minZoomCount = 5;
+
+// these two lines makes the axis to be initially zoomed-in
+// dateAxis.start = 0.7;
 // dateAxis.keepSelection = true;
 
-// dateAxis.groupData = true;
-// dateAxis.minZoomCount = 5;
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+valueAxis.zIndex = 1;
+valueAxis.renderer.baseGrid.disabled = true;
+// height of axis
+valueAxis.height = am4core.percent(65);
 
-// // these two lines makes the axis to be initially zoomed-in
-// // dateAxis.start = 0.7;
-// // dateAxis.keepSelection = true;
+valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
+valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
+valueAxis.renderer.inside = true;
+valueAxis.renderer.labels.template.verticalCenter = "bottom";
+valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
 
-// var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-// valueAxis.tooltip.disabled = true;
-// valueAxis.zIndex = 1;
-// valueAxis.renderer.baseGrid.disabled = true;
-// // height of axis
-// valueAxis.height = am4core.percent(65);
+//valueAxis.renderer.maxLabelPosition = 0.95;
+valueAxis.renderer.fontSize = "0.8em"
 
-// valueAxis.renderer.gridContainer.background.fill = am4core.color("#000000");
-// valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
-// valueAxis.renderer.inside = true;
-// valueAxis.renderer.labels.template.verticalCenter = "bottom";
-// valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
+var series1 = chart.series.push(new am4charts.LineSeries());
+series1.dataFields.dateX = "date";
+series1.dataFields.valueY = stock[0];
+series1.dataFields.valueYShow = "changePercent";
+series1.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+series1.name = "Stock A";
+series1.tooltip.getFillFromObject = false;
+series1.tooltip.getStrokeFromObject = true;
+series1.tooltip.background.fill = am4core.color("#fff");
+series1.tooltip.background.strokeWidth = 2;
+series1.tooltip.label.fill = series1.stroke;
 
-// //valueAxis.renderer.maxLabelPosition = 0.95;
-// valueAxis.renderer.fontSize = "0.8em"
+var series2 = chart.series.push(new am4charts.LineSeries());
+series2.dataFields.dateX = "date";
+series2.dataFields.valueY = stock[1];
+series2.dataFields.valueYShow = "changePercent";
+series2.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+series2.name = "Stock B";
+series2.tooltip.getFillFromObject = false;
+series2.tooltip.getStrokeFromObject = true;
+series2.tooltip.background.fill = am4core.color("#fff");
+series2.tooltip.background.strokeWidth = 2;
+series2.tooltip.label.fill = series2.stroke;
 
-// var series1 = chart.series.push(new am4charts.LineSeries());
-// series1.dataFields.dateX = "date";
-// series1.dataFields.valueY = "price1";
-// series1.dataFields.valueYShow = "changePercent";
-// series1.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
-// series1.name = "Stock A";
-// series1.tooltip.getFillFromObject = false;
-// series1.tooltip.getStrokeFromObject = true;
-// series1.tooltip.background.fill = am4core.color("#fff");
-// series1.tooltip.background.strokeWidth = 2;
-// series1.tooltip.label.fill = series1.stroke;
+var series3 = chart.series.push(new am4charts.LineSeries());
+series3.dataFields.dateX = "date";
+series3.dataFields.valueY = stock[2];
+series3.dataFields.valueYShow = "changePercent";
+series3.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
+series3.name = "Stock C";
+series3.tooltip.getFillFromObject = false;
+series3.tooltip.getStrokeFromObject = true;
+series3.tooltip.background.fill = am4core.color("#fff");
+series3.tooltip.background.strokeWidth = 2;
+series3.tooltip.label.fill = series3.stroke;
 
-// var series2 = chart.series.push(new am4charts.LineSeries());
-// series2.dataFields.dateX = "date";
-// series2.dataFields.valueY = "price2";
-// series2.dataFields.valueYShow = "changePercent";
-// series2.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
-// series2.name = "Stock B";
-// series2.tooltip.getFillFromObject = false;
-// series2.tooltip.getStrokeFromObject = true;
-// series2.tooltip.background.fill = am4core.color("#fff");
-// series2.tooltip.background.strokeWidth = 2;
-// series2.tooltip.label.fill = series2.stroke;
+var valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis2.tooltip.disabled = true;
+// height of axis
+valueAxis2.height = am4core.percent(35);
+valueAxis2.zIndex = 3
+// this makes gap between panels
+valueAxis2.marginTop = 30;
+valueAxis2.renderer.baseGrid.disabled = true;
+valueAxis2.renderer.inside = true;
+valueAxis2.renderer.labels.template.verticalCenter = "bottom";
+valueAxis2.renderer.labels.template.padding(2, 2, 2, 2);
+//valueAxis.renderer.maxLabelPosition = 0.95;
+valueAxis2.renderer.fontSize = "0.8em";
 
-// var series3 = chart.series.push(new am4charts.LineSeries());
-// series3.dataFields.dateX = "date";
-// series3.dataFields.valueY = "price3";
-// series3.dataFields.valueYShow = "changePercent";
-// series3.tooltipText = "{name}: {valueY.changePercent.formatNumber('[#0c0]+#.00|[#c00]#.##|0')}%";
-// series3.name = "Stock C";
-// series3.tooltip.getFillFromObject = false;
-// series3.tooltip.getStrokeFromObject = true;
-// series3.tooltip.background.fill = am4core.color("#fff");
-// series3.tooltip.background.strokeWidth = 2;
-// series3.tooltip.label.fill = series3.stroke;
+valueAxis2.renderer.gridContainer.background.fill = am4core.color("#000000");
+valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
 
-// var valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
-// valueAxis2.tooltip.disabled = true;
-// // height of axis
-// valueAxis2.height = am4core.percent(35);
-// valueAxis2.zIndex = 3
-// // this makes gap between panels
-// valueAxis2.marginTop = 30;
-// valueAxis2.renderer.baseGrid.disabled = true;
-// valueAxis2.renderer.inside = true;
-// valueAxis2.renderer.labels.template.verticalCenter = "bottom";
-// valueAxis2.renderer.labels.template.padding(2, 2, 2, 2);
-// //valueAxis.renderer.maxLabelPosition = 0.95;
-// valueAxis2.renderer.fontSize = "0.8em";
+var volumeSeries = chart.series.push(new am4charts.StepLineSeries());
+volumeSeries.fillOpacity = 1;
+volumeSeries.fill = series1.stroke;
+volumeSeries.stroke = series1.stroke;
+volumeSeries.dataFields.dateX = "date";
+volumeSeries.dataFields.valueY = "quantity";
+volumeSeries.yAxis = valueAxis2;
+volumeSeries.tooltipText = "volume: {valueY.value}";
+volumeSeries.name = "Series 2";
+// volume should be summed
+volumeSeries.groupFields.valueY = "sum";
+volumeSeries.tooltip.label.fill = volumeSeries.stroke;
+chart.cursor = new am4charts.XYCursor();
 
-// valueAxis2.renderer.gridContainer.background.fill = am4core.color("#000000");
-// valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
+var scrollbarX = new am4charts.XYChartScrollbar();
+scrollbarX.series.push(series1);
+scrollbarX.marginBottom = 20;
+var sbSeries = scrollbarX.scrollbarChart.series.getIndex(0);
+sbSeries.dataFields.valueYShow = undefined;
+chart.scrollbarX = scrollbarX;
 
-// var volumeSeries = chart.series.push(new am4charts.StepLineSeries());
-// volumeSeries.fillOpacity = 1;
-// volumeSeries.fill = series1.stroke;
-// volumeSeries.stroke = series1.stroke;
-// volumeSeries.dataFields.dateX = "date";
-// volumeSeries.dataFields.valueY = "quantity";
-// volumeSeries.yAxis = valueAxis2;
-// volumeSeries.tooltipText = "Volume: {valueY.value}";
-// volumeSeries.name = "Series 2";
-// // volume should be summed
-// volumeSeries.groupFields.valueY = "sum";
-// volumeSeries.tooltip.label.fill = volumeSeries.stroke;
-// chart.cursor = new am4charts.XYCursor();
+// Add range selector
+var selector = new am4plugins_rangeSelector.DateAxisRangeSelector();
+selector.container = document.getElementById("controls");
+selector.axis = dateAxis;
 
-// var scrollbarX = new am4charts.XYChartScrollbar();
-// scrollbarX.series.push(series1);
-// scrollbarX.marginBottom = 20;
-// var sbSeries = scrollbarX.scrollbarChart.series.getIndex(0);
-// sbSeries.dataFields.valueYShow = undefined;
-// chart.scrollbarX = scrollbarX;
+}) // end am4core.ready()
+})
 
-// // Add range selector
-// var selector = new am4plugins_rangeSelector.DateAxisRangeSelector();
-// selector.container = document.getElementById("controls");
-// selector.axis = dateAxis;
-
-// }); // end am4core.ready()
-
-
+}
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
 //     const symbol = data.map(id => {return id.symbol})[0]
