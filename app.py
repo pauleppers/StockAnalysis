@@ -18,11 +18,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get(
     'DATABASE_URL', 'sqlite:///stanalysis.sqlite')
 
 db = SQLAlchemy(app)
-class stock(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String)
-    stname = db.Column(db.String)
-    country = db.Column(db.String)
 
 class gd(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
@@ -36,7 +31,6 @@ class gd(db.Model):
     date_time = db.Column(db.DateTime)   
     date = db.Column(db.String)   
     symbol = db.Column(db.String)   
-# (db.DateTime, default=datetime.utcnow)
 
 class hon(db.Model):
     timestamp = db.Column(db.Integer, primary_key=True)
@@ -107,39 +101,61 @@ class noc(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/GE')
-def page1():
-    return render_template('ge.html')
+# @app.route('/GE')
+# def page1():
+#     return render_template('ge.html')
 
-@app.route('/HON')
+@app.route('/Graphs')
 def pageHON():
-    return render_template('hon.html')
+    return render_template('graphs.html')
 
 @app.route('/getstock/<stock>')
 def getStock(stock):
     st.getData(stock)
     return "success"
 
-@app.route('/api/tasks')
-def getTasksPostgres():
-    stocks = db.session.query(stock)
-    print(stocks)
-    data = []
+@app.route('/api/stocks/<stockList>')
+def getStocks(stockList):
+    stockLists = stockList.split(',')
+    result = {}
+    print(stockLists)
+    for stock in stockLists:
+        print(stock)
+        if stock == "gd":
+            currentStock =db.session.query(gd)
+        if stock == "ba":
+            currentStock = db.session.query(ba)
+        if stock == "rtx":
+            currentStock =db.session.query(rtx)
+        if stock == "lmt":
+            currentStock = db.session.query(lmt)
+        if stock == "hon":
+            currentStock =db.session.query(hon)
+        if stock == "noc":
+            currentStock = db.session.query(noc)
 
-    for things in stocks:
-        item = {
-            'id': things.id,
-            'description': things.description,
-            'stname': things.name,
-            'country': things.country
-        }
-        data.append(item)
+        print(currentStock)
 
-    return jsonify(data)
+        data = []
 
-# @app.route('/img')
-# def img():
-#     return render_template('index.html')
+        for task in currentStock:
+            item = {
+                'timestamp' : task.timestamp,
+                'open' : task.open,   
+                'low' : task.low,   
+                'high' : task.high,   
+                'close' : task.close,   
+                'volume' : task.volume,
+                'rel' : task.rel,
+                'cal' : task.cal,
+                'symbol' : task.symbol,
+                'date_time' : task.date_time,
+                'date' : task.date.strftime('%Y-%m-%d')
+            }
+            data.append(item)
+        result[stock]=data
+    print(result)
+    return jsonify(result)
 
 
 @app.route('/api/candlestick')
