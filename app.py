@@ -103,7 +103,7 @@ def index():
 
 # @app.route('/GE')
 # def page1():
-#     return render_template('ge.html')
+#     return render_template('Index_Paul.html')
 
 @app.route('/Graphs')
 def pageHON():
