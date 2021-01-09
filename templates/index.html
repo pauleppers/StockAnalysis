@@ -37,6 +37,7 @@
   <style>
   .frameimg {
     height: 200px;
+    border: 1px solid #777;
   }
   .frameimg2 {
     height: 250px;
@@ -51,7 +52,7 @@
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Plots</a>
+    <a class="navbar-brand" href="/">Homepage</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcolor02"
       aria-controls="navbarcolor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -77,7 +78,11 @@
     <div class="col-sm-4">
       <h2>STOCK PRICE ANALYSIS</h2>
       <h5>Overview:</h5>
-      <div class="frameimg2" id="plot"></div>
+      <div class="frameimg2">
+        <a href="static/BA_Closing_Price_Chart.png">
+          <img src="static/BA_Closing_Price_Chart.png" alt="Place Holder"  width="350" height="250">
+        </a>
+      </div>
       <p>An Introduction to Predicting the Stock Market with Machine Learning</p>
       <h3>Stocks In Review</h3>
       <p>How do these stocks add up</p>
@@ -96,17 +101,23 @@
       <h2>Nasdaq</h2>
       <h5>Trend Analysis</h5>
       <div class="frameimg" id="plot-2">
+        <a href="static/nasdaq.png">
           <img class="frameimg" src="static/nasdaq.png" alt="Place Holder"  width="750" height="300">
+        </a>
       </div>
       <p>Investing money into the 2021 stock market is easier than ever, no longer requiring a broker or large sums of money, and even better, trade transactions have no fees thanks to Robin Hood.</p>
       <p>Analysis of the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return and long term investments only have a 15% Federal Tax rate. With all these positives it should be no surprise that the wealth gap keeps increasing. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment.</p>
       <br>
-      <h2>Stock Trend Analysis</h2>
-      <h5>Quick Look</h5>
-      <div class="frameimg" id="plot2"></div>
-      <div class="frameimg" id="bar"></div>      
-      <p>A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in that category for the best stock. The expression “don’t put all your eggs in one basket” is one of the keys to investing.</p>
-      <p>The purpose of this project to compare several similar stocks in one category and determine which one is the best value. In our project, we will be comparing Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined.</p>
+      <h2>Display Historical Performance of Five Similar Stocks</h2>
+      <h5>Aerospace Market</h5>
+      <a href="static/BA_Yearly_Returns_Chart.png">
+        <img class="frameimg" src="static/BA_Yearly_Returns_Chart.png" alt="Place Holder"  width="300" height="300">
+      </a>
+      <a href="static/GD_Yearly_Returns_Chart.png">
+        <img class="frameimg" src="static/GD_Yearly_Returns_Chart.png" alt="Place Holder"  width="300" height="300">
+      </a>
+      <p>As seen in the graph above, the NASDAQ Average has shown expontential growth in recent years, and has brought new opportunities for stock investors.  However, investing money in today's stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on Nasdaq or Dow Jones Industrial Average performance show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a more limited number of stocks. To help investors potentially increase their investment returns, our team has created a series of visualizations for analyzing stock historical performance and potential invesment returns.</p>
+      <p>The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. In this Project, we analyzed five similar aerospace stocks to determine which would be the best candidate to add to a diversified portfolio. We compared <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD)</strong></p>
     </div>
   </div>
 </div>
