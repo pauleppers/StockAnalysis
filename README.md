@@ -2,8 +2,8 @@
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
-## Description
-Investing money in today's stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on returns of stocks listed on the Nasdaq and Dow Jones Exchange show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a more limited number of stocks. To help investors potentially increase their investment returns, our team has created a series of visualizations for analyzing stock historical performance and potential invesment returns. 
+# Description
+Investing money in today's stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on Nasdaq or Dow Jones Industiral Average performance show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a more limited number of stocks. To help investors potentially increase their investment returns, our team has created a series of visualizations for analyzing stock historical performance and potential invesment returns. 
 
 The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. In this Project, we analyzed five similar aerospace stocks to determine which would be the best candidate to add to a diversified portfolio. We compared <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. 
 
