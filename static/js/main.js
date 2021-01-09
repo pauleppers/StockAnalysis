@@ -13,25 +13,22 @@
 
 // colors = []
 // var colors = d3.select("#stockList")
+var tbody = d3.select("#Stocks");
+
 function init() {
 
-  var tbody = d3.select("#Stocks");
-  var test = [{
-    "stock" : "1"
-  },
-  {
-    "stock" : "2"
-  },
-  {
-    "stock": "3"
-  }];
-  test.forEach((s) => {
-    console.log(s.stock);
-    var rows = tbody.append("tr")
-    var cells = rows.append("td")
-    cells.text(s.stock)
-  });
-  
+  tbody.html("");
+
+  stockData.forEach((datarow) => {
+
+    var row = tbody.append("tr");
+
+    Object.entries(datarow).forEach(([key, value]) => {
+      console.log(key, value)
+        var cell = row.append('td');
+        cell.text(value)
+    });
+});
 }
 
 init()
@@ -183,6 +180,10 @@ function buildPlot() {
           
         var TSlayout = {
             title: 'GE Overview',
+            l=0,
+            r=0,
+            b=0,
+            t=0 
         }
 
         Plotly.newPlot('plot', TSdata, TSlayout);

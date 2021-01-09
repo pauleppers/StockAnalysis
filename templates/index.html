@@ -35,12 +35,10 @@
   <style>
   .frameimg {
     height: 200px;
-    background: lightblue;
   }
   .frameimg2 {
     height: 250px;
     width: 300px;
-    background-color: indigo;
   }  
   body {
   background-image: url('');
@@ -81,29 +79,16 @@
       <p>An Introduction to Predicting the Stock Market with Machine Learning</p>
       <h3>Stocks In Review</h3>
       <p>How do these stocks add up</p>
-      <table id="Stocks">
+      <table class="table table-striped" style="font-size: small;">
         <Thead>
           <tr>
-            <th>Stocks</th>
+            <th class="table-head">Symbol</th>
+            <th class="table-head">Stocks</th>
+            <th class="table-head">HQ</th>
           </tr>
         </Thead>
-        <tbody></tbody>
+        <tbody id="Stocks"></tbody>
       </table>
-      <!-- <ul class="nav nav-pills flex-column">
-        <li class="nav-item" id="stockList"> -->
-          <!-- <a class="nav-link active" href="#">Stock One</a> -->
-        <!-- </li> -->
-        <!-- <li class="nav-item" id="stock-2">
-          <a class="nav-link active" href="#">Stock Two</a>
-        </li>
-        <li class="nav-item" id="stock-3">
-          <a class="nav-link active" href="#">Stock Three</a>
-        </li>
-        <li class="nav-item" id="stock-4">
-          <a class="nav-link active" href="#">Stock Four</a>
-        </li> -->
-      </ul>
-      <hr class="d-sm-none">
     </div>
     <div class="col-sm-8">
       <h2>Nasdaq</h2>
@@ -111,29 +96,15 @@
       <div class="frameimg" id="plot-2">
           <img class="frameimg" src="static/nasdaq.png" alt="Place Holder"  width="750" height="300">
       </div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Investing money into the 2021 stock market is easier than ever, no longer requiring a broker or large sums of money, and even better, trade transactions have no fees thanks to Robin Hood.</p>
+      <p>Analysis of the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return and long term investments only have a 15% Federal Tax rate. With all these positives it should be no surprise that the wealth gap keeps increasing. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment.</p>
       <br>
       <h2>Stock Trend Analysis</h2>
       <h5>Quick Look</h5>
-      <div class="frameimg" id="plot-3">
-        <a href="https://airbus-h.assetsadobe2.com/is/image/content/dam/events/conference/press-conference/AirbusZEROe-Blended-Wing-Body-Concept.jpg?wid=1920&fit=fit,1&qlt=85,0">
-          <img class="frameimg" src="https://airbus-h.assetsadobe2.com/is/image/content/dam/events/conference/press-conference/AirbusZEROe-Blended-Wing-Body-Concept.jpg?wid=1920&fit=fit,1&qlt=85,0" alt="Place Holder"  width="350" height="300">
-        </a>
-        <a href="https://i2.wp.com/luxexpose.com/wp-content/uploads/2016/08/LuxExpose-Trifan600VTOL-7.jpg?fit=1200%2C800&ssl=1">
-          <img class="frameimg" src="https://i2.wp.com/luxexpose.com/wp-content/uploads/2016/08/LuxExpose-Trifan600VTOL-7.jpg?fit=1200%2C800&ssl=1" alt="Place Holder"  width="350" height="300">
-        </a>        
-      </div>
-      <div class="frameimg" id="plot-4">
-        <a href="https://lh3.googleusercontent.com/proxy/23zVewLiyBaTeRejGWbwCTDpzMmZxKOx_Qd25d-dhjmXoGiezJY2_4CH1OWLHffdbUh5UmmtOY8X4xP1OJI0XxEl3fO4Yci9ympCNJ1_HBHVpXbr_V2NJlFPR4pMYw3WU_1mx-7pY673OIDy">
-          <img class="frameimg" src="https://lh3.googleusercontent.com/proxy/23zVewLiyBaTeRejGWbwCTDpzMmZxKOx_Qd25d-dhjmXoGiezJY2_4CH1OWLHffdbUh5UmmtOY8X4xP1OJI0XxEl3fO4Yci9ympCNJ1_HBHVpXbr_V2NJlFPR4pMYw3WU_1mx-7pY673OIDy" alt="Place Holder"  width="350" height="300">
-        </a>
-        <a href="https://wallup.net/wp-content/uploads/2016/01/71623-space-planet-nebula.jpg">
-          <img class="frameimg" src="https://wallup.net/wp-content/uploads/2016/01/71623-space-planet-nebula.jpg" alt="Place Holder"  width="350" height="300">
-        </a>        
-      </div>      
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <div class="frameimg" id="plot2"></div>
+      <div class="frameimg" id="bar"></div>      
+      <p>A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in that category for the best stock. The expression “don’t put all your eggs in one basket” is one of the keys to investing.</p>
+      <p>The purpose of this project to compare several similar stocks in one category and determine which one is the best value. In our project, we will be comparing Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined.</p>
     </div>
   </div>
 </div>
@@ -149,6 +120,7 @@
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>    
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="static/js/stockdata.js"></script>
 <script src="static/js/main.js"></script>
 <script src="static/js/plots.js"></script>
 </body>
