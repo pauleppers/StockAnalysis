@@ -1,18 +1,16 @@
-# Display Historical Performance of Five Similar Stocks
+# Display Historical Performance of Five Similar Aerospace Industry Stocks
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
 ## Description
-Investing money into the 2021 stock market is easier than ever, no longer requiring a broker or large sums of money, and even better, trade transactions have no fees thanks to Robin Hood. 
+Investing money in today's 2021 stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on returns of stocks listed on the Nasdaq and Dow Jones exchanges show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a limited number of stocks. To help investors potentially increase their investment returns, our team has created one method to help choosing an investment. 
 
-Analysis of the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return and long term investments only have a 15% Federal Tax rate. With all these positives it should be no surprise that the wealth gap keeps increasing because wealthy people have their money invested in stocks. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment. Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ëHomeworkí.
+The expression ‚Äúdon‚Äôt put all your eggs in one basket‚Äù is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. Stock analyst Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ‚ÄòHomework‚Äô.
 
-A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. The expression ìdonít put all your eggs in one basketî is one of the recommended strategies to investing. 
-
-The purpose of this project is to compare several similar stocks in one category and determine which one is the best value. In our project, we will be comparing Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
+In our Project, we compared <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
 Several Graphs are used to compare the companies:
-1. Graph of historical values that allows user to select one of the companyís graph, with different ability for user to filter to one of the companies and values
+1. Graph of historical values that allows user to select one of the company‚Äôs graph, with different ability for user to filter to one of the companies and values
 
 2. Relative value analysis graph compares value of the stock in the market per period of time as a percent. All stocks start out at 0% return on day one.
 
@@ -44,7 +42,7 @@ Backend: Python is used to retrieve and make calculations, PgAdmin is used as th
 Frontend: HTML and JavaScript are used to display data.
 
 ## Limitations
-There are many options that already exist that do similar comparisons (https://www.marketbeat.com/compare-stocks/). The real advantage will be the machine learning part that doesnít currently exist.
+There are many options that already exist that do similar comparisons (https://www.marketbeat.com/compare-stocks/). The real advantage will be the machine learning part that doesn‚Äôt currently exist.
 
 ## Results/Analysis
 TBD
@@ -54,9 +52,6 @@ TBD
 1. You will need to get API Keys for the rapidapi and use yfinance.
 2. Run jupyter notebook stock.ipynb and creates PgAdmin database.
 3. Copy files and update .html files as needed
-
-
-Johnís references
 
 ## Machine learning
 Determining Buy and Sell Periods of Stock Using Several Inputs into a Random Forest
@@ -71,5 +66,6 @@ https://www.intmath.com/exponential-logarithmic-functions/dow-jones-industrial-a
 
 https://rapidapi.com/apidojo/api/yahoo-finance1
 
+https://github.com./pauleppers/StockAnalysis
 
 
