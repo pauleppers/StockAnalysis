@@ -1,15 +1,15 @@
-# Display Historical Performance of Five Similar Stocks
+# Display Historical Performance of Five Similar Aerospace Industry Stocks
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
 ## Description
-Investing money into the 2021 stock market is easier than ever, no longer requiring a broker or large sums of money, and even better, trade transactions have no fees thanks to Robin Hood. 
+Investing money in the 2021 stock market is easier than ever no longer requiring a broker or large sums of money, and even better, most trade transactions have nominal fees. 
 
-Analysis of the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return and long term investments only have a 15% Federal Tax rate. With all these positives it should be no surprise that the wealth gap keeps increasing because wealthy people have their money invested in stocks. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment. Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ‘Homework’.
+Analysis of indices based on returns of stock listed on the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return over many years of investing and long term investments only have a 15% Federal Tax rate. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment. Stock analyst Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ‘Homework’.
 
 A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. 
 
-The purpose of this project is to compare several similar stocks in one category and determine which one is the best value. In our project, we will be comparing Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
+The purpose of this Project is to compare several similar stocks in one category and determine which one is the best addition to a diversified portfolio. In our Project, we compare <strong> Boeing </strong> (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
 Several Graphs are used to compare the companies:
 1. Graph of historical values that allows user to select one of the company’s graph, with different ability for user to filter to one of the companies and values
