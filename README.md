@@ -3,9 +3,9 @@
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
 ## Description
-Investing money in today's 2021 stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on returns of stocks listed on the Nasdaq and Dow Jones exchanges show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a limited number of stocks. To help investors potentially increase their investment returns, our team has created one method to help choosing an investment. 
+Investing money in today's stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on returns of stocks listed on the Nasdaq and Dow Jones exchanges show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a limited number of stocks. To help investors potentially increase their investment returns, our team has created one method to help choosing an investment. 
 
-The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. Stock analyst Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ‘Homework’.
+The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. 
 
 In our Project, we compared <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
@@ -19,8 +19,7 @@ a. Need how the plot page is created how the dashboard was created
 
 3. Need to add another JavaScrip library, examples, allow user to add trend lines by hover and click, allow different filtering options.  
 
-Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points. This may be some type of dial indicator on what our algorithm predicts. 
-a. RSI, Bollinger, Moving Averages
+Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points. 
 
 b. Yearly returns
 
