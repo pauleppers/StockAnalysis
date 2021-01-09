@@ -1,28 +1,24 @@
-# Display Historical Performance of Five Similar Aerospace Industry Stocks
+# Display Historical Performance of Five Similar Stocks
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
-## Description
-Investing money in the 2021 stock market is easier than ever no longer requiring a broker or large sums of money, and even better, most trade transactions have nominal fees. 
+# Description
+As seen in a graph on our Project home page, the NASDAQ Average has shown expontential growth in recent years, and has brought new opportunities for stock investors.  However, investing money in today's stock market requires a sophisticated approach to building a stock portfolio. Analysis of indices based on Nasdaq or Dow Jones Industrial Average performance show that the return on diversified investments, such as Exchange Traded Funds (ETFs), could provide higher investment performance than investing solely in a more limited number of stocks. To help investors potentially increase their investment returns, our team has created a series of visualizations for analyzing stock historical performance and potential invesment returns. 
 
-Analysis of indices based on returns of stock listed on the Nasdaq and Dow Jones exchanges show that the return on Exchange Traded Fun (ETF) would return an exponential return over many years of investing and long term investments only have a 15% Federal Tax rate. To help the little guy gain access to some of this wealth our team has created one method to help choosing an investment. Stock analyst Jim Cramer recommends investing your first $10,000 in an ETF like but after that, an individual could return higher gains with some smart trading often called ëHomeworkí.
+The expression ‚Äúdon‚Äôt put all your eggs in one basket‚Äù is one of the recommended strategies to investing. A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. In this Project, we analyzed five similar aerospace stocks to determine which would be the best candidate to add to a diversified portfolio. We compared <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. 
 
-A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. The expression ìdonít put all your eggs in one basketî is one of the recommended strategies to investing. 
-
-The purpose of this Project is to compare several similar stocks in one category and determine which one is the best addition to a diversified portfolio. In our Project, we compare <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
+Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
 Several Graphs are used to compare the companies:
-1. Graph of historical values that allows user to select one of the companyís graph, with different ability for user to filter to one of the companies and values
+1. Graph of historical values that allows user to select one of the company‚Äôs graph, with different ability for user to filter to one of the companies and values
 
 2. Relative value analysis graph compares value of the stock in the market per period of time as a percent. All stocks start out at 0% return on day one.
 
 a. Need how the plot page is created how the dashboard was created
 
+3. Need to add another JavaScript library, examples, allow user to add trend lines by hover and click, allow different filtering options.  
 
-3. Need to add another JavaScrip library, examples, allow user to add trend lines by hover and click, allow different filtering options.  
-
-Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points. This may be some type of dial indicator on what our algorithm predicts. 
-a. RSI, Bollinger, Moving Averages
+Phase 2, in February Machine learning will be added to predict which stock will be the best investment of the 5 using various data points. 
 
 b. Yearly returns
 
@@ -44,7 +40,7 @@ Backend: Python is used to retrieve and make calculations, PgAdmin is used as th
 Frontend: HTML and JavaScript are used to display data.
 
 ## Limitations
-There are many options that already exist that do similar comparisons (https://www.marketbeat.com/compare-stocks/). The real advantage will be the machine learning part that doesnít currently exist.
+There are many options that already exist that do similar comparisons (https://www.marketbeat.com/compare-stocks/). The real advantage will be the machine learning part that doesn‚Äôt currently exist.
 
 ## Results/Analysis
 TBD
@@ -54,9 +50,6 @@ TBD
 1. You will need to get API Keys for the rapidapi and use yfinance.
 2. Run jupyter notebook stock.ipynb and creates PgAdmin database.
 3. Copy files and update .html files as needed
-
-
-Johnís references
 
 ## Machine learning
 Determining Buy and Sell Periods of Stock Using Several Inputs into a Random Forest
@@ -71,5 +64,6 @@ https://www.intmath.com/exponential-logarithmic-functions/dow-jones-industrial-a
 
 https://rapidapi.com/apidojo/api/yahoo-finance1
 
+https://github.com./pauleppers/StockAnalysis
 
 

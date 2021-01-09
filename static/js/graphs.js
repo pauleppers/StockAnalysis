@@ -34,7 +34,7 @@ var submit = d3.select("#combo")
 
 submit.on("click", function(d) {
   var stock = [];
-  console.log("utton clicked")
+  console.log("button clicked")
   var select = d3.select("#selDataset");
   d3.event.preventDefault();
   select.selectAll("option:checked").each(function() {
