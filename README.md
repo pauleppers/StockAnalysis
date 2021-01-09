@@ -9,7 +9,7 @@ Analysis of indices based on returns of stock listed on the Nasdaq and Dow Jones
 
 A diversified portfolio requires an individual to pick multiple categories and evaluate those companies in each category for the best stock. The expression “don’t put all your eggs in one basket” is one of the recommended strategies to investing. 
 
-The purpose of this Project is to compare several similar stocks in one category and determine which one is the best addition to a diversified portfolio. In our Project, we compare <strong> Boeing </strong> (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD). Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
+The purpose of this Project is to compare several similar stocks in one category and determine which one is the best addition to a diversified portfolio. In our Project, we compare <strong> Boeing (BA), Lockheed (LMT), Northern Grumman (NOC), Raytheon Technologies (RTX), and General Dynamics (GD) </strong>. Phase 1 offers users several visuals allowing our user to compare stocks. Phase 2 will incorporate machine learning with details yet to be determined. 
 
 Several Graphs are used to compare the companies:
 1. Graph of historical values that allows user to select one of the company’s graph, with different ability for user to filter to one of the companies and values
