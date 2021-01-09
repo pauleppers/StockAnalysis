@@ -179,11 +179,7 @@ function buildPlot() {
         var TSdata = [TStrace1, TStrace2];
           
         var TSlayout = {
-            title: 'GE Overview',
-            l=0,
-            r=0,
-            b=0,
-            t=0 
+            title: 'GE Overview'
         }
 
         Plotly.newPlot('plot', TSdata, TSlayout);
