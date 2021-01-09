@@ -53,7 +53,7 @@ submit.on("click", function(d) {
   // Build the plot with the new stock
   // buildHON(stock);
   // candlestick(stock);
-  // buildtable(stock)
+  buildtable(stock)
 })
   
 // var submit = d3.select("#combo2")
