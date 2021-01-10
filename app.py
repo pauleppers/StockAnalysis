@@ -9,7 +9,7 @@ from datetime import datetime as dt
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-# import stock as st
+import stock as st
 
 
 app = Flask(__name__)
@@ -101,9 +101,9 @@ class noc(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/GE')
+@app.route('/about')
 def page1():
-    return render_template('Index_Paul.html')
+    return render_template('about.html')
 
 @app.route('/Graphs')
 def pageHON():
