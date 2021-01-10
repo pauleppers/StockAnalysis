@@ -30,17 +30,26 @@ var chart;
   // console.log(stock)
 
 
-var submit = d3.select("#combo")
+var submit = d3.select("#combo");
 
-submit.on("click", function(d) {
-  var stock = [];
-  console.log("button clicked")
-  var select = d3.select("#selDataset");
-  d3.event.preventDefault();
-  select.selectAll("option:checked").each(function() {
-    
-    stock.push(this.value)
-    console.log(stock)  })
+function lineGraph() {
+
+
+var stock = [];
+console.log("button clicked")
+var select = d3.select("#selDataset");
+d3.event.preventDefault();
+select.selectAll("option:checked").each(function() {
+  
+  stock.push(this.value)
+  console.log(stock)  })
+buildtable(stock)
+}
+
+
+
+
+submit.on("click", lineGraph)
 
  
   // Select the input value from the form
@@ -53,8 +62,8 @@ submit.on("click", function(d) {
   // Build the plot with the new stock
   // buildHON(stock);
   // candlestick(stock);
-  buildtable(stock)
-})
+  
+// })
  /*********************************************************** */ 
 var submit = d3.select("#combo2")
 
@@ -345,7 +354,7 @@ am4core.ready(function() {
 
 ;
 }
-
+candlestick(["gd"])
 
 function buildHON(stock) {
     d3.json(stock).then((data) => {
@@ -682,7 +691,7 @@ selector.axis = dateAxis;
 })
 
 }
-
+buildtable(["ba", "rtx", "gd"])
 
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
