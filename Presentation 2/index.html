@@ -9,7 +9,6 @@
     <meta name="author" content="">
 
     <title>Stock Price Analysis</title>
-
     <!-- Bootstrap core CSS -->
     <link href="static/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -21,9 +20,14 @@
 
   </head>
 </style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
 <body id="page-top"></body>
    <div class="container-fluid">
-      <div class="jumbotron text-center mt-5 mb-5" style="background-color:lightblue;">
+      <div class="jumbotron text-center mt-5 mb-5" style="background-color:rgb(48, 119, 143);">
  
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
@@ -38,9 +42,7 @@
               <a class="nav-link" href="https://github.com/pauleppers/StockAnalysis">GitHub</a>
             </li>       
           </ul>
-        </div>
-      </div>
-    </nav>
+         </nav>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
@@ -50,42 +52,41 @@
             <a class="nav-link js-scroll-trigger" href="#intro">Introduction</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#section1">Gathering the Data</a>
+            <a class="nav-link js-scroll-trigger" href="#section1">Project Part 2A: Gathering the Data</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#section2">Project Part 2</a>
+            <a class="nav-link js-scroll-trigger" href="#section2">Project Part 2b: Data Analysis</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#section3">Project Part 3 </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#section4">Project Part 4</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#conclusion">Conclusion</a>
-          </li>
-        </ul>
+          </ul>
       </div>
     </nav>
 
     <header class="bg-primary text-white">
       <div class="container text-center">
         <h1>STOCK PRICE AND PERFORMANCE ANALYSIS</h1>
-        <p class="lead">An Introduction to Analyzing a Comparative Stock Portfolio using Data Visualizations and Machine Learning</p>
-        <!-- <p class="lead">By Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges</p> -->
-      </div>
+        <h3>An Introduction to Analyzing a Comparative Stock Portfolio using Data Visualizations<h3</p>
+        </div>
     </header>
 
     <section id="intro">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Goal of the Project(s):</h2>
-            <p class="lead">This is our final group project for the UNC-Chapel Hill data analytics bootcamp.</p> <li> We gathered stock price data (of General Electric and those of its direct competitors; all of which are large-cap U.S. equities).  We gathered the appropriate historical data for a chosen (3 year) period ending 12/31/20 (Project 2a).</p> <li> We then used various data coding methodologies to measure the relative performance of the chosen portfolio; against each other and an apppropriate large-cap equity market index (Project 2b).</p> 
-              <li>We then plan to determine which machine learning techniques are best at predicting financial data (Project 2c).</p>         
-            
-           <h2>Resources for the Project(s):</h2>
-
+            <h2>Project Goals:</h2>
+            <p class="lead"> This is the first part of our final group Project for the UNC-Chapel Hill Data Analytics Bootcamp.</p> <li> 
+              Project 2a: We gathered stock price data for five aeropspace stocks; all of which are large-cap U.S. equities. We sourced such data for a chosen (3 year) period ending 12/31/20.</h1><br>
+              <li> Project 2b: We then used various data coding methodologies to measure the relative performance of the chosen portfolio; against each other and an apppropriate large-cap equity market index.</h1> 
+              <li> Project 3:  We then plan to determine which machine learning techniques are best at predicting financial data and stock performance.</h1>
+           
+              <h2>Specific Project Objectives:</h2>
+              <li> Utilize search engines via APIs and use various information retrieval techniques for searching historical stock data.</h1><br>
+              <li> Use a web application to produce numeric summary tables of historical stock price, peformance and stock volume for the 3 year test period for the chosen portfolio.</h1><br>  
+              <li> Based on the preceding, provide a visualization of the historical and comparative performance of the 5 similar aerospace stocks.</h1><br>
+          
+                <h2>Project Resources:</h2>
            <p class="lead">The languages and tools used so far in this project include:</p>
               <li>HTML</li>
               <li>CSS</li>
@@ -95,97 +96,51 @@
                   <li>Bootstrap</li>
               <li>Heroku</li>
               <li>Python
-              <li>BeautifulSoup</li>
               <li>requests</li>
               <li>MySQLdb</li>
-              <li>quandl</li>
               <li>Matplotlib</li>
               <li>pandas</li>
                     </ul>
               </li>
-              <li>MySQL</li>
-            </ul>
-            </div>
-        </div>
-      </div>
-    </section>
+              </div>
+          </section>
 
     <section id="section1" class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Project 2a: Gathering the Data</h2>
-            <p class="lead">In this first step, we created a pipeline from our online data provider to our local MySQL database. We used BeautifulSoup and requests to scrape Yahoo for the ticker symbols of the Dow Jones Industrial Average/S&P500 stocks. We then queried our database for these symbols and used them with Quandl's API to download the historical pricing data for each symbol from 1/1/2000 to today. Finally, we queried our MySQL database for relevant stock data and converted it to a pandas DataFrame to use for further analysis.</p>
+            <p class="lead">Process Steps:</h1><br>
+              <li> Utilize search engines (https://import statsmodels.api and https://yahoo-finance-api) to use information retrieval techniques for searching historical stock data.</h1><br>
+              <li> We then queried our database for the stock symbols for our chosen stocks and used the APIs to download the historical price and volume data for each symbol from 1/1/2010 to 12/31/20.</h1><br>
+              <li> The stocks were also queried for a more recent three year period (2018-2020).</h1><br>
+              <li> We converted data to a pandas dataframe and coded the information in Junyper Notebook for further analysis.
+                       
+       <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Project 2b: Historical and Comparative Performance Analysis</h2>
+            <p class="lead">Process Steps:</h1><br>
+            <li> Used the web application to produce numeric summary tables of historical stock price, peformance and stock volume for the 3 year test period for the chosen portfolio.</h1><br>  
+            <li> Based on the preceding, provide a visualization of the historical performance of the 5 similar aerospace stocks.</h1><br>
+            <li> Based on the preceding, provide a visualization of the comparative performance of the 5 similar aerospace stocks.</h1><br><p class="lead">Our presentation can be found <a href="/Project 2b.html">here</a>.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="section2">
+           <section id="section3">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Project 2b: Comparative Performance Analysis</h2>
-            <p class="lead">Our presentation can be found <a href="/Project 2b.html">here</a>.</p>
+            <h2>Project 3: Machine Learning</h2>
+            <h4>Machine Learning (February 2021).</h4><p>
+            <p class="lead"Click href="nlp.html"> Presentation to be included in a future link.<a href="/Project 3.html">here</a>.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="section3" class="bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Project 2c: Plotting Time Series Data with Plotly and Quandl's API</h4>
-            <p class="lead">We specifically used a xxxxxx. Our code is <a href="/Project 2c.html">here</a>.</p>
-            <img src="images/Picture1.png">
-            <img src="images/Picture2.png">
-            <img src="images/Picture3.png">
-            <p class="lead">In the process, we made the following visualization.>here</a>.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <form class="form-inline">
-              <div class="form-group">
-                <input type="text" class="form-control" id="stockInput" placeholder="Enter a stock">
-              </div>
-              <button id="submit" type="submit" class="btn btn-default btn-dark">Plot Stock</button>
-            </form>
-            <div id="plot"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="section4">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Machine Learning</h2>
-            <h4>Project 3: Machine Learning.</h4>
-            <p>Ultimately, we decided to compare multivariate machine learning models like xxxxxxxx.</p>
-            <p class="lead"MClick <a href="nlp.html"> Go see our xxxxxx presentation <a href="/Project 3.html">here</a>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="conclusion">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Conclusion</h2>
-            <p class="lead">Content to be determined.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
+     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">By Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges</p>
       </div>
       <!-- /.container -->
     </footer>
@@ -204,5 +159,4 @@
     <script src="static/js/plots.js"></script>
 
   </body>
-
 </html>
