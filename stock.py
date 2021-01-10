@@ -16,7 +16,7 @@ def getData(stock):
     # stock = "ge"
     # GE;lmt,ba,rtn,fwb,hon
     # didn't work - rtn, fwb
-    time = "1y"
+    time = "5y"
     #querystring = {"region":"US","q":"DE"}
     #  range are 1D, 5D, 1M, 6M, YTD, 1y, 5y, Max  I think are lower case
 

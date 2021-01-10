@@ -24,32 +24,29 @@ var chart;
 // var select = d3.select("#selDataset");
 // select.on("event", function (d) {
 //   var stock = [];
-//   selected = d3.select(this)
+//   select = d3.select(this)
   // .selectAll("option:checked")
   // .each(function() { stock.push(this.value)  })
   // console.log(stock)
 
 
-var submit = d3.select("#combo");
+// var submit = d3.select("#combo2");
 
-function lineGraph() {
+// function lineGraph() {
 
 
-var stock = [];
-console.log("button clicked")
-var select = d3.select("#selDataset");
-d3.event.preventDefault();
-select.selectAll("option:checked").each(function() {
+// var stock = [];
+// console.log("button clicked")
+// var select = d3.select("#selDataset2");
+// d3.event.preventDefault();
+// select.selectAll("option:checked").each(function() {
   
-  stock.push(this.value)
-  console.log(stock)  })
-buildtable(stock)
-}
+//   stock.push(this.value)
+//   console.log(stock)  })
+//   candlestick(stock);
+// }
 
-
-
-
-submit.on("click", lineGraph)
+// submit.on("click", lineGraph)
 
  
   // Select the input value from the form
@@ -65,12 +62,12 @@ submit.on("click", lineGraph)
   
 // })
  /*********************************************************** */ 
-var submit = d3.select("#combo2")
+var submit = d3.select("#combo")
 
 submit.on("click", function(d) {
   var stock = [];
   console.log("utton clicked")
-  var select = d3.select("#selDataset2");
+  var select = d3.select("#selDataset");
   d3.event.preventDefault();
   select.selectAll("option:checked").each(function() {
     
@@ -79,7 +76,67 @@ submit.on("click", function(d) {
 
   // Build the plot with the new stock
   // buildHON(stock);
-  candlestick(stock);
+  buildtable(stock)
+})
+/***************************************************************************** */
+ /*********************************************************** */ 
+ var submit = d3.select("#combo2")
+
+ submit.on("click", function(d) {
+   var stock = [];
+   console.log("utton clicked")
+   var select = d3.select("#selDataset2");
+   d3.event.preventDefault();
+   select.selectAll("option:checked").each(function() {
+     
+     stock.push(this.value)
+     console.log(stock)  })
+    //   var stock = [];
+    //  select.on("event", function (d) {
+    //     select = d3.select("#selDataset2")
+    //     .selectAll("option:checked")
+    //     .each(function() { stock.push(this.value)  })
+
+   // Build the plot with the new stock
+   // buildHON(stock);
+   candlestick(stock)
+ })
+ /***************************************************************************** */
+
+
+var submit = d3.select("#combo3")
+
+submit.on("click", function(d) {
+  var stock = [];
+  // console.log("utton clicked")
+  var select = d3.select("#selDataset3");
+  d3.event.preventDefault();
+  select.selectAll("option:checked").each(function() {
+    
+    stock.push(this.value)
+    console.log(stock)  })
+
+  // Build the plot with the new stock
+  // buildHON(stock);
+  // candlestick(stock);
+  varianceIndi(stock);
+})
+/***************************************************************************** */
+var submit = d3.select("#colorChart")
+
+submit.on("click", function(d) {
+  var stock = [];
+  // console.log("utton clicked")
+  var select = d3.select("#selDataset4");
+  d3.event.preventDefault();
+  select.selectAll("option:checked").each(function() {
+    
+    stock.push(this.value)
+    console.log(stock)  })
+
+  // Build the plot with the new stock
+
+  colorFill(stock);
 })
 /***************************************************************************** */
 
@@ -127,7 +184,7 @@ submit.on("click", function(d) {
 
 function candlestick(stock){
   var stockinput=stock.toString()
-  console.log(stockinput)
+  // console.log(stockinput)
   var url = "/api/stocks/" + stockinput
   d3.json(url).then((data) => {
 
@@ -143,6 +200,7 @@ function candlestick(stock){
 am4core.ready(function() {
 
   // Themes begin
+  am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
   // Themes end
 
@@ -548,7 +606,7 @@ function buildHON(stock) {
 
 function buildtable(stock){
   var stockinput=stock.toString()
-  console.log(stockinput)
+  // console.log(stockinput)
   var url = "/api/stocks/" + stockinput
   d3.json(url).then((data) => {
     // console.log(data)
@@ -575,7 +633,8 @@ function buildtable(stock){
 am4core.ready(function() {
   
 // Themes begin
-am4core.useTheme(am4themes_material);
+// am4core.useTheme(am4themes_material);
+am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 // Themes end
   
@@ -691,7 +750,305 @@ selector.axis = dateAxis;
 })
 
 }
-buildtable(["ba", "rtx", "gd"])
+buildtable(["ba", "rtx", "lmt"])
+
+
+
+function varianceIndi(stock){
+  var stockinput=stock.toString()
+  console.log(stockinput)
+  var url = "/api/stocks/" + stockinput
+  d3.json(url).then((data) => {
+
+
+    console.log(data)
+
+    perform = [] 
+    stock.forEach(element => {
+      
+      perform=data[element]
+    }) 
+
+
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv3", am4charts.XYChart);
+
+// Add data
+chart.data =perform 
+// [{
+//   "year": "2011",
+//   "value": 600000
+// }, {
+//   "year": "2012",
+//   "value": 900000
+// }, {
+//   "year": "2013",
+//   "value": 180000
+// }, {
+//   "year": "2014",
+//   "value": 600000
+// }, {
+//   "year": "2015",
+//   "value": 350000
+// }, {
+//   "year": "2016",
+//   "value": 600000
+// }, {
+//   "year": "2017",
+//   "value": 670000
+// }];
+
+// Populate data
+for (var i = 0; i < (chart.data.length - 1); i++) {
+  chart.data[i].valueNext = chart.data[i + 1].value;
+  console.log(chart.data[i].value)
+}
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "date";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.min = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "open";
+series.dataFields.categoryX = "date";
+
+// Add series for showing variance arrows
+var series2 = chart.series.push(new am4charts.ColumnSeries());
+series2.dataFields.valueY = "valueNext";
+series2.dataFields.openValueY = "value";
+series2.dataFields.categoryX = "date";
+series2.columns.template.width = 1;
+series2.fill = am4core.color("#555");
+series2.stroke = am4core.color("#555");
+
+// Add a triangle for arrow tip
+var arrow = series2.bullets.push(new am4core.Triangle);
+arrow.width = 10;
+arrow.height = 10;
+arrow.horizontalCenter = "middle";
+arrow.verticalCenter = "top";
+arrow.dy = -1;
+
+// Set up a rotation adapter which would rotate the triangle if its a negative change
+arrow.adapter.add("rotation", function(rotation, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 180 : rotation;
+});
+
+// Set up a rotation adapter which adjusts Y position
+arrow.adapter.add("dy", function(dy, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 1 : dy;
+});
+
+// Add a label
+var label = series2.bullets.push(new am4core.Label);
+label.padding(10, 10, 10, 10);
+label.text = "";
+label.fill = am4core.color("#0c0");
+label.strokeWidth = 0;
+label.horizontalCenter = "middle";
+label.verticalCenter = "bottom";
+label.fontWeight = "bolder";
+
+// Adapter for label text which calculates change in percent
+label.adapter.add("textOutput", function(text, target) {
+  var percent = getVariancePercent(target.dataItem);
+  return percent ? percent + "%" : text;
+});
+
+// Adapter which shifts the label if it's below the variance column
+label.adapter.add("verticalCenter", function(center, target) {
+  return getVariancePercent(target.dataItem) < 0 ? "top" : center;
+});
+
+// Adapter which changes color of label to red
+label.adapter.add("fill", function(fill, target) {
+  return getVariancePercent(target.dataItem) < 0 ? am4core.color("#c00") : fill;
+});
+
+function getVariancePercent(dataItem) {
+  if (dataItem) {
+    var value = dataItem.valueY;
+    var openValue = dataItem.openValueY;
+    var change = value - openValue;
+    return Math.round(change / openValue * 100);
+  }
+  return 0;
+}
+
+}); // end am4core.ready()
+  })
+}
+
+// varianceIndi(["lmt"])
+
+
+
+function colorFill(stock){
+  var stockinput=stock.toString()
+  console.log(stockinput)
+  var url = "/api/stocks/" + stockinput
+  d3.json(url).then((data) => {
+
+
+    console.log(data)
+
+    results = [] 
+    stock.forEach(element => {
+      
+      results=data[element]
+    }) 
+
+
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_dark);
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv4", am4charts.XYChart);
+
+chart.data = results
+//  [{ date: 1577743200000, open: 122, close: 104 },
+// { date: 1577829600000, open: 121, close: 70 },
+// { date: 1577916000000, open: 101, close: 55 },
+
+
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.grid.template.location = 0;
+dateAxis.renderer.minGridDistance = 60;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+
+// only for the legend
+var iconSeries = chart.series.push(new am4charts.ColumnSeries())
+iconSeries.fill = am4core.color("#ec0800");
+iconSeries.strokeOpacity = 0;
+iconSeries.stroke = am4core.color("#ec0800");
+iconSeries.name = "Events";
+iconSeries.dataFields.dateX = "date";
+iconSeries.dataFields.valueY = "v";
+
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.dateX = "date";
+series.dataFields.openValueY = "open";
+series.dataFields.valueY = "close";
+series.tooltipText = "open: {openValueY.value} close: {valueY.value}";
+series.sequencedInterpolation = true;
+series.stroke = am4core.color("#1b7cb3");
+series.strokeWidth = 2;
+series.name = "District Metered Usage";
+series.stroke = chart.colors.getIndex(0);
+series.fill = series.stroke;
+series.fillOpacity = 0.8;
+
+var bullet = series.bullets.push(new am4charts.CircleBullet())
+bullet.fill = new am4core.InterfaceColorSet().getFor("background");
+bullet.fillOpacity = 1;
+bullet.strokeWidth = 2;
+bullet.circle.radius = 4;
+
+var series2 = chart.series.push(new am4charts.LineSeries());
+series2.dataFields.dateX = "date";
+series2.dataFields.valueY = "open";
+series2.sequencedInterpolation = true;
+series2.strokeWidth = 2;
+series2.tooltip.getFillFromObject = false;
+series2.tooltip.getStrokeFromObject = true;
+series2.tooltip.label.fill = am4core.color("#000");
+series2.name = "SP Aggregate usage";
+series2.stroke = chart.colors.getIndex(7);
+series2.fill = series2.stroke;
+
+var bullet2 = series2.bullets.push(new am4charts.CircleBullet())
+bullet2.fill = bullet.fill;
+bullet2.fillOpacity = 1;
+bullet2.strokeWidth = 2;
+bullet2.circle.radius = 4;
+
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.xAxis = dateAxis;
+chart.scrollbarX = new am4core.Scrollbar();
+
+var negativeRange;
+
+// create ranges
+var negativeRange;
+
+// create ranges
+chart.events.on("datavalidated", function() {
+  series.dataItems.each(function(s1DataItem) {
+    var s1PreviousDataItem;
+    var s2PreviousDataItem;
+
+    var s2DataItem = series2.dataItems.getIndex(s1DataItem.index);
+
+    if (s1DataItem.index > 0) {
+      s1PreviousDataItem = series.dataItems.getIndex(s1DataItem.index - 1);
+      s2PreviousDataItem = series2.dataItems.getIndex(s1DataItem.index - 1);
+    }
+
+    var startTime = am4core.time.round(new Date(s1DataItem.dateX.getTime()), dateAxis.baseInterval.timeUnit, dateAxis.baseInterval.count).getTime();
+
+    // intersections
+    if (s1PreviousDataItem && s2PreviousDataItem) {
+      var x0 = am4core.time.round(new Date(s1PreviousDataItem.dateX.getTime()), dateAxis.baseInterval.timeUnit, dateAxis.baseInterval.count).getTime() + dateAxis.baseDuration / 2;
+      var y01 = s1PreviousDataItem.valueY;
+      var y02 = s2PreviousDataItem.valueY;
+
+      var x1 = startTime + dateAxis.baseDuration / 2;
+      var y11 = s1DataItem.valueY;
+      var y12 = s2DataItem.valueY;
+
+      var intersection = am4core.math.getLineIntersection({ x: x0, y: y01 }, { x: x1, y: y11 }, { x: x0, y: y02 }, { x: x1, y: y12 });
+
+      startTime = Math.round(intersection.x);
+    }
+
+    // start range here
+    if (s2DataItem.valueY > s1DataItem.valueY) {
+      if (!negativeRange) {
+        negativeRange = dateAxis.createSeriesRange(series);
+        negativeRange.date = new Date(startTime);
+        negativeRange.contents.fill = series2.fill;
+        negativeRange.contents.fillOpacity = 0.8;
+      }
+    }
+    else {
+      // if negative range started
+      if (negativeRange) {
+        negativeRange.endDate = new Date(startTime);
+      }
+      negativeRange = undefined;
+    }
+    // end if last
+    if (s1DataItem.index == series.dataItems.length - 1) {
+      if (negativeRange) {
+        negativeRange.endDate = new Date(s1DataItem.dateX.getTime() + dateAxis.baseDuration / 2);
+        negativeRange = undefined;
+      }
+    }
+  })
+})
+
+}); // end am4core.ready()
+
+})
+}
+colorFill(["noc"])
 
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
