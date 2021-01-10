@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
+</style>
+<body>
+   <div class="container-fluid">
+   <div class="jumbotron text-center mt-5 mb-5" style="background-color:rgb(34, 76, 90);">
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Project 2: Stock Analysis using Heroku   /</a>
+    <a href="#home" class="w3-bar-item w3-button">Project 3: Machine Learning</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">Summary</a>
+      <a href="#menu" class="w3-bar-item w3-button">Analysis</a>
+      <a href="#contact" class="w3-bar-item w3-button">Results</a>
+    </div>
+  </div>
+</div>
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1400px;min-width:500px" id="home">
+  <img class="w3-image" src="static/images/stock_header3.jpg" alt="Hamburger Catering" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge">Evaluating S&P 500 Stock Performance Data</h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="static/images/Summary2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+          <div class="w3-col m6 w3-padding-large">
+           <h1 class="w3-center">Summary</h1><br>
+           <h5 class="w3-center">Brief Description</h5>
+          <!--<h5 class="w3-center">Tradition since 1889</h5>-->
+           <h5 class="w3-center">Determining Relative Value of 5 Similar Stocks (using Historical Stock Data).</h5>
+          <p class="w3-large w3-text-black"> 
+            Project Objectives:</h1><br>
+            •	Utilize search engines (https://import statsmodels.api and https://yahoo-finance-api) to use information retrieval techniques for searching historical stock data.</h1><br>
+            •	Use a web application to produce numeric summary tables of historical stock price, peformance and stock volume for the 3 year test period for the chosen portfolio.</h1><br>  
+            • Based on the preceding, provide a visualization of the historical performance of the 5 similar aerospace stocks.</h1><br>
+          <p class="w3-large w3-text-black w3-hide-medium"></h1><br> 
+       </div>
+  <hr>
+   <!-- K-Value Selection -->
+  <div class="w3-row w3-padding-64" id="about">
+    <h1 class="w3-center">Comparative Value Analysis</h1><br>
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <h5 class="w3-center">Comparative Stock Peformance</h5>
+     <img src="static/images/k_plot.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+       
+    !<div class="w3-col m6 w3-padding-large">
+         <h5 class="w3-center">Brief Description</h5>
+         <!--<h5 class="w3-center">Tradition since 1889</h5>-->
+         <p class="w3-large">
+           • Determining Relative Value of a Portfolio of Similar Stocks.</h1><br>
+           • Determine the correlation of the five stocks to each other and a market index. </h1><br>    
+          </div>
+
+       <div class="w3-col l6 w3-padding-large">
+       <h5>Correlation of 5 stocks to each other</h5>
+      <p class="w3-text-black">See Portofolio Correlation Heatmap</p>
+       The attached heatmap shows that of the five stocks, Northrup Grumman has the weakest correlation to the other 5 companies, due to its high variance.
+      <h5>Correlation of 5 stocks to DJIA</h5>
+      <p class="w3-text-black">While we did not run individual stocks against the market risk of the consolidated market (which is referred to as beta), we ran the returns of the consolidated five stocks against the more industrial focused Dow Jones Industrial Average (DJIA). The consolidated portfolio only showed a correlation (R squared) with the DJIA of 58.8% over the last three years. See "Portfolio Correlation Analysis.ipynb" in the referenced Github link/file for more detail.
+        
+       <h5>Correlation of 5 stocks to Aerospace ETF</h5>
+      <p class="w3-text-black">Visualization of Final Layout:A measurement of x</p>
+      We ran the returns of the consolidated five stocks against the returns of an aerospace industry ETF, the iShares U.S. Aerospace & Defense Fund (ITA). The consolidated portfolio only showed a correlation (R squared) with the ITA of 41.5% over the last three years. See "Portfolio Correlation Analysis.ipynb" in the referenced Github link/file for more detail.
+    </div>
+    <div class="w3-col l6 w3-padding-large">
+      <!--<h1 class="w3-center">Correlation Matrix</h1><br>-->
+
+      <h5 class="w3-center">Comparative Performance Matrix</h5>
+     Data Visualizations
+     <img src="static/images/Portfolio Correlation Heatmap.png" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+     <img src="static/images/GE Yearly Stock Returns 2010-2020.png" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+      <img src="static/images/GE Stock Moving Average 2010-2020.png" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+    <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1 class="w3-center">Results</h1>
+    <div class="w3-row w3-padding-64" id="about">
+            <div class="w3-col m6 w3-padding-large w3-hide-small">
+              <h5 class="w3-center">Basis for Recommendation</h5>
+              Out of the five analyzed stocks, we will add the one to a diversified portfolio that has shown the greatest profits over the last three years (2018 to YE 2020) and has the smallest correlation with the approprriate market or industry index.    <img src="static/images/results.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+            </div>
+            <div class="w3-col m6 w3-padding-large">
+              <h5 class="w3-center">Discussion</h5>
+              <p class="w3-large"> This low correlation of the five selected stocks to the DJIA and ITA indicates that there may be some diverisification benefits to adding an aerospace stock to a larger more diversified portfolio. 
+              </p>
+              <p class="w3-large w3-text-black w3-hide-medium"></p>
+             </div>
+          </div>
+<!-- End page content -->
+</div>
+</body>
+</html>
+   
+  
+
