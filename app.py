@@ -96,6 +96,8 @@ class noc(db.Model):
     date_time = db.Column(db.DateTime)   
     date = db.Column(db.String)
     symbol = db.Column(db.String)  
+    
+ 
 
 @app.route('/')
 def index():
@@ -137,6 +139,8 @@ def getStocks(stockList):
             currentStock =db.session.query(hon)
         if stock == "noc":
             currentStock = db.session.query(noc)
+        # if stock == "dow":
+        #     currentStock = db.session.query(dow)
 
         print(currentStock)
 
@@ -311,6 +315,9 @@ def getNOC():
         data.append(item)
 
     return jsonify(data)
+
+
+
 
 # @route("/notebook")
 # def notebook():

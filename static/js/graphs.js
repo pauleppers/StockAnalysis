@@ -210,7 +210,7 @@ am4core.ready(function() {
   // Load data
   
   
-  console.log(result);
+  // console.log(result);
   
   chart.data = result;
   // chart.dataSource.parser = new am4core.CSVParser();
@@ -1043,6 +1043,46 @@ chart.events.on("datavalidated", function() {
 })
 }
 // colorFill(["noc"])
+
+/*************Start of wordCloud function****************************************************************************************** */
+// am4core.ready(function() {
+
+//   // Themes begin
+//   am4core.useTheme(am4themes_dark);
+//   am4core.useTheme(am4themes_animated);
+//   // Themes end
+  
+//   var chart = am4core.create("chartdiv5", am4plugins_wordCloud.WordCloud);
+//   var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+  
+//   series.accuracy = 4;
+//   series.step = 15;
+//   series.rotationThreshold = 0.7;
+//   series.maxCount = 200;
+//   series.minWordLength = 2;
+//   series.labels.template.margin(6,6,6,6);
+//   series.maxFontSize = am4core.percent(45);
+  
+//   series.text = "stockData Symbol BA Company, Boeing Co, Headquarters Chicago IL LMT Lockheed Martin Bethesda MD NOC Northrop Grumman, Falls Church, VA RTX Raytheon Technologies Waltham MA GD [General Dynamics] Reston VA HON Honeywell Charlotte NC."; 
+  
+//   series.colors = new am4core.ColorSet();
+//   series.colors.passOptions = {}; // makes it loop
+  
+//   //series.labelsContainer.rotation = 45;
+//   series.angles = [0,-90];
+//   series.fontWeight = "700"
+  
+//   setInterval(function () {
+//     series.dataItems.getIndex(Math.round(Math.random() * (series.dataItems.length - 1))).setValue("value", Math.round(Math.random() * 10));
+//    }, 10000)
+  
+//   }); // end am4core.ready()
+
+/**************end of wordCloud function *************************** */
+
+
+
+
 
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
