@@ -109,6 +109,10 @@ def page1():
 def pageHON():
     return render_template('graphs.html')
 
+@app.route('/recommendation')
+def recom():
+    return render_template('recommendation.html')
+
 @app.route('/getstock/<stock>')
 def getStock(stock):
     st.getData(stock)
