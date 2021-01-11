@@ -94,63 +94,60 @@
 
   <div class="container">
     <div class="row">
-      <div class="lg-2">
-        <div class="column">
-          <form class="form-inline">
-            <button id="combo2" type="submit" style="margin-left:10px; margin-top: 10px"
-              class="btn btn-outline-info">Plot Stock</button>
-          </form>
-          <div>
-            <select multiple id="selDataset2" style="padding-right: 10px; margin-left: 20px; margin-top: 10px">
-              <option value="hon">HON</option>
-              <option value="gd">GD</option>
-              <option value="ba">BA</option>
-              <option value="rtx">RTX</option>
-              <option value="lmt">LMT</option>
-              <option value="noc">NOC</option>
-            </select>
-          </div>
-          <div id="controls" style="width: 100%; overflow: hidden;">
-            <div style="float: left; margin-left: 15px;">
-              From: <input type="text" id="fromfield" class="amcharts-input" />
-              To: <input type="text" id="tofield" class="amcharts-input" />
-            </div>
-            <div style="float: right; margin-right: 15px;">
-              <button id="b1m" class="amcharts-input">1m</button>
-              <button id="b3m" class="amcharts-input">3m</button>
-              <button id="b6m" class="amcharts-input">6m</button>
-              <button id="b1y" class="amcharts-input">1y</button>
-              <button id="bytd" class="amcharts-input">YTD</button>
-              <button id="bmax" class="amcharts-input">MAX</button>
-            </div>
-          </div>
-          <div id="chartdiv"></div>
+      <div class="col-xl-6">
+        <form class="form-inline">
+          <button id="combo2" type="submit" style="margin-left:10px; margin-top: 10px" class="btn btn-outline-info">Plot
+            Stock</button>
+        </form>
+        <div>
+          <select multiple id="selDataset2" style="padding-right: 10px; margin-left: 20px; margin-top: 10px">
+            <option value="hon">HON</option>
+            <option value="gd">GD</option>
+            <option value="ba">BA</option>
+            <option value="rtx">RTX</option>
+            <option value="lmt">LMT</option>
+            <option value="noc">NOC</option>
+          </select>
         </div>
+        <div id="controls" style="width: 100%; overflow: hidden;">
+          <div style="float: left; margin-left: 15px;">
+            From: <input type="text" id="fromfield" class="amcharts-input" />
+            To: <input type="text" id="tofield" class="amcharts-input" />
+          </div>
+          <div style="float: right; margin-right: 15px;">
+            <button id="b1m" class="amcharts-input">1m</button>
+            <button id="b3m" class="amcharts-input">3m</button>
+            <button id="b6m" class="amcharts-input">6m</button>
+            <button id="b1y" class="amcharts-input">1y</button>
+            <button id="bytd" class="amcharts-input">YTD</button>
+            <button id="bmax" class="amcharts-input">MAX</button>
+          </div>
+        </div>
+        <div id="chartdiv"></div>
       </div>
+      <br></br>
 
-      <div class="lg-2">
-        <div class="column">
-          <form class="form-inline">
-            <button id="combo" type="submit" style="margin-left:10px; margin-top: 10px"
-              class="btn btn-outline-info">Plot
-              Stock</button>
-          </form>
-          <div>
-            <select multiple id="selDataset" style="padding-right: 10px; margin-left: 10px; margin-top: 10px">
-              <option value="hon">HON</option>
-              <option value="gd">GD</option>
-              <option value="ba">BA</option>
-              <option value="rtx">RTX</option>
-              <option value="lmt">LMT</option>
-              <option value="noc">NOC</option>
-            </select>
-          </div>
-          <div id="controls2" style="width: 100%; overflow: hidden;">
-            <div style="float: left; margin-left: 15px;">
-            </div>
-          </div>
-          <div id="chartdiv2"></div>
+      
+      <div class="col-xl-6">
+        <form class="form-inline">
+          <button id="combo" type="submit" style="margin-left:10px; margin-top: 10px" class="btn btn-outline-info">Plot
+            Stock</button>
+        </form>
+        <div>
+          <select multiple id="selDataset" style="padding-right: 10px; margin-left: 10px; margin-top: 10px">
+            <option value="hon">HON</option>
+            <option value="gd">GD</option>
+            <option value="ba">BA</option>
+            <option value="rtx">RTX</option>
+            <option value="lmt">LMT</option>
+            <option value="noc">NOC</option>
+          </select>
         </div>
+        <div id="controls2" style="width: 100%; overflow: hidden;">
+          <div style="float: left; margin-left: 15px;">
+          </div>
+        </div>
+        <div id="chartdiv2"></div>
       </div>
     </div>
   </div>

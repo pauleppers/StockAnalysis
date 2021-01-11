@@ -189,7 +189,7 @@ function candlestick(stock){
   d3.json(url).then((data) => {
 
 
-    console.log(data)
+    // console.log(data)
 
     result = [] 
     stock.forEach(element => {
@@ -761,7 +761,7 @@ function varianceIndi(stock){
   d3.json(url).then((data) => {
 
 
-    console.log(data)
+    // console.log(data)
 
     perform = [] 
     stock.forEach(element => {
@@ -790,19 +790,10 @@ chart.data =perform
 // }, {
 //   "year": "2013",
 //   "value": 180000
-// }, {
-//   "year": "2014",
-//   "value": 600000
-// }, {
-//   "year": "2015",
-//   "value": 350000
-// }, {
-//   "year": "2016",
-//   "value": 600000
-// }, {
-//   "year": "2017",
-//   "value": 670000
 // }];
+
+// dateAxis.groupData = true
+// date.groupCount = 60
 
 // Populate data
 for (var i = 0; i < (chart.data.length - 1); i++) {
@@ -930,6 +921,9 @@ var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
 dateAxis.renderer.grid.template.location = 0;
 dateAxis.renderer.minGridDistance = 60;
 
+dateAxis.groupData = true
+dateAxis.groupCount = 120
+
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.tooltip.disabled = true;
 
@@ -1048,7 +1042,7 @@ chart.events.on("datavalidated", function() {
 
 })
 }
-colorFill(["noc"])
+// colorFill(["noc"])
 
 // function buildRel(stock) {
 //   d3.json(stock).then((data) =>{ 
