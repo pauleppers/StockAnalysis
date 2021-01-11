@@ -105,10 +105,7 @@ def index():
 def page1():
     return render_template('about.html')
 	
-@app.route('/summary')
-def page1():
-    return render_template('summary.html')
-	
+
 @app.route('/Graphs')
 def pageHON():
     return render_template('graphs.html')
