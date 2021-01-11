@@ -13,7 +13,7 @@ h1,h2,h3,h4,h5,h6 {
 </style>
 <body>
    <div class="container-fluid">
-   <div class="jumbotron text-center mt-5 mb-5" style="background-color:rgb(34, 76, 90);">
+   <div class="jumbotron text-center mt-5 mb-5" style="background-color:rgb(48, 119, 143);">
 
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
@@ -32,58 +32,52 @@ h1,h2,h3,h4,h5,h6 {
 <header class="w3-display-container w3-content w3-wide" style="max-width:1400px;min-width:500px" id="home">
   <img class="w3-image" src="static/images/stock_header3.jpg" alt="Hamburger Catering" width="1600" height="800">
   <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-    <h1 class="w3-xxlarge">Evaluating S&P 500 Stock Performance Data</h1>
+    <h1 class="w3-large">Evaluation of Stock Performance</h1>
   </div>
 </header>
-
 <!-- Page content -->
 <div class="w3-content" style="max-width:1100px">
-
   <!-- About Section -->
   <div class="w3-row w3-padding-64" id="about">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
      <img src="static/images/Summary2.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
     </div>
-
           <div class="w3-col m6 w3-padding-large">
            <h1 class="w3-center">Summary</h1><br>
-           <h5 class="w3-center">Brief Description</h5>
+           <h5 class="w3-center">Brief Description</h1>
           <!--<h5 class="w3-center">Tradition since 1889</h5>-->
            <h5 class="w3-center">Determining Relative Value of 5 Similar Stocks (using Historical Stock Data).</h5>
           <p class="w3-large w3-text-black"> 
-            Project Objectives:</h1><br>
-            •	Utilize search engines (https://import statsmodels.api and https://yahoo-finance-api) to use information retrieval techniques for searching historical stock data.</h1><br>
-            •	Use a web application to produce numeric summary tables of historical stock price, peformance and stock volume for the 3 year test period for the chosen portfolio.</h1><br>  
-            • Based on the preceding, provide a visualization of the historical performance of the 5 similar aerospace stocks.</h1><br>
-          <p class="w3-large w3-text-black w3-hide-medium"></h1><br> 
-       </div>
+      </div>
   <hr>
    <!-- K-Value Selection -->
   <div class="w3-row w3-padding-64" id="about">
     <h1 class="w3-center">Comparative Value Analysis</h1><br>
     <div class="w3-col m6 w3-padding-large w3-hide-small">
      <h5 class="w3-center">Comparative Stock Peformance</h5>
+     It is difficult based on the limited analytics performed, to determine which stock provides the best investment opportunity. In terms of overall stock price growth, Northrup Grumman has shown the greatest increase going from $51 at the beginning of 2010 to $301 per share at the end of 2020. In contrast, Ratheon Technologies's stock only has gone from $44 to $70 during that time period. However, while the entire sector has shown growth, the rates of growth have been highly different per stock, with significant movement variances for all stocks in the sector's up versus down years. In addition, the entire sector may be overpriced due to the rapid appreciation of the stock market in recent years. Thus, further fundamential analysis of a company's earnings and a technical analysis of its price vs. recent and historical averages, would have to be done before recommending a stock in this sector.
      <img src="static/images/k_plot.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
     </div>
-       
     !<div class="w3-col m6 w3-padding-large">
-         <h5 class="w3-center">Brief Description</h5>
+         <h5 class="w5-center">Analysis Points</h5>
          <!--<h5 class="w3-center">Tradition since 1889</h5>-->
          <p class="w3-large">
-           • Determining Relative Value of a Portfolio of Similar Stocks.</h1><br>
-           • Determine the correlation of the five stocks to each other and a market index. </h1><br>    
+           • Determining Relative Value of a Portfolio of Similar Stocks.</h2><br>
+           • Determine the correlation of the five stocks to each other and a market index. </h2><br>    
           </div>
 
        <div class="w3-col l6 w3-padding-large">
        <h5>Correlation of 5 stocks to each other</h5>
-      <p class="w3-text-black">See Portofolio Correlation Heatmap</p>
-       The attached heatmap shows that of the five stocks, Northrup Grumman has the weakest correlation to the other 5 companies, due to its high variance.
-      <h5>Correlation of 5 stocks to DJIA</h5>
-      <p class="w3-text-black">While we did not run individual stocks against the market risk of the consolidated market (which is referred to as beta), we ran the returns of the consolidated five stocks against the more industrial focused Dow Jones Industrial Average (DJIA). The consolidated portfolio only showed a correlation (R squared) with the DJIA of 58.8% over the last three years. See "Portfolio Correlation Analysis.ipynb" in the referenced Github link/file for more detail.
+        The attached heatmap shows that of the five stocks, Northrup Grumman has the weakest correlation to the other 5 companies, due to its high variance.</h1><br>
+        <li> See Visualization in "Portfolio Correlation Heatmap gragh" in the Aerospace Stock Analysis Returns.ipynb in the referenced Github link/file for more details.
+        
+       <h5>Correlation of 5 stocks to DJIA</h5>
+      While we did not run individual stocks against the market risk of the consolidated market (which is referred to as beta), we ran the returns of the consolidated five stocks against the more industrial focused Dow Jones Industrial Average (DJIA). The consolidated portfolio only showed a correlation (R squared) with the DJIA of 58.8% over the last three years.</h1><br> 
+      <li> See Visualization in "Portfolio vs. DJIA R2 sq" gragh in the Portfolio Correlation Analysis.ipynb in the referenced Github link/file for more details.
         
        <h5>Correlation of 5 stocks to Aerospace ETF</h5>
-      <p class="w3-text-black">Visualization of Final Layout:A measurement of x</p>
-      We ran the returns of the consolidated five stocks against the returns of an aerospace industry ETF, the iShares U.S. Aerospace & Defense Fund (ITA). The consolidated portfolio only showed a correlation (R squared) with the ITA of 41.5% over the last three years. See "Portfolio Correlation Analysis.ipynb" in the referenced Github link/file for more detail.
+      We ran the returns of the individual stocks versus the returns for the same period on the Ishares Aerospace and Defense (ITA) ETF. The consolidated portfolio only showed a correlation (R squared) with the ITA of 42% over the last three years.</h1><br> 
+       <li> See Visualization in "Portfolio vs. ITA Index R sq" graph in the Portfolio Correlation Analysis.ipynb in the referenced Github link/file for more details.</p>
     </div>
     <div class="w3-col l6 w3-padding-large">
       <!--<h1 class="w3-center">Correlation Matrix</h1><br>-->
@@ -104,7 +98,7 @@ h1,h2,h3,h4,h5,h6 {
             </div>
             <div class="w3-col m6 w3-padding-large">
               <h5 class="w3-center">Discussion</h5>
-              <p class="w3-large"> This low correlation of the five selected stocks to the DJIA and ITA indicates that there may be some diverisification benefits to adding an aerospace stock to a larger more diversified portfolio. 
+              <p class="w3-large"> This low correlation of the five selected stocks to the DJIA and ITA indicates that there may be some diversification benefits to adding an aerospace stock to a larger more diversified portfolio. 
               </p>
               <p class="w3-large w3-text-black w3-hide-medium"></p>
              </div>
