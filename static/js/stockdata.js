@@ -19,8 +19,7 @@ var stockData = [
     Symbol: "GD",
     Company : "General Dynamics",
     Headquarters: "Reston, VA"
-  }
-  {
+  }, {
     Symbol: "HON",
     Company : "Honeywell",
     Headquarters: "Charlotte, NC"
