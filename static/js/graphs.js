@@ -959,10 +959,10 @@ valueAxis.text = "$ Stock Value"
 valueAxis.fontSize = 20;
 
 // creating Title
-var title = chart.titles.create();
-title.text = "Pink = The stock closed lower than it opened n/Blue = The stock closed higher than it opened";
-title.fontSize = 25;
-title.marginBottom = 30;
+// var title = chart.titles.create();
+// title.text = "Pink = The stock closed lower than it opened; Blue = The stock closed higher than it opened";
+// title.fontSize = 25;
+// title.marginBottom = 30;
 
 
 // only for the legend
