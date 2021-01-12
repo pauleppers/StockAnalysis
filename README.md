@@ -33,7 +33,7 @@ Frontend: HTML and JavaScript are used to display data.
 There are many options that already exist that do similar comparisons (https://www.marketbeat.com/compare-stocks/). The real advantage will be the machine learning part that doesn’t currently exist. Limits 10,000 rows of data and 10MBs of data limit the time interval. Requirements of more data to do in depth analysis while available was not added in this phase.
 
 ## Results/Analysis
-At this January 2021, no recommendations will be made due to the need for more in-depth analysis. 
+As of January 2021, no recommendations will be made due to the need for more in-depth analysis. 
 
 ## Instructions
 1. You will need to get API Keys for the rapidapi and but YFinance library has no api requirement.
