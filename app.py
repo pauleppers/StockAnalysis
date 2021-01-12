@@ -98,7 +98,6 @@ class noc(db.Model):
     symbol = db.Column(db.String)  
     
  
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -107,15 +106,17 @@ def index():
 def page2():
     return render_template('analysis.html')
 
-
 @app.route('/about')
 def page1():
     return render_template('about.html')
 	
-
 @app.route('/Graphs')
 def pageHON():
     return render_template('graphs.html')
+
+@app.route('/methodology')
+def pageHON():
+    return render_template('methodology.html')
 
 @app.route('/recommendation')
 def recom():
@@ -322,14 +323,8 @@ def getNOC():
 
     return jsonify(data)
 
-
-
-
 # @route("/notebook")
 # def notebook():
 
-
 if __name__ == "__main__":
     app.run(debug=True)
-
-    
