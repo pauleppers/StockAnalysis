@@ -104,11 +104,12 @@
     <div class="row">
       <div class="col-xl-6">Select a stock then press 'Plot Stock'.
         <form class="form-inline">
+          
           <button id="combo2" type="submit" style="margin-left:10px; margin-top: 10px" class="btn btn-outline-info">Plot
-            Stock</button>
-            
+            Stock</button><h3 class="text-center text-white" style="margin-left:30px; margin-top: 15px;">Candlestick Graph</h3>
         </form>
         <div>
+          
           <select multiple id="selDataset2" style="padding-right: 10px; margin-left: 20px; margin-top: 10px">
             <option value="hon">HON</option>
             <option value="gd">GD</option>
@@ -118,6 +119,7 @@
             <option value="noc">NOC</option>
           </select>
         </div>
+        
         <div id="controls" style="width: 100%; overflow: hidden;">
           <div style="float: left; margin-left: 15px;">
             From: <input type="text" id="fromfield" class="amcharts-input" />
@@ -140,7 +142,7 @@
       <div class="col-xl-6">Press and hold Ctrl key and select multiple stocks then press 'Plot Stock'.
         <form class="form-inline">
           <button id="combo" type="submit" style="margin-left:10px; margin-top: 10px" class="btn btn-outline-info">Plot
-            Stock</button>
+            Stock</button><h3 class="text-center text-white" style="margin-left:30px; margin-top: 15px;">Relative Value Comparison Graph</h3>
         </form>
         
         <div>
@@ -179,6 +181,11 @@
           <option value="lmt">LMT</option>
           <option value="noc">NOC</option>
         </select>
+      </div>
+      <h3 class="text-center text-white" style="margin-left:30px; margin-top: 15px;">Open/Close Color Fill Graph<br></h3>
+      <div>
+      <h5 class="text-center text-info" style="margin-left:30px; margin-top: 15px;">Blue fill color = The stock closed higher than it opened(a gain)</h5>
+      <h5 class="text-center text-danger" style="margin-left:30px; margin-top: 15px;">Pink fill color = The stock closed lower than it opened(a loss)</h5>
       </div>
       <div id="chartdiv4"></div>
     </div>

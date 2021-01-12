@@ -220,8 +220,18 @@ am4core.ready(function() {
   // the following line makes value axes to be arranged vertically.
   chart.leftAxesContainer.layout = "vertical";
   
+  // var title = chart.titles.create();
+  // title.text = "Candlestick Graph";
+  // title.fontSize = 25;
+  // title.marginBottom = 30;
+
+  var label = chart.chartContainer.createChild(am4core.Label);
+  label.text = "Date";
+  label.align = "center";
+
   // uncomment this line if you want to change order of axes
   //chart.bottomAxesContainer.reverseOrder = true;
+
   
   var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
   dateAxis.renderer.grid.template.location = 0;
@@ -254,7 +264,9 @@ am4core.ready(function() {
   valueAxis.renderer.inside = true;
   valueAxis.renderer.labels.template.verticalCenter = "bottom";
   valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
-  
+  //my creation of the left label 
+  valueAxis.title.text = "$"
+  valueAxis.fontSize = 20
   //valueAxis.renderer.maxLabelPosition = 0.95;
   valueAxis.renderer.fontSize = "0.8em"
   
@@ -292,6 +304,8 @@ am4core.ready(function() {
   series2.dataFields.valueY = "volume";
   series2.yAxis = valueAxis2;
   series2.tooltipText = "{valueY.value}";
+  //series2.tooltipText = "{dateX}: {valueY.value}";
+
   series2.name = "Series 2";
   // volume should be summed
   series2.groupFields.valueY = "sum";
@@ -310,7 +324,7 @@ am4core.ready(function() {
   chart.scrollbarX = scrollbarX;
   scrollbarX.scrollbarChart.xAxes.getIndex(0).minHeight = undefined;
   
-  
+
   
   /**
    * Set up external controls
@@ -647,6 +661,9 @@ chart.data = graphData;
 // the following line makes value axes to be arranged vertically.
 chart.leftAxesContainer.layout = "vertical";
 
+var label = chart.chartContainer.createChild(am4core.Label);
+label.text = "Date";
+label.align = "center";
 // uncomment this line if you want to change order of axes
 //chart.bottomAxesContainer.reverseOrder = true;
 
@@ -668,6 +685,8 @@ dateAxis.minZoomCount = 5;
 // dateAxis.start = 0.7;
 // dateAxis.keepSelection = true;
 
+
+
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.tooltip.disabled = true;
 valueAxis.zIndex = 1;
@@ -680,6 +699,9 @@ valueAxis.renderer.gridContainer.background.fillOpacity = 0.05;
 valueAxis.renderer.inside = true;
 valueAxis.renderer.labels.template.verticalCenter = "bottom";
 valueAxis.renderer.labels.template.padding(2, 2, 2, 2);
+//my adding labels to y axis
+valueAxis.text = "%change";
+valueAxis.fontSize = 20;
 
 //valueAxis.renderer.maxLabelPosition = 0.95;
 valueAxis.renderer.fontSize = "0.8em"
@@ -701,6 +723,12 @@ stock.forEach(stk => {
   graphStock.tooltip.label.fill = graphStock.stroke;
 
 })
+
+// var title = chart.titles.create();
+// title.text = "Relative Value Comparison Graph"
+// title.fontSize = 25;
+// title.marginBottom = 30;
+
 
 
 var valueAxis2 = chart.yAxes.push(new am4charts.ValueAxis());
@@ -927,6 +955,16 @@ dateAxis.groupCount = 120
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.tooltip.disabled = true;
 
+valueAxis.text = "$ Stock Value"
+valueAxis.fontSize = 20;
+
+// creating Title
+var title = chart.titles.create();
+title.text = "Pink = The stock closed lower than it opened n/Blue = The stock closed higher than it opened";
+title.fontSize = 25;
+title.marginBottom = 30;
+
+
 // only for the legend
 var iconSeries = chart.series.push(new am4charts.ColumnSeries())
 iconSeries.fill = am4core.color("#ec0800");
@@ -944,7 +982,7 @@ series.tooltipText = "open: {openValueY.value} close: {valueY.value}";
 series.sequencedInterpolation = true;
 series.stroke = am4core.color("#1b7cb3");
 series.strokeWidth = 2;
-series.name = "District Metered Usage";
+series.name = "Close";
 series.stroke = chart.colors.getIndex(0);
 series.fill = series.stroke;
 series.fillOpacity = 0.8;
@@ -963,9 +1001,11 @@ series2.strokeWidth = 2;
 series2.tooltip.getFillFromObject = false;
 series2.tooltip.getStrokeFromObject = true;
 series2.tooltip.label.fill = am4core.color("#000");
-series2.name = "SP Aggregate usage";
+series2.name = "Open";
+// series2.name = "SP Aggregate usage";
 series2.stroke = chart.colors.getIndex(7);
 series2.fill = series2.stroke;
+
 
 var bullet2 = series2.bullets.push(new am4charts.CircleBullet())
 bullet2.fill = bullet.fill;
@@ -1037,6 +1077,51 @@ chart.events.on("datavalidated", function() {
     }
   })
 })
+
+// var hoverState = series2.states.create("hover");
+// hoverState.properties.strokeWidth = 3;
+
+// var dimmed = series2.states.create("dimmed");
+// dimmed.properties.stroke = am4core.color("#dadada");
+
+chart.legend = new am4charts.Legend();
+chart.legend.position = "right";
+chart.legend.scrollable = true;
+chart.legend.itemContainers.template.events.on("over", function(event) {
+  processOver(event.target.dataItem.dataContext);
+})
+
+chart.legend.itemContainers.template.events.on("out", function(event) {
+  processOut(event.target.dataItem.dataContext);
+})
+
+function processOver(hoveredSeries) {
+  hoveredSeries.toFront();
+
+  hoveredSeries.segments.each(function(segment) {
+    segment.setState("hover");
+  })
+
+  chart.series.each(function(series) {
+    if (series != hoveredSeries) {
+      series.segments.each(function(segment) {
+        segment.setState("dimmed");
+      })
+      series.bulletsContainer.setState("dimmed");
+    }
+  });
+}
+
+function processOut(hoveredSeries) {
+  chart.series.each(function(series) {
+    series.segments.each(function(segment) {
+      segment.setState("default");
+    })
+    series.bulletsContainer.setState("default");
+  });
+}
+
+
 
 }); // end am4core.ready()
 
