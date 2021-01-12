@@ -104,23 +104,23 @@ submit.on("click", function(d) {
  /***************************************************************************** */
 
 
-var submit = d3.select("#combo3")
+// var submit = d3.select("#combo3")
 
-submit.on("click", function(d) {
-  var stock = [];
-  // console.log("utton clicked")
-  var select = d3.select("#selDataset3");
-  d3.event.preventDefault();
-  select.selectAll("option:checked").each(function() {
+// submit.on("click", function(d) {
+//   var stock = [];
+//   // console.log("utton clicked")
+//   var select = d3.select("#selDataset3");
+//   d3.event.preventDefault();
+//   select.selectAll("option:checked").each(function() {
     
-    stock.push(this.value)
-    console.log(stock)  })
+//     stock.push(this.value)
+//     console.log(stock)  })
 
-  // Build the plot with the new stock
-  // buildHON(stock);
-  // candlestick(stock);
-  varianceIndi(stock);
-})
+//   // Build the plot with the new stock
+//   // buildHON(stock);
+//   // candlestick(stock);
+//   varianceIndi(stock);
+// })
 /***************************************************************************** */
 var submit = d3.select("#colorChart")
 
@@ -414,166 +414,166 @@ am4core.ready(function() {
 }
 candlestick(["gd"])
 
-function buildHON(stock) {
-    d3.json(stock).then((data) => {
-        // d3.json(`/metadata/${sample}`).then((data) 
-        // console.log(data)
-        // console.log((data[0]))
-        //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
-        const volume = data.map(vol => { return parseInt(vol.volume)})   
-        const timestamp = data.map(time => { return parseInt(time.timestamp)})      
-        const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
-        const high = data.map(high => {return high.high})
-        const low = data.map(low => {return low.low})
-        const openPrice = data.map(openp => {return openp.open})
-        const closingPrice = data.map(close => {return close.close})
-        const date = data.map(dates => {return dates.date})
-        const cal = data.map(lp => {return lp.cal})
-        const symbol = data.map(id => {return id.symbol})[0]
-        const id = symbol.toUpperCase()
-        // console.log(date)        
-        console.log(cal)
-        console.log(closingPrice)
-  //       var filterData = data.filter(event => (event.symbol) === ("gd"));   
-  // console.log(filterData)
-  // var GD = []
-  // const high2 = filterData.map(high => {return high.high})
-  // GD.push(high2)
-  // console.log(GD)
-  // const symbol2 = filterData.map(id => {return id.symbol})[0]
-  // console.log(symbol2)
-  // const id = symbol.toUpperCase()
+// function buildHON(stock) {
+//     d3.json(stock).then((data) => {
+//         // d3.json(`/metadata/${sample}`).then((data) 
+//         // console.log(data)
+//         // console.log((data[0]))
+//         //var filteredData = samples.filter(event => parseInt(event.id) === parseInt(value))[0];   
+//         const volume = data.map(vol => { return parseInt(vol.volume)})   
+//         const timestamp = data.map(time => { return parseInt(time.timestamp)})      
+//         const timestamp2 = data.map(time => { return parseInt(time.timestamp)})      
+//         const high = data.map(high => {return high.high})
+//         const low = data.map(low => {return low.low})
+//         const openPrice = data.map(openp => {return openp.open})
+//         const closingPrice = data.map(close => {return close.close})
+//         const date = data.map(dates => {return dates.date})
+//         const cal = data.map(lp => {return lp.cal})
+//         const symbol = data.map(id => {return id.symbol})[0]
+//         const id = symbol.toUpperCase()
+//         // console.log(date)        
+//         console.log(cal)
+//         console.log(closingPrice)
+//   //       var filterData = data.filter(event => (event.symbol) === ("gd"));   
+//   // console.log(filterData)
+//   // var GD = []
+//   // const high2 = filterData.map(high => {return high.high})
+//   // GD.push(high2)
+//   // console.log(GD)
+//   // const symbol2 = filterData.map(id => {return id.symbol})[0]
+//   // console.log(symbol2)
+//   // const id = symbol.toUpperCase()
 
-        // var data = {
-        //   type: 'scatter',
-        //   mode: 'lines', 
-        //   name: 'Rel. Val on close',         
-        //   x: date,
-        //   y: cal
-        // }
+//         // var data = {
+//         //   type: 'scatter',
+//         //   mode: 'lines', 
+//         //   name: 'Rel. Val on close',         
+//         //   x: date,
+//         //   y: cal
+//         // }
 
-        // Plotly.newPlot('rplot', data);
+//         // Plotly.newPlot('rplot', data);
 
-        var TStrace1 = 
-            {
-            type: "scatter",
-            mode: "lines",
-            name: `${id} high`,
-            x: date,
-            y: high,
-            marker: {color: '#17BECF'}
-        }
+//         var TStrace1 = 
+//             {
+//             type: "scatter",
+//             mode: "lines",
+//             name: `${id} high`,
+//             x: date,
+//             y: high,
+//             marker: {color: '#17BECF'}
+//         }
     
-        var TStrace2 = 
-            {
-            type: "scatter",
-            mode: "lines",
-            name: `${id} low`,
-            x: date,
-            y: low,
-            line: {color: '#7F7F7F'}
-        }
+//         var TStrace2 = 
+//             {
+//             type: "scatter",
+//             mode: "lines",
+//             name: `${id} low`,
+//             x: date,
+//             y: low,
+//             line: {color: '#7F7F7F'}
+//         }
     
-        var TSdata = [TStrace1, TStrace2];
+//         var TSdata = [TStrace1, TStrace2];
           
-        var TSlayout = {
-            title: `${id} Overview`,
-        }
+//         var TSlayout = {
+//             title: `${id} Overview`,
+//         }
 
-        Plotly.newPlot('plot', TSdata, TSlayout);
+//         Plotly.newPlot('plot', TSdata, TSlayout);
 
 
-        let CND1 ={
-            x: date,
-            close: closingPrice,
-            decreasing: {line: {color: '#7F7F7F'}},
-            high: high,
-            increasing: {line: {color: "#17BECF"}},
-            line: {color: 'rgba(31,119,180,1)'},
-            low: low,
-            open: openPrice,
-            type: "candlestick",
-            xaxis: "x", 
-            yaxis: "y"             
-        }
+//         let CND1 ={
+//             x: date,
+//             close: closingPrice,
+//             decreasing: {line: {color: '#7F7F7F'}},
+//             high: high,
+//             increasing: {line: {color: "#17BECF"}},
+//             line: {color: 'rgba(31,119,180,1)'},
+//             low: low,
+//             open: openPrice,
+//             type: "candlestick",
+//             xaxis: "x", 
+//             yaxis: "y"             
+//         }
     
-        // Candlestick Trace
+//         // Candlestick Trace
 
     
-        let CNDdata = [CND1];
+//         let CNDdata = [CND1];
     
-        let CNDlayout = {
-            dragmode: 'zoom', 
-            margin: {
-              r: 10, 
-              t: 25, 
-              b: 40, 
-              l: 60
-            }, 
-            showlegend: false, 
-            xaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
-              rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
-              title: 'Date', 
-              type: 'date'
-            }, 
-            yaxis: {
-              autorange: true, 
-              domain: [0, 1], 
-              range: [0, 20], 
-              type: 'linear'
-            }
-        };
+//         let CNDlayout = {
+//             dragmode: 'zoom', 
+//             margin: {
+//               r: 10, 
+//               t: 25, 
+//               b: 40, 
+//               l: 60
+//             }, 
+//             showlegend: false, 
+//             xaxis: {
+//               autorange: true, 
+//               domain: [0, 1], 
+//               range: ['2020-01-02 14:30', '2020-12-31 14:30'], 
+//               rangeslider: {range: ['2020-01-02 14:30', '2020-12-31 14:30']}, 
+//               title: 'Date', 
+//               type: 'date'
+//             }, 
+//             yaxis: {
+//               autorange: true, 
+//               domain: [0, 1], 
+//               range: [0, 20], 
+//               type: 'linear'
+//             }
+//         };
           
         
     
-        Plotly.newPlot("plot2", CNDdata, CNDlayout); 
+//         Plotly.newPlot("plot2", CNDdata, CNDlayout); 
 
-/****************** Plotly.plot(graph..) is plotting the lines on the same graph *********************************************************************************************/ 
+// /****************** Plotly.plot(graph..) is plotting the lines on the same graph *********************************************************************************************/ 
 
-        Plotly.newPlot('graph', [{
-          x: date,
-          y: cal,
-          type: 'line'
-      }], 
-      {
-        title: 'Relative Value Analysis'
-      }, 
-      {
-          modeBarButtons: [[{
-              name: 'January',
-              click: function() {
-                Plotly.relayout('graph',
-                  'xaxis.range', 
-                  [
-                    new Date(2020, 01, 06).getTime(),
-                    new Date(2020, 02, 06).getTime()
-                  ]
-                );
-              }
-            }, {
-              name: 'December',
-              click: function() {
-                Plotly.relayout('graph',
-                  'xaxis.range', 
-                  [
-                    new Date(2020, 12, 01).getTime(),
-                    new Date(2021, 01, 06).getTime()
-                  ]
-                );
-              }
-            }
-          ]]
-      }
-      );
+//         Plotly.newPlot('graph', [{
+//           x: date,
+//           y: cal,
+//           type: 'line'
+//       }], 
+//       {
+//         title: 'Relative Value Analysis'
+//       }, 
+//       {
+//           modeBarButtons: [[{
+//               name: 'January',
+//               click: function() {
+//                 Plotly.relayout('graph',
+//                   'xaxis.range', 
+//                   [
+//                     new Date(2020, 01, 06).getTime(),
+//                     new Date(2020, 02, 06).getTime()
+//                   ]
+//                 );
+//               }
+//             }, {
+//               name: 'December',
+//               click: function() {
+//                 Plotly.relayout('graph',
+//                   'xaxis.range', 
+//                   [
+//                     new Date(2020, 12, 01).getTime(),
+//                     new Date(2021, 01, 06).getTime()
+//                   ]
+//                 );
+//               }
+//             }
+//           ]]
+//       }
+//       );
 
 
-    // buildHON (stock)
-    })
+//     // buildHON (stock)
+//     })
     
-}; 
+// }; 
 
 // function handleclick(){
 //   var GD = d3.select("#stock1").property("value");
@@ -754,133 +754,133 @@ buildtable(["ba", "rtx", "lmt"])
 
 
 
-function varianceIndi(stock){
-  var stockinput=stock.toString()
-  console.log(stockinput)
-  var url = "/api/stocks/" + stockinput
-  d3.json(url).then((data) => {
+// function varianceIndi(stock){
+//   var stockinput=stock.toString()
+//   console.log(stockinput)
+//   var url = "/api/stocks/" + stockinput
+//   d3.json(url).then((data) => {
 
 
-    // console.log(data)
+//     // console.log(data)
 
-    perform = [] 
-    stock.forEach(element => {
+//     perform = [] 
+//     stock.forEach(element => {
       
-      perform=data[element]
-    }) 
+//       perform=data[element]
+//     }) 
 
 
-am4core.ready(function() {
+// am4core.ready(function() {
 
-// Themes begin
-am4core.useTheme(am4themes_animated);
-// Themes end
+// // Themes begin
+// am4core.useTheme(am4themes_animated);
+// // Themes end
 
-// Create chart instance
-var chart = am4core.create("chartdiv3", am4charts.XYChart);
+// // Create chart instance
+// var chart = am4core.create("chartdiv3", am4charts.XYChart);
 
-// Add data
-chart.data =perform 
-// [{
-//   "year": "2011",
-//   "value": 600000
-// }, {
-//   "year": "2012",
-//   "value": 900000
-// }, {
-//   "year": "2013",
-//   "value": 180000
-// }];
+// // Add data
+// chart.data =perform 
+// // [{
+// //   "year": "2011",
+// //   "value": 600000
+// // }, {
+// //   "year": "2012",
+// //   "value": 900000
+// // }, {
+// //   "year": "2013",
+// //   "value": 180000
+// // }];
 
-// dateAxis.groupData = true
-// date.groupCount = 60
+// // dateAxis.groupData = true
+// // date.groupCount = 60
 
-// Populate data
-for (var i = 0; i < (chart.data.length - 1); i++) {
-  chart.data[i].valueNext = chart.data[i + 1].value;
-  console.log(chart.data[i].value)
-}
+// // Populate data
+// for (var i = 0; i < (chart.data.length - 1); i++) {
+//   chart.data[i].valueNext = chart.data[i + 1].value;
+//   console.log(chart.data[i].value)
+// }
 
-// Create axes
-var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "date";
-categoryAxis.renderer.grid.template.location = 0;
-categoryAxis.renderer.minGridDistance = 30;
+// // Create axes
+// var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+// categoryAxis.dataFields.category = "date";
+// categoryAxis.renderer.grid.template.location = 0;
+// categoryAxis.renderer.minGridDistance = 30;
 
-var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.min = 0;
+// var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+// valueAxis.min = 0;
 
-// Create series
-var series = chart.series.push(new am4charts.ColumnSeries());
-series.dataFields.valueY = "open";
-series.dataFields.categoryX = "date";
+// // Create series
+// var series = chart.series.push(new am4charts.ColumnSeries());
+// series.dataFields.valueY = "open";
+// series.dataFields.categoryX = "date";
 
-// Add series for showing variance arrows
-var series2 = chart.series.push(new am4charts.ColumnSeries());
-series2.dataFields.valueY = "valueNext";
-series2.dataFields.openValueY = "value";
-series2.dataFields.categoryX = "date";
-series2.columns.template.width = 1;
-series2.fill = am4core.color("#555");
-series2.stroke = am4core.color("#555");
+// // Add series for showing variance arrows
+// var series2 = chart.series.push(new am4charts.ColumnSeries());
+// series2.dataFields.valueY = "valueNext";
+// series2.dataFields.openValueY = "value";
+// series2.dataFields.categoryX = "date";
+// series2.columns.template.width = 1;
+// series2.fill = am4core.color("#555");
+// series2.stroke = am4core.color("#555");
 
-// Add a triangle for arrow tip
-var arrow = series2.bullets.push(new am4core.Triangle);
-arrow.width = 10;
-arrow.height = 10;
-arrow.horizontalCenter = "middle";
-arrow.verticalCenter = "top";
-arrow.dy = -1;
+// // Add a triangle for arrow tip
+// var arrow = series2.bullets.push(new am4core.Triangle);
+// arrow.width = 10;
+// arrow.height = 10;
+// arrow.horizontalCenter = "middle";
+// arrow.verticalCenter = "top";
+// arrow.dy = -1;
 
-// Set up a rotation adapter which would rotate the triangle if its a negative change
-arrow.adapter.add("rotation", function(rotation, target) {
-  return getVariancePercent(target.dataItem) < 0 ? 180 : rotation;
-});
+// // Set up a rotation adapter which would rotate the triangle if its a negative change
+// arrow.adapter.add("rotation", function(rotation, target) {
+//   return getVariancePercent(target.dataItem) < 0 ? 180 : rotation;
+// });
 
-// Set up a rotation adapter which adjusts Y position
-arrow.adapter.add("dy", function(dy, target) {
-  return getVariancePercent(target.dataItem) < 0 ? 1 : dy;
-});
+// // Set up a rotation adapter which adjusts Y position
+// arrow.adapter.add("dy", function(dy, target) {
+//   return getVariancePercent(target.dataItem) < 0 ? 1 : dy;
+// });
 
-// Add a label
-var label = series2.bullets.push(new am4core.Label);
-label.padding(10, 10, 10, 10);
-label.text = "";
-label.fill = am4core.color("#0c0");
-label.strokeWidth = 0;
-label.horizontalCenter = "middle";
-label.verticalCenter = "bottom";
-label.fontWeight = "bolder";
+// // Add a label
+// var label = series2.bullets.push(new am4core.Label);
+// label.padding(10, 10, 10, 10);
+// label.text = "";
+// label.fill = am4core.color("#0c0");
+// label.strokeWidth = 0;
+// label.horizontalCenter = "middle";
+// label.verticalCenter = "bottom";
+// label.fontWeight = "bolder";
 
-// Adapter for label text which calculates change in percent
-label.adapter.add("textOutput", function(text, target) {
-  var percent = getVariancePercent(target.dataItem);
-  return percent ? percent + "%" : text;
-});
+// // Adapter for label text which calculates change in percent
+// label.adapter.add("textOutput", function(text, target) {
+//   var percent = getVariancePercent(target.dataItem);
+//   return percent ? percent + "%" : text;
+// });
 
-// Adapter which shifts the label if it's below the variance column
-label.adapter.add("verticalCenter", function(center, target) {
-  return getVariancePercent(target.dataItem) < 0 ? "top" : center;
-});
+// // Adapter which shifts the label if it's below the variance column
+// label.adapter.add("verticalCenter", function(center, target) {
+//   return getVariancePercent(target.dataItem) < 0 ? "top" : center;
+// });
 
-// Adapter which changes color of label to red
-label.adapter.add("fill", function(fill, target) {
-  return getVariancePercent(target.dataItem) < 0 ? am4core.color("#c00") : fill;
-});
+// // Adapter which changes color of label to red
+// label.adapter.add("fill", function(fill, target) {
+//   return getVariancePercent(target.dataItem) < 0 ? am4core.color("#c00") : fill;
+// });
 
-function getVariancePercent(dataItem) {
-  if (dataItem) {
-    var value = dataItem.valueY;
-    var openValue = dataItem.openValueY;
-    var change = value - openValue;
-    return Math.round(change / openValue * 100);
-  }
-  return 0;
-}
+// function getVariancePercent(dataItem) {
+//   if (dataItem) {
+//     var value = dataItem.valueY;
+//     var openValue = dataItem.openValueY;
+//     var change = value - openValue;
+//     return Math.round(change / openValue * 100);
+//   }
+//   return 0;
+// }
 
-}); // end am4core.ready()
-  })
-}
+// }); // end am4core.ready()
+//   })
+// }
 
 // varianceIndi(["lmt"])
 
@@ -1043,6 +1043,8 @@ chart.events.on("datavalidated", function() {
 })
 }
 // colorFill(["noc"])
+
+
 
 /*************Start of wordCloud function****************************************************************************************** */
 // am4core.ready(function() {
