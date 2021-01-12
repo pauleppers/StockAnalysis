@@ -115,7 +115,7 @@ def pageHON():
     return render_template('graphs.html')
 
 @app.route('/methodology')
-def pageHON():
+def methods():
     return render_template('methodology.html')
 
 @app.route('/recommendation')
