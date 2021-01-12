@@ -103,9 +103,9 @@ class noc(db.Model):
 def index():
     return render_template('index.html')
 	
-@app.route('/summary')
+@app.route('/analysis')
 def page2():
-    return render_template('summary.html')
+    return render_template('analysis.html')
 
 
 @app.route('/about')
