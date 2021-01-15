@@ -1,4 +1,4 @@
-﻿# Display Historical Performance of Five Similar Stocks
+﻿# Display Historical Performance of Six Similar Stocks
 
 Members - Paul Eppers, Juliann Pezzullo, Craig Matherson, Connor Lanier, Nadia Albarracin, John Klinges
 
